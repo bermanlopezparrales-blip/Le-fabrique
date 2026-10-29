@@ -119,6 +119,34 @@
   </div>
 
   <!-- ================================================================= -->
+  
+  <!-- ================================================================= -->
+  <!-- 1.B CINTA PROMOCIONAL DINÁMICA DE TEMPORADA -->
+  <!-- ================================================================= -->
+  <aside id="promoTickerContainer" aria-label="Promoción destacada de temporada" class="bg-gradient-to-r from-brand-navydark via-brand-navy to-brand-navydark text-white py-2 px-4 border-b border-amber-500/40 sticky top-0 z-45 transition-all shadow-md">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
+      <div class="flex items-center gap-3 overflow-hidden flex-1">
+        <div id="promoTickerContent" class="flex-1 truncate">
+          <!-- Inyectado dinámicamente por promociones-studio.js -->
+        </div>
+      </div>
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <button onclick="prevTickerPromo()" class="text-slate-400 hover:text-amber-300 p-1 transition" title="Promoción anterior">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button onclick="nextTickerPromo()" class="text-slate-400 hover:text-amber-300 p-1 transition" title="Siguiente promoción">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+        <a href="#promociones" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 bg-amber-500 hover:bg-amber-600 text-brand-navydark font-extrabold text-xs rounded-lg shadow transition transform hover:scale-105">
+          Ver Ofertas ✨
+        </a>
+        <button onclick="closePromoTicker()" class="text-slate-400 hover:text-slate-200 p-1 transition ml-1" title="Cerrar cinta">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+  </aside>
+
   <!-- 2. NAVBAR CON EL LOGO OFICIAL DE LA TORRE EIFFEL (AZUL Y ORO) -->
   <!-- ================================================================= -->
   <header class="sticky top-[41px] z-40 bg-brand-navy/95 backdrop-blur-md border-b border-blue-900/60 shadow-lg transition-all duration-300">
@@ -309,6 +337,56 @@
           <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1">Envíos a todo el territorio nacional</div>
         </div>
       </div>
+    </div>
+  </section>
+
+  
+  <!-- ================================================================= -->
+  <!-- 4.B SECCIÓN DE OFERTAS Y PROMOCIONES DE TEMPORADA -->
+  <!-- ================================================================= -->
+  <section id="promociones" class="py-20 bg-gradient-to-b from-slate-100 via-white to-slate-50 border-b border-slate-200 relative overflow-hidden">
+    <!-- Adornos visuales de fondo -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-900/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="inline-flex items-center gap-2 text-xs font-black text-brand-navy tracking-widest uppercase bg-amber-400/20 px-4 py-1.5 rounded-full border border-amber-400/50 shadow-sm">
+          🔥 OFERTAS ACTIVAS DE TEMPORADA
+        </span>
+        <h2 class="font-heading font-black text-3xl sm:text-4xl text-brand-navy mt-4 tracking-tight">
+          Uniformes Empresariales con Descuentos Exclusivos
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-3 leading-relaxed">
+          Prendas confeccionadas con los más altos estándares textiles en Costa Rica. Aprovecha precios especiales por volumen y paquetes de temporada por tiempo limitado.
+        </p>
+
+        <!-- Filtros interactivos por categoría -->
+        <div id="promoCategoryFilters" class="flex flex-wrap items-center justify-center gap-2 mt-8">
+          <button onclick="filterPublicPromotions('all', this)" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-brand-navy text-amber-300 shadow-md">
+            Todas las Ofertas
+          </button>
+          <button onclick="filterPublicPromotions('ejecutivo', this)" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+            👔 Ejecutivos Slim Fit
+          </button>
+          <button onclick="filterPublicPromotions('medico', this)" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+            🩺 Médicos & Clínicos
+          </button>
+          <button onclick="filterPublicPromotions('gastronomico', this)" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+            👨‍🍳 Chefs & Restaurantes
+          </button>
+          <button onclick="filterPublicPromotions('industrial', this)" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+            👷 Industriales
+          </button>
+        </div>
+      </div>
+
+      <!-- Cuadrícula de Promociones Activas -->
+      <div id="publicPromosGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Renderizado dinámicamente por promociones-studio.js -->
+      </div>
+
     </div>
   </section>
 
@@ -1195,7 +1273,7 @@
       </div>
 
       <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-slate-400">
-        <p>&copy; 2026 Le Fabrique Costa Rica. Confección Textil y Diseño Nacional.</p>
+        <p>&copy; 2026 Le Fabrique Costa Rica. Confección Textil y Diseño Nacional. <button onclick="openAdminSecurityModal()" title="Acceso Administrativo Propietario (Ctrl+Alt+L)" class="text-slate-600 hover:text-amber-400 transition ml-2 focus:outline-none opacity-40 hover:opacity-100" aria-label="Acceso Administrativo">🔒</button></p>
         <p>Santo Domingo, Heredia, Costa Rica &bull; Calidad y Garantía Certificada</p>
       </div>
     </div>
@@ -1543,5 +1621,529 @@
     // Inicializar resumen al cargar
     renderLiveSummary();
   </script>
+
+  <!-- ================================================================= -->
+  <!-- MODAL 1: AUTENTICACIÓN Y SEGURIDAD MAESTRA (ACCESO PROPIETARIO) -->
+  <!-- ================================================================= -->
+  <div id="adminSecurityModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 modal-backdrop" style="backdrop-filter: blur(8px);">
+    <div class="bg-brand-navydark border border-amber-500/40 rounded-2xl p-6 sm:p-8 max-w-md w-full shadow-2xl relative text-white">
+      <button onclick="closeAdminSecurityModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div class="text-center mb-6">
+        <div class="w-14 h-14 mx-auto mb-3 bg-amber-500/20 border border-amber-500/40 rounded-2xl flex items-center justify-center text-amber-400 text-2xl shadow-inner">
+          👑
+        </div>
+        <h3 class="text-xl font-heading font-black tracking-wide text-white">Acceso Propietario</h3>
+        <p class="text-xs text-slate-400 mt-1">Estudio de Promociones & Generador con IA</p>
+      </div>
+
+      <form onsubmit="verifyAdminAccess(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-amber-300 mb-1.5">PIN Maestro de Seguridad:</label>
+          <input 
+            type="password" 
+            id="adminPinInput" 
+            placeholder="Introduce tu PIN maestro..." 
+            class="w-full bg-slate-900 border border-slate-700 focus:border-amber-500 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-1 focus:ring-amber-500 transition"
+          />
+        </div>
+
+        <div class="relative flex py-1 items-center">
+          <div class="flex-grow border-t border-slate-700"></div>
+          <span class="flex-shrink mx-3 text-[11px] text-slate-500 font-semibold uppercase">o mediante cuenta</span>
+          <div class="flex-grow border-t border-slate-700"></div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1.5">Correo de Google Autorizado:</label>
+          <input 
+            type="email" 
+            id="adminEmailInput" 
+            placeholder="bermanlopezparrales@gmail.com" 
+            class="w-full bg-slate-900 border border-slate-700 focus:border-amber-500 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-1 focus:ring-amber-500 transition"
+          />
+        </div>
+
+        <div id="adminSecurityError" class="hidden text-rose-400 text-xs bg-rose-950/60 border border-rose-800/60 p-2.5 rounded-lg text-center font-medium"></div>
+
+        <button 
+          type="submit" 
+          class="w-full py-3.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-brand-navydark font-heading font-black text-sm rounded-xl shadow-lg transition transform hover:scale-[1.01]"
+        >
+          Desbloquear Estudio Le Fabrique 🚀
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- MODAL 2: ESTUDIO COMPLETO LE FABRIQUE (CREADOR IA, BANNER & META) -->
+  <!-- ================================================================= -->
+  <div id="adminStudioModal" class="fixed inset-0 z-50 hidden items-center justify-center p-2 sm:p-4 modal-backdrop" style="backdrop-filter: blur(10px);">
+    <div class="bg-brand-navydark border border-blue-800/80 rounded-2xl w-full max-w-6xl max-h-[95vh] flex flex-col shadow-2xl overflow-hidden text-slate-200">
+      
+      <!-- Encabezado del Estudio -->
+      <div class="p-4 sm:p-5 border-b border-blue-900/60 bg-brand-navy flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 font-bold text-lg">
+            ✨
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h2 class="text-lg sm:text-xl font-heading font-black text-white">Estudio de Promociones Le Fabrique</h2>
+              <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">PROPIETARIO</span>
+            </div>
+            <p class="text-xs text-slate-400">Genera artes con IA, publica en Facebook & Instagram y gestiona tu catálogo web</p>
+          </div>
+        </div>
+
+        <!-- Navegación por Pestañas -->
+        <div class="flex items-center gap-1.5 bg-slate-900/80 p-1 rounded-xl border border-blue-900/40">
+          <button 
+            id="btn-tab-creador" 
+            onclick="switchStudioTab('creador')" 
+            class="studio-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold transition border border-amber-500 text-amber-400 bg-blue-900/30 flex items-center gap-1.5"
+          >
+            🤖 Generador con IA & Banner
+          </button>
+          <button 
+            id="btn-tab-catalogo" 
+            onclick="switchStudioTab('catalogo')" 
+            class="studio-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-slate-200 flex items-center gap-1.5"
+          >
+            📋 Catálogo de Ofertas
+          </button>
+          <button 
+            id="btn-tab-redes" 
+            onclick="switchStudioTab('redes')" 
+            class="studio-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-slate-200 flex items-center gap-1.5"
+          >
+            ⚙️ Conexión Meta & Seguridad
+          </button>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button onclick="logoutAdminStudio()" class="text-xs font-bold text-slate-400 hover:text-rose-400 px-2 py-1 transition" title="Cerrar sesión administrativa">
+            Salir
+          </button>
+          <button onclick="closeAdminStudio()" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Cuerpo del Estudio con Scroll -->
+      <div class="p-4 sm:p-6 overflow-y-auto flex-1 space-y-6">
+
+        <!-- ============================================== -->
+        <!-- PESTAÑA 1: CREADOR CON IA & COMPOSITOR CANVAS -->
+        <!-- ============================================== -->
+        <div id="tab-creador" class="studio-tab-content space-y-6">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            
+            <!-- Columna Izquierda: Parámetros y Generador IA (5 columnas) -->
+            <div class="lg:col-span-5 space-y-5 bg-slate-900/60 p-5 rounded-2xl border border-blue-900/40">
+              
+              <!-- 1. Motor de IA -->
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <label class="text-xs font-bold text-amber-300 uppercase tracking-wider flex items-center gap-1.5">
+                    <span>1.</span> Generación Fotográfica con IA
+                  </label>
+                  <span class="text-[10px] text-emerald-400 font-semibold bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
+                    Motor Gratuito Activo
+                  </span>
+                </div>
+
+                <!-- Plantillas rápidas de 1 clic -->
+                <div class="flex flex-wrap gap-1.5 mb-3">
+                  <button type="button" onclick="applyAIPreset('ejecutivo')" class="px-2.5 py-1 text-[11px] font-semibold bg-slate-800 hover:bg-blue-900/60 text-slate-300 hover:text-amber-300 rounded-lg border border-slate-700 transition">
+                    👔 Ejecutivo
+                  </button>
+                  <button type="button" onclick="applyAIPreset('medico')" class="px-2.5 py-1 text-[11px] font-semibold bg-slate-800 hover:bg-blue-900/60 text-slate-300 hover:text-amber-300 rounded-lg border border-slate-700 transition">
+                    🩺 Médico
+                  </button>
+                  <button type="button" onclick="applyAIPreset('gastronomico')" class="px-2.5 py-1 text-[11px] font-semibold bg-slate-800 hover:bg-blue-900/60 text-slate-300 hover:text-amber-300 rounded-lg border border-slate-700 transition">
+                    👨‍🍳 Chef
+                  </button>
+                  <button type="button" onclick="applyAIPreset('industrial')" class="px-2.5 py-1 text-[11px] font-semibold bg-slate-800 hover:bg-blue-900/60 text-slate-300 hover:text-amber-300 rounded-lg border border-slate-700 transition">
+                    👷 Industrial
+                  </button>
+                </div>
+
+                <textarea 
+                  id="aiCustomPrompt" 
+                  rows="2" 
+                  placeholder="Describe la prenda o uniforme que deseas modelar..." 
+                  class="w-full bg-slate-950 border border-slate-700 focus:border-amber-500 rounded-xl p-3 text-xs text-white focus:outline-none focus:ring-1 focus:ring-amber-500 transition"
+                >Camisa ejecutiva azul Oxford Slim Fit Le Fabrique en oficina moderna</textarea>
+
+                <div class="flex items-center gap-2 mt-2">
+                  <button 
+                    type="button" 
+                    onclick="enhancePromptWithAI()" 
+                    class="flex-1 py-2 px-3 bg-blue-900/50 hover:bg-blue-900 text-amber-300 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 border border-amber-500/30"
+                  >
+                    ✨ Optimizar Prompt
+                  </button>
+
+                  <button 
+                    id="btnGenerateAI" 
+                    type="button" 
+                    onclick="generateAIImageForPromo()" 
+                    class="flex-1 py-2 px-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-brand-navydark rounded-xl text-xs font-black transition flex items-center justify-center gap-1.5 shadow-md"
+                  >
+                    🚀 Crear Foto con IA
+                  </button>
+                </div>
+
+                <!-- O subir imagen propia -->
+                <div class="mt-2.5 text-center">
+                  <label class="text-[11px] text-slate-400 hover:text-amber-300 cursor-pointer inline-flex items-center gap-1">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                    <span>O subir foto desde tu computadora</span>
+                    <input type="file" accept="image/*" onchange="handleUserImageUpload(event)" class="hidden" />
+                  </label>
+                </div>
+
+                <div id="aiGenerationStatus" class="mt-2 hidden"></div>
+              </div>
+
+              <!-- 2. Personalización de Textos y Precios del Banner -->
+              <div class="pt-4 border-t border-slate-800 space-y-3">
+                <label class="text-xs font-bold text-amber-300 uppercase tracking-wider block">
+                  2. Contenido del Banner Promocional
+                </label>
+
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-400 mb-1">Título de la Prenda:</label>
+                  <input 
+                    type="text" 
+                    id="bannerTitleInput" 
+                    value="Paquete 10 Camisas Oxford Slim Fit" 
+                    oninput="updateCanvasBanner()" 
+                    class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-white"
+                  />
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-[11px] font-bold text-slate-400 mb-1">Categoría:</label>
+                    <select id="bannerCategorySelect" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-white">
+                      <option value="ejecutivo">Ejecutivo Slim Fit</option>
+                      <option value="medico">Médico & Clínico</option>
+                      <option value="gastronomico">Chef & Gastronomía</option>
+                      <option value="industrial">Seguridad Industrial</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-bold text-slate-400 mb-1">Insignia Superior:</label>
+                    <input 
+                      type="text" 
+                      id="bannerBadgeInput" 
+                      value="OFERTA CORPORATIVA -25%" 
+                      oninput="updateCanvasBanner()" 
+                      class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-white"
+                    />
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-[11px] font-bold text-slate-400 mb-1">Precio Oferta (₡):</label>
+                    <input 
+                      type="number" 
+                      id="bannerPromoPrice" 
+                      value="119000" 
+                      oninput="updateCanvasBanner()" 
+                      class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-amber-300 font-bold"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-bold text-slate-400 mb-1">Precio Regular (₡):</label>
+                    <input 
+                      type="number" 
+                      id="bannerRegularPrice" 
+                      value="150000" 
+                      oninput="updateCanvasBanner()" 
+                      class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-slate-400"
+                    />
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-[11px] font-bold text-slate-400 mb-1">Beneficio Incluido:</label>
+                    <input 
+                      type="text" 
+                      id="bannerExtraBadge" 
+                      value="Bordado Computarizado Incluido" 
+                      oninput="updateCanvasBanner()" 
+                      class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-white"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-bold text-slate-400 mb-1">Vigencia hasta:</label>
+                    <input 
+                      type="date" 
+                      id="bannerValidUntil" 
+                      value="2026-11-30" 
+                      oninput="updateCanvasBanner()" 
+                      class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-white"
+                    />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Columna Derecha: Vista Previa Canvas & Botones de Publicación (7 columnas) -->
+            <div class="lg:col-span-7 space-y-4">
+              
+              <div class="bg-slate-900/80 p-4 rounded-2xl border border-blue-900/40 text-center">
+                <div class="flex items-center justify-between mb-3 px-2">
+                  <span class="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                    👁️ Vista Previa en Vivo (Formato 1080x1080 px)
+                  </span>
+                  <span class="text-[10px] text-amber-400 font-semibold bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
+                    Logo Oficial Le Fabrique Aplicado
+                  </span>
+                </div>
+
+                <!-- Canvas de renderizado de alta fidelidad -->
+                <canvas 
+                  id="promoStudioCanvas" 
+                  width="1080" 
+                  height="1080" 
+                  class="w-full max-w-[420px] aspect-square rounded-xl shadow-2xl border-2 border-amber-500/40 mx-auto block bg-slate-950"
+                ></canvas>
+              </div>
+
+              <!-- BOTONES DE ACCIÓN DIRECTA -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <button 
+                  type="button" 
+                  onclick="saveCanvasAsPromotion()" 
+                  class="w-full py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-heading font-black text-xs sm:text-sm rounded-xl shadow-lg transition flex items-center justify-center gap-2"
+                >
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Activar en la Página Web
+                </button>
+
+                <button 
+                  type="button" 
+                  onclick="publishDirectToMetaSocial()" 
+                  class="w-full py-3 px-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-pink-600 hover:from-blue-700 hover:to-pink-700 text-white font-heading font-black text-xs sm:text-sm rounded-xl shadow-lg transition flex items-center justify-center gap-2"
+                >
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  Publicar en Facebook e Instagram
+                </button>
+
+                <button 
+                  type="button" 
+                  onclick="downloadCanvasImage('feed')" 
+                  class="w-full py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs rounded-xl transition flex items-center justify-center gap-2 border border-slate-700"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                  Descargar Imagen (1080x1080)
+                </button>
+
+                <button 
+                  type="button" 
+                  onclick="copySocialCopyText()" 
+                  class="w-full py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs rounded-xl transition flex items-center justify-center gap-2 border border-slate-700"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                  Copiar Texto para Publicación
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- PESTAÑA 2: CATÁLOGO Y GESTIÓN DE OFERTAS       -->
+        <!-- ============================================== -->
+        <div id="tab-catalogo" class="studio-tab-content hidden space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="text-base font-bold text-white flex items-center gap-2">
+              <span>📋</span> Ofertas Registradas en el Sistema
+            </h3>
+            <button onclick="switchStudioTab('creador')" class="text-xs font-bold text-amber-300 hover:underline flex items-center gap-1">
+              + Crear Nueva Oferta con IA
+            </button>
+          </div>
+
+          <div class="overflow-x-auto rounded-xl border border-slate-800">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead class="bg-slate-900 text-slate-400 uppercase font-bold text-[10px] tracking-wider border-b border-slate-800">
+                <tr>
+                  <th class="py-3 px-4">Arte</th>
+                  <th class="py-3 px-4">Título & Insignia</th>
+                  <th class="py-3 px-4">Línea</th>
+                  <th class="py-3 px-4">Precios (₡)</th>
+                  <th class="py-3 px-4">Estado</th>
+                  <th class="py-3 px-4 text-right">Acción</th>
+                </tr>
+              </thead>
+              <tbody id="adminPromoTableBody">
+                <!-- Generado dinámicamente -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- PESTAÑA 3: CONEXIÓN META API & SEGURIDAD       -->
+        <!-- ============================================== -->
+        <div id="tab-redes" class="studio-tab-content hidden space-y-6">
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Conexión Meta (Facebook & Instagram) -->
+            <div class="bg-slate-900/80 p-5 rounded-2xl border border-blue-900/40 space-y-4">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold">
+                  f
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-white">Conexión con Meta Graph API</h4>
+                  <p class="text-[11px] text-slate-400">Publica automáticamente en la Fan Page de Facebook y en Instagram</p>
+                </div>
+              </div>
+
+              <div class="space-y-3">
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-300 mb-1">Facebook Page ID:</label>
+                  <input type="text" id="metaFbPageId" placeholder="Ej: 10293847561..." class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-white" />
+                </div>
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-300 mb-1">Instagram Business Account ID:</label>
+                  <input type="text" id="metaIgAccountId" placeholder="Ej: 17841400..." class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-white" />
+                </div>
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-300 mb-1">Meta Page Access Token:</label>
+                  <input type="password" id="metaAccessToken" placeholder="EAA..." class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-white" />
+                </div>
+
+                <div id="metaConnectionStatus"></div>
+
+                <div class="flex items-center gap-2 pt-2">
+                  <button type="button" onclick="saveMetaCredentials()" class="flex-1 py-2 px-3 bg-amber-500 hover:bg-amber-600 text-brand-navydark font-bold rounded-lg text-xs transition">
+                    Guardar Credenciales
+                  </button>
+                  <button type="button" onclick="testMetaConnection()" class="flex-1 py-2 px-3 bg-blue-900/60 hover:bg-blue-900 text-blue-200 font-bold rounded-lg text-xs transition border border-blue-700">
+                    Probar Conexión
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Seguridad del Panel & Berman -->
+            <div class="bg-slate-900/80 p-5 rounded-2xl border border-blue-900/40 space-y-4">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">
+                  🔐
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-white">Seguridad de Acceso Propietario</h4>
+                  <p class="text-[11px] text-slate-400">Protección del panel privado de Le Fabrique</p>
+                </div>
+              </div>
+
+              <div class="space-y-3">
+                <div class="p-3 bg-blue-950/40 rounded-xl border border-blue-900/60 text-xs text-slate-300">
+                  <p><strong>Correo Propietario Autorizado:</strong> <span class="text-amber-300 font-mono">bermanlopezparrales@gmail.com</span></p>
+                  <p class="mt-1 text-[11px] text-slate-400">Permite recuperar el acceso directamente verificando tu identidad.</p>
+                </div>
+
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-300 mb-1">PIN Maestro Actual (Predeterminado: 2026):</label>
+                  <input type="text" id="changePinInput" value="2026" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-white font-mono" />
+                </div>
+
+                <button 
+                  type="button" 
+                  onclick="updateMasterPin()" 
+                  class="w-full py-2 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold rounded-lg text-xs transition border border-slate-700"
+                >
+                  Actualizar PIN Maestro
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL ÉXITO PUBLICACIÓN META -->
+  <div id="metaSuccessModal" class="fixed inset-0 z-55 hidden items-center justify-center p-4 modal-backdrop" style="backdrop-filter: blur(8px);">
+    <div class="bg-brand-navydark border border-emerald-500/60 rounded-2xl p-6 max-w-md w-full shadow-2xl text-center text-white">
+      <div class="w-16 h-16 mx-auto mb-4 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center text-3xl">
+        🎉
+      </div>
+      <h3 class="text-lg font-bold text-white">¡Publicación Exitosa en Meta!</h3>
+      <p class="text-xs text-slate-300 mt-2">
+        La imagen del uniforme y el texto promocional se han publicado directamente en tu Página de Facebook e Instagram.
+      </p>
+
+      <div class="mt-6 space-y-2">
+        <a 
+          href="https://adsmanager.facebook.com/adsmanager/manage/campaigns" 
+          target="_blank" 
+          class="block w-full py-3 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-brand-navydark font-black text-xs rounded-xl shadow-lg transition"
+        >
+          📈 Promocionar y Pautar en Meta Ads
+        </a>
+        <button onclick="closeMetaSuccessModal()" class="block w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold rounded-xl transition">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL ASISTIDO META BUSINESS SUITE -->
+  <div id="metaFallbackModal" class="fixed inset-0 z-55 hidden items-center justify-center p-4 modal-backdrop" style="backdrop-filter: blur(8px);">
+    <div class="bg-brand-navydark border border-blue-500/50 rounded-2xl p-6 max-w-md w-full shadow-2xl text-white">
+      <div class="w-14 h-14 mx-auto mb-3 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center text-2xl">
+        🚀
+      </div>
+      <h3 class="text-base font-bold text-center text-white">Publicar en Facebook e Instagram</h3>
+      <p class="text-xs text-slate-300 text-center mt-1.5">
+        El texto promocional con hashtags y precios <strong>ya fue copiado a tu portapapeles 📋</strong>.
+      </p>
+
+      <div class="mt-4 p-3 bg-slate-900 rounded-xl border border-slate-800 text-xs text-slate-300 space-y-2">
+        <p>1. Descarga el arte con el botón <strong>"Descargar Imagen"</strong>.</p>
+        <p>2. Abre Meta Business Suite y dale <strong>Pegar (Ctrl+V)</strong>.</p>
+        <p>3. ¡Dale publicar para lanzar tu campaña de uniformes!</p>
+      </div>
+
+      <div class="mt-5 space-y-2">
+        <a 
+          href="https://business.facebook.com/latest/composer" 
+          target="_blank" 
+          class="block w-full py-3 text-center bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow transition"
+        >
+          Abrir Meta Business Suite 🔗
+        </a>
+        <button onclick="closeMetaFallbackModal()" class="block w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-400 text-xs font-bold rounded-xl transition">
+          Volver al Estudio
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script del Estudio Promocional -->
+  <script src="promociones-studio.js"></script>
+
 </body>
 </html>
