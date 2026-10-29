@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Le Fabrique | Fabricantes de Uniformes Empresariales en Costa Rica</title>
+  <meta name="description" content="Diseño y confección de uniformes corporativos, industriales, médicos y gastronómicos en Costa Rica. Tallas Slim Fit ejecutiva, tallas estándar industrial y trajes a la medida." />
+  <meta name="keywords" content="Uniformes Costa Rica, Le Fabrique, uniformes ejecutivos slim fit, uniformes industriales estandar, camisas Oxford, filipinas chef, scrubs medicos, trajes a la medida" />
+  <meta name="author" content="Le Fabrique Costa Rica" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Le Fabrique - Uniformes Empresariales e Industriales en Costa Rica" />
+  <meta property="og:description" content="Silueta Slim Fit ejecutiva, tallas estándar industrial y bordados computarizados de alta definición. Taller en Santo Domingo de Heredia." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80" />
+  <meta property="og:url" content="https://www.facebook.com/lefabriquecr" />
+
+  <!-- Favicon SVG con el logo oficial Azul y Oro -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500'%3E%3Ccircle cx='250' cy='250' r='248' fill='%23122442'/%3E%3Cpath d='M250,14 C246,14 242,28 240,48 L240,68 C235,74 230,90 228,125 L214,245 L200,342 C185,350 165,362 162,376 C160,386 170,396 185,396 L195,396 L125,488 C145,492 165,494 185,495 L205,488 C220,442 230,434 250,434 C270,434 280,442 295,488 L315,495 C335,494 355,492 375,488 L305,396 L315,396 C330,396 340,386 338,376 C335,362 315,350 300,342 L286,245 L272,125 C270,90 265,74 260,68 L260,48 C258,28 254,14 250,14 Z' fill='%23ffffff'/%3E%3Cpath d='M250,28 C248,28 246,38 245,52 L245,72 C242,88 238,132 225,248 L212,348 C205,354 195,362 190,370 C188,376 192,382 200,382 L225,382 C230,364 240,328 250,328 C260,328 270,364 275,382 L300,382 C308,382 312,376 310,370 C305,362 295,354 288,348 L275,248 C262,132 258,88 255,72 L255,52 C254,38 252,28 250,28 Z' fill='%23c59b27'/%3E%3Cpath d='M250,338 C244,338 236,358 233,376 L267,376 C264,358 256,338 250,338 Z' fill='%23ffffff'/%3E%3Cpath d='M250,444 C232,444 222,462 215,488 L285,488 C278,462 268,444 250,444 Z' fill='%23122442'/%3E%3C/svg%3E">
+
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0f223f',
+              navydark: '#0a1629',
+              blue: '#13294b',
+              gold: '#c59b27',
+              golddark: '#a88019',
+              goldlight: '#dfb749',
+              slate: '#f8fafc',
+              border: '#e2e8f0'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Schema.org Datos Estructurados -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ClothingStore",
+    "name": "Uniformes Le Fabrique",
+    "image": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
+    "description": "Fabricantes de uniformes corporativos, industriales, médicos y gastronómicos en Costa Rica.",
+    "telephone": "+50664898613",
+    "email": "info.lefabrique@yahoo.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "200 metros Oeste de la entrada a Paracito",
+      "addressLocality": "San Miguel, Santo Domingo",
+      "addressRegion": "Heredia",
+      "addressCountry": "CR"
+    },
+    "url": "https://www.facebook.com/lefabriquecr"
+  }
+  </script>
+
+  <style>
+    .gradient-hero-navy {
+      background: radial-gradient(circle at 15% 20%, rgba(19, 41, 75, 0.95) 0%, rgba(15, 34, 63, 0.98) 60%),
+                  radial-gradient(circle at 85% 85%, rgba(197, 155, 39, 0.18) 0%, transparent 45%),
+                  #0a1629;
+    }
+    .card-zoom:hover img.main-img {
+      transform: scale(1.06);
+    }
+    .active-category-card {
+      border-color: #c59b27 !important;
+      background-color: #fefce8 !important;
+    }
+    /* Modal styles */
+    .modal-backdrop {
+      background: rgba(10, 22, 41, 0.85);
+      backdrop-filter: blur(8px);
+    }
+  </style>
+</head>
+<body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-amber-100 selection:text-amber-900">
+
+  <!-- ================================================================= -->
+  <!-- 1. TOP BAR DE ANUNCIOS Y CONTACTO (AZUL MARINO Y ORO) -->
+  <!-- ================================================================= -->
+  <div class="bg-brand-navydark text-slate-200 text-xs py-2.5 px-4 border-b border-blue-900/40 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-2 text-center sm:text-left">
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-400/40">
+          🇨🇷 Confección Costarricense
+        </span>
+        <span class="hidden md:inline font-medium text-slate-300">Taller en Santo Domingo de Heredia &bull; Muestras físicas y despachos a las 7 provincias</span>
+      </div>
+      <div class="flex items-center gap-4 text-xs font-semibold">
+        <a href="tel:+50664898613" class="hover:text-amber-300 transition flex items-center gap-1.5 text-slate-200">
+          <svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 4V3z"></path></svg>
+          +506 6489-8613 / 8853-9738
+        </a>
+        <span class="text-blue-800">|</span>
+        <a href="https://www.facebook.com/lefabriquecr" target="_blank" rel="noopener noreferrer" class="hover:text-blue-300 transition flex items-center gap-1 text-slate-200">
+          <svg class="w-3.5 h-3.5 text-blue-400" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook Oficial
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- 2. NAVBAR CON EL LOGO OFICIAL DE LA TORRE EIFFEL (AZUL Y ORO) -->
+  <!-- ================================================================= -->
+  <header class="sticky top-[41px] z-40 bg-brand-navy/95 backdrop-blur-md border-b border-blue-900/60 shadow-lg transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- LOGO OFICIAL LE FABRIQUE (TORRE EIFFEL EN CÍRCULO AZUL Y ORO) -->
+        <a href="#inicio" class="flex items-center gap-3.5 group">
+          <div class="w-12 h-12 rounded-full overflow-hidden shadow-md group-hover:scale-105 transition border-2 border-amber-500/60 shrink-0 bg-brand-navydark">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" class="w-full h-full">
+  <circle cx="250" cy="250" r="248" fill="#122442" />
+  <path d="M250,14 C246,14 242,28 240,48 L240,68 C235,74 230,90 228,125 L214,245 L200,342 C185,350 165,362 162,376 C160,386 170,396 185,396 L195,396 L125,488 C145,492 165,494 185,495 L205,488 C220,442 230,434 250,434 C270,434 280,442 295,488 L315,495 C335,494 355,492 375,488 L305,396 L315,396 C330,396 340,386 338,376 C335,362 315,350 300,342 L286,245 L272,125 C270,90 265,74 260,68 L260,48 C258,28 254,14 250,14 Z" fill="#ffffff" />
+  <path d="M250,28 C248,28 246,38 245,52 L245,72 C242,88 238,132 225,248 L212,348 C205,354 195,362 190,370 C188,376 192,382 200,382 L225,382 C230,364 240,328 250,328 C260,328 270,364 275,382 L300,382 C308,382 312,376 310,370 C305,362 295,354 288,348 L275,248 C262,132 258,88 255,72 L255,52 C254,38 252,28 250,28 Z" fill="#c59b27" />
+  <path d="M250,338 C244,338 236,358 233,376 L267,376 C264,358 256,338 250,338 Z" fill="#ffffff" />
+  <path d="M250,444 C232,444 222,462 215,488 L285,488 C278,462 268,444 250,444 Z" fill="#122442" />
+</svg>
+          </div>
+          <div>
+            <div class="font-heading font-black text-2xl tracking-wider text-white leading-none group-hover:text-amber-400 transition">
+              LE FABRIQUE
+            </div>
+            <div class="text-[10px] font-bold tracking-widest text-amber-400 uppercase mt-1">
+              Confección & Uniformes &bull; Costa Rica
+            </div>
+          </div>
+        </a>
+
+        <!-- Enlaces de Navegación -->
+        <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-200">
+          <a href="#inicio" class="hover:text-amber-400 transition">Inicio</a>
+          <a href="#catalogo" class="hover:text-amber-400 transition">Colecciones</a>
+          <a href="#calidad-confeccion" class="hover:text-amber-400 transition">Telas & Acabados</a>
+          <a href="#telas" class="hover:text-amber-400 transition">Texturas Textiles</a>
+          <a href="#lookbook" class="hover:text-amber-400 transition">Lookbook</a>
+          <a href="#contacto" class="hover:text-amber-400 transition">Ubicación</a>
+        </nav>
+
+        <!-- Botones de Acción Header -->
+        <div class="hidden sm:flex items-center gap-3">
+          <a href="#cotizador" class="px-4 py-2.5 rounded-xl border border-slate-600 text-slate-200 text-xs font-bold hover:bg-white/10 transition">
+            Cotizador
+          </a>
+          <a href="https://wa.me/50664898613?text=Hola%20Le%20Fabrique,%20quisiera%20solicitar%20asesor%C3%ADa%20y%20cotizaci%C3%B3n%20para%20mi%20empresa" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-brand-navydark font-heading font-black text-xs shadow-lg transition">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            WhatsApp Directo
+          </a>
+        </div>
+
+        <!-- Botón Menú Móvil -->
+        <button id="mobileMenuBtn" class="lg:hidden p-2 text-slate-200 hover:text-white focus:outline-none" aria-label="Abrir menú">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
+
+      <!-- Menú Móvil Desplegable -->
+      <div id="mobileMenu" class="hidden lg:hidden py-4 border-t border-blue-900/60 flex flex-col gap-3 text-sm font-semibold">
+        <a href="#inicio" class="py-2 text-slate-200 hover:text-amber-400">Inicio</a>
+        <a href="#catalogo" class="py-2 text-slate-200 hover:text-amber-400">Colecciones</a>
+        <a href="#calidad-confeccion" class="py-2 text-slate-200 hover:text-amber-400">Telas & Acabados</a>
+        <a href="#telas" class="py-2 text-slate-200 hover:text-amber-400">Texturas Textiles</a>
+        <a href="#lookbook" class="py-2 text-slate-200 hover:text-amber-400">Lookbook</a>
+        <a href="#contacto" class="py-2 text-slate-200 hover:text-amber-400">Ubicación y Contacto</a>
+        <a href="https://wa.me/50664898613?text=Hola%20Le%20Fabrique,%20quisiera%20cotizar%20uniformes" target="_blank" rel="noopener noreferrer" class="w-full text-center py-3 rounded-xl bg-amber-500 text-brand-navydark font-bold flex items-center justify-center gap-2 shadow">
+          Chatear por WhatsApp
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================================================================= -->
+  <!-- 3. HERO SECTION (TEXTO EXACTO Y FOTOS SOLICITADAS POR EL CLIENTE) -->
+  <!-- ================================================================= -->
+  <section id="inicio" class="relative text-white overflow-hidden py-20 lg:py-32 gradient-hero-navy">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Texto del Hero (Modificado según observación del cliente en WhatsApp) -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-400/30 backdrop-blur-md">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            Taller Textil en Santo Domingo de Heredia &bull; Costa Rica
+          </div>
+
+          <h1 class="font-heading font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.12]">
+            Uniformes que proyectan la <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-200 to-amber-500">identidad y excelencia</span> de tu equipo.
+          </h1>
+
+          <!-- Párrafo ajustado con la observación textual del cliente:
+               "Slim Fit ejecutiva, tallas estándar industrial y bordados computarizados de alta definición." -->
+          <p class="text-base sm:text-lg text-slate-200 max-w-2xl font-normal leading-relaxed">
+            Confección especializada para los sectores corporativo, operativo, médico y gastronómico. Prendas creadas por diseñadores de moda y expertos confeccionistas costarricenses con telas de máxima durabilidad, <strong class="text-white font-semibold">silueta Slim Fit ejecutiva, tallas estándar industrial y bordados computarizados de alta definición</strong>.
+          </p>
+
+          <!-- Botones de Acción -->
+          <div class="flex flex-col sm:flex-row items-center gap-4 pt-2 justify-center lg:justify-start">
+            <a href="#cotizador" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-amber-500 hover:bg-amber-600 text-brand-navydark font-heading font-black text-base shadow-xl hover:shadow-amber-500/30 transition transform hover:-translate-y-0.5 text-center">
+              Cotizar en Línea Gratis
+            </a>
+            <a href="#catalogo" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/30 text-white font-heading font-bold text-base backdrop-blur-md transition text-center flex items-center justify-center gap-2">
+              <span>Ver Catálogo Visual</span>
+              <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </a>
+          </div>
+
+          <!-- Insignias de confianza -->
+          <div class="pt-6 grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs text-slate-200 font-semibold">
+            <div class="flex items-center gap-2 bg-brand-navydark/80 backdrop-blur-md p-3 rounded-xl border border-blue-900/60">
+              <span class="text-amber-400 text-base font-bold">✓</span> Telas Antifluido & Dril
+            </div>
+            <div class="flex items-center gap-2 bg-brand-navydark/80 backdrop-blur-md p-3 rounded-xl border border-blue-900/60">
+              <span class="text-amber-400 text-base font-bold">✓</span> Bordado Computarizado HD
+            </div>
+            <div class="flex items-center gap-2 bg-brand-navydark/80 backdrop-blur-md p-3 rounded-xl border border-blue-900/60 col-span-2 sm:col-span-1">
+              <span class="text-amber-400 text-base font-bold">✓</span> Envíos a 7 Provincias
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Mosaico Fotográfico del Hero (FOTOS CAMBIADAS SEGÚN FEEDBACK DEL CLIENTE) -->
+        <div class="lg:col-span-5">
+          <div class="grid grid-cols-2 gap-4 max-w-lg mx-auto">
+            
+            <div class="space-y-4">
+              <!-- 1. Línea Ejecutiva: Muchacha con traje notorio rojo/amarillo (Solicitado por el cliente) -->
+              <div class="rounded-2xl overflow-hidden shadow-2xl border-2 border-amber-500/40 card-zoom relative bg-brand-navydark">
+                <img src="https://images.unsplash.com/photo-1588516903720-8ceb67f9ef84?auto=format&fit=crop&w=600&q=80" alt="Ejecutiva en traje formal sastre notorio" class="w-full h-48 object-cover object-top transition duration-500 main-img" />
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-brand-navydark via-brand-navydark/70 to-transparent p-3 text-center">
+                  <span class="text-[11px] font-bold text-amber-400 uppercase tracking-wider">Línea Ejecutiva</span>
+                </div>
+              </div>
+              
+              <!-- 2. Línea Industrial: Operario con uniforme industrial de alta visibilidad -->
+              <div class="rounded-2xl overflow-hidden shadow-2xl border-2 border-amber-500/40 card-zoom relative bg-brand-navydark">
+                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80" alt="Trabajador industrial en uniforme de seguridad" class="w-full h-48 object-cover transition duration-500 main-img" />
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-brand-navydark via-brand-navydark/70 to-transparent p-3 text-center">
+                  <span class="text-[11px] font-bold text-amber-400 uppercase tracking-wider">Línea Industrial</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-4 pt-6">
+              <!-- 3. Línea Médica: Doctora/enfermera con scrubs y gabacha (Sin agujas/vacunas, solicitado por el cliente) -->
+              <div class="rounded-2xl overflow-hidden shadow-2xl border-2 border-amber-500/40 card-zoom relative bg-brand-navydark">
+                <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80" alt="Doctora vistiendo scrubs clínicos y bata médica" class="w-full h-48 object-cover transition duration-500 main-img" />
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-brand-navydark via-brand-navydark/70 to-transparent p-3 text-center">
+                  <span class="text-[11px] font-bold text-amber-400 uppercase tracking-wider">Línea Salud & Scrubs</span>
+                </div>
+              </div>
+              
+              <!-- 4. Línea Chef & Cocina: Filipina y delantal más de cerca (Solicitado por el cliente) -->
+              <div class="rounded-2xl overflow-hidden shadow-2xl border-2 border-amber-500/40 card-zoom relative bg-brand-navydark">
+                <img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?auto=format&fit=crop&w=600&q=80" alt="Chef profesional en primer plano con filipina ejecutiva" class="w-full h-48 object-cover object-top transition duration-500 main-img" />
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-brand-navydark via-brand-navydark/70 to-transparent p-3 text-center">
+                  <span class="text-[11px] font-bold text-amber-400 uppercase tracking-wider">Línea Chef & Filipinas</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================= -->
+  <!-- 4. BARRA DE CIFRAS Y EXPERIENCIA -->
+  <!-- ================================================================= -->
+  <section class="bg-brand-navydark border-b border-blue-900/60 py-10 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="font-heading font-black text-3xl sm:text-4xl text-amber-400">+10 Años</div>
+          <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1">Confeccionando en Costa Rica</div>
+        </div>
+        <div>
+          <div class="font-heading font-black text-3xl sm:text-4xl text-white">100%</div>
+          <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1">Mano de Obra Costarricense</div>
+        </div>
+        <div>
+          <div class="font-heading font-black text-3xl sm:text-4xl text-amber-400">+500</div>
+          <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1">Empresas e Industrias Equipadas</div>
+        </div>
+        <div>
+          <div class="font-heading font-black text-3xl sm:text-4xl text-white">7 Provincias</div>
+          <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1">Envíos a todo el territorio nacional</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================= -->
+  <!-- 5. CATÁLOGO CON VENTANAS EMERGENTES (MODALES DE 12 FOTOS POR CATEGORÍA) -->
+  <!-- ================================================================= -->
+  <section id="catalogo" class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-bold text-blue-900 tracking-wider uppercase bg-blue-100 px-3.5 py-1.5 rounded-full border border-blue-200">
+          Clasificación & Colecciones
+        </span>
+        <h2 class="font-heading font-black text-3xl sm:text-4xl text-brand-navy mt-4 tracking-tight">
+          Catálogo Visual de Uniformes
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-3">
+          Explore cada una de nuestras líneas. Cada tarjeta incluye la opción de <strong>abrir el catálogo completo de 12 modelos</strong> en ventana emergente, con muestras textiles certificadas.
+        </p>
+
+        <!-- Filtros por Categoría -->
+        <div class="flex flex-wrap items-center justify-center gap-2 mt-8" id="catalogFilters">
+          <button onclick="filterCatalog('all')" class="cat-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-brand-navy text-white transition">Todas las Líneas</button>
+          <button onclick="filterCatalog('corporativo')" class="cat-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:border-amber-500 transition">👔 Corporativo & Slim Fit</button>
+          <button onclick="filterCatalog('industrial')" class="cat-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:border-amber-500 transition">⚙️ Industrial & Operativo</button>
+          <button onclick="filterCatalog('medico')" class="cat-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:border-amber-500 transition">🩺 Salud & Clínico</button>
+          <button onclick="filterCatalog('gastronomico')" class="cat-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:border-amber-500 transition">🍽️ Chef & Gastronomía</button>
+          <button onclick="filterCatalog('casual')" class="cat-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:border-amber-500 transition">👕 Polos & Casual</button>
+          <button onclick="filterCatalog('medida')" class="cat-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-900 border border-amber-400 hover:bg-amber-500 hover:text-white transition">✂️ Trajes Ejecutivos a la Medida</button>
+        </div>
+      </div>
+
+      <!-- Cuadrícula de Tarjetas de Colección -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="productGrid">
+        
+        <!-- CARD 1: CORPORATIVO & SLIM FIT -->
+        <div class="product-item corporativo bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl transition duration-300 flex flex-col justify-between card-zoom">
+          <div>
+            <div class="h-64 overflow-hidden relative bg-brand-navydark">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="Ejecutivo con camisa formal Slim Fit" class="w-full h-full object-cover object-top transition duration-500 main-img" />
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark/80 via-transparent to-transparent"></div>
+              <span class="absolute top-4 left-4 bg-brand-navy text-white text-xs font-bold px-3 py-1 rounded-full shadow border border-amber-500/30">Tallas Slim Fit</span>
+              <div class="absolute bottom-4 left-4 text-white">
+                <span class="text-xs text-amber-400 font-bold block uppercase tracking-wider">Corte Sastre & Slim Fit</span>
+                <span class="font-heading font-bold text-lg">Bancos, Oficinas y Consultorías</span>
+              </div>
+            </div>
+            
+            <div class="p-6 pb-2">
+              <!-- Muestra Gráfica de Tela -->
+              <div class="flex items-center gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-200 mb-4">
+                <img src="https://images.unsplash.com/photo-1591195854242-8804547cdcab?auto=format&fit=crop&w=150&q=80" alt="Textura de tela Oxford" class="w-12 h-12 rounded-xl object-cover border border-slate-300 shrink-0" />
+                <div>
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-amber-600 block">Tela Certificada</span>
+                  <h4 class="text-xs font-bold text-slate-900">Oxford & Popelina Ejecutiva</h4>
+                  <p class="text-[11px] text-slate-500">60% Algodón peinado &bull; Tratamiento fácil planchado</p>
+                </div>
+              </div>
+
+              <h3 class="font-heading font-black text-xl text-brand-navy mb-2">Camisas Oxford & Blusas Slim Fit</h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                Confección en tallas Slim Fit y estándar ejecutivo para dama y caballero. Silueta estilizada que favorece el porte profesional en oficinas y despachos.
+              </p>
+              <div class="space-y-1.5 text-xs font-semibold text-slate-700 border-t border-slate-100 pt-3">
+                <div class="flex items-center gap-2"><span class="text-amber-600 font-bold">✓</span> Camisas Oxford manga larga, 3/4 y corta</div>
+                <div class="flex items-center gap-2"><span class="text-amber-600 font-bold">✓</span> Blusas estructuradas de corte femenino moderno</div>
+                <div class="flex items-center gap-2"><span class="text-amber-600 font-bold">✓</span> Pantalones de vestir en gabardinas selectas</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-6 pt-4 space-y-2">
+            <!-- Botón de Catálogo Emergente -->
+            <button onclick="openCatalogModal('corporativo')" class="w-full py-2.5 px-4 text-center text-xs font-bold rounded-xl bg-amber-500/10 hover:bg-amber-500 hover:text-brand-navydark text-amber-900 border border-amber-400 transition flex items-center justify-center gap-2">
+              <span>🖼️ Ver Catálogo Completo (12 Fotos)</span>
+            </button>
+            <a href="https://wa.me/50664898613?text=Hola%20Le%20Fabrique,%20quisiera%20cotizar%20la%20L%C3%ADnea%20Corporativa%20Slim%20Fit" target="_blank" class="block w-full py-2.5 text-center text-xs font-bold rounded-xl bg-brand-navy hover:bg-brand-navydark text-white transition shadow">
+              Cotizar Línea Corporativa &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- CARD 2: INDUSTRIAL & OPERATIVO -->
+        <div class="product-item industrial bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl transition duration-300 flex flex-col justify-between card-zoom">
+          <div>
+            <div class="h-64 overflow-hidden relative bg-brand-navydark">
+              <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Ingeniero en uniforme industrial" class="w-full h-full object-cover object-top transition duration-500 main-img" />
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark/80 via-transparent to-transparent"></div>
+              <span class="absolute top-4 left-4 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Tallas Estándar Industrial</span>
+              <div class="absolute bottom-4 left-4 text-white">
+                <span class="text-xs text-amber-300 font-bold block uppercase tracking-wider">Durabilidad & Seguridad</span>
+                <span class="font-heading font-bold text-lg">Talleres, Plantas y Construcción</span>
+              </div>
+            </div>
+            
+            <div class="p-6 pb-2">
+              <!-- Muestra Gráfica de Tela -->
+              <div class="flex items-center gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-200 mb-4">
+                <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=150&q=80" alt="Textura de Dril Industrial" class="w-12 h-12 rounded-xl object-cover border border-slate-300 shrink-0" />
+                <div>
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-amber-600 block">Tela Certificada</span>
+                  <h4 class="text-xs font-bold text-slate-900">Dril Pesado Sanforizado</h4>
+                  <p class="text-[11px] text-slate-500">100% Algodón o mezcla 65/35 &bull; Anti-desgarro</p>
+                </div>
+              </div>
+
+              <h3 class="font-heading font-black text-xl text-brand-navy mb-2">Pantalones Cargo & Camisas de Faena</h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                Prendas en tallajes industriales estandarizados con costuras triples y refuerzos en puntos de alta fatiga.
+              </p>
+              <div class="space-y-1.5 text-xs font-semibold text-slate-700 border-t border-slate-100 pt-3">
+                <div class="flex items-center gap-2"><span class="text-amber-600 font-bold">✓</span> Pantalones cargo con bolsillos tácticos reforzados</div>
+                <div class="flex items-center gap-2"><span class="text-amber-600 font-bold">✓</span> Camisas de faena con fuelles de ventilación</div>
+                <div class="flex items-center gap-2"><span class="text-amber-600 font-bold">✓</span> Chalecos reflectivos normados de alta visibilidad</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-6 pt-4 space-y-2">
+            <button onclick="openCatalogModal('industrial')" class="w-full py-2.5 px-4 text-center text-xs font-bold rounded-xl bg-amber-500/10 hover:bg-amber-500 hover:text-brand-navydark text-amber-900 border border-amber-400 transition flex items-center justify-center gap-2">
+              <span>🖼️ Ver Catálogo Completo (12 Fotos)</span>
+            </button>
+            <a href="https://wa.me/50664898613?text=Hola%20Le%20Fabrique,%20quisiera%20cotizar%20la%20L%C3%ADnea%20Industrial%20y%20Operativa" target="_blank" class="block w-full py-2.5 text-center text-xs font-bold rounded-xl bg-brand-navy hover:bg-brand-navydark text-white transition shadow">
+              Cotizar Línea Industrial &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- CARD 3: MÉDICO & SALUD -->
+        <div class="product-item medico bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl transition duration-300 flex flex-col justify-between card-zoom">
+          <div>
+            <div class="h-64 overflow-hidden relative bg-brand-navydark">
+              <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80" alt="Médico en uniforme scrub clínico" class="w-full h-full object-cover object-top transition duration-500 main-img" />
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark/80 via-transparent to-transparent"></div>
+              <span class="absolute top-4 left-4 bg-teal-700 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Tallas Clínicas</span>
+              <div class="absolute bottom-4 left-4 text-white">
+                <span class="text-xs text-teal-300 font-bold block uppercase tracking-wider">Antifluido Clororresistente</span>
+                <span class="font-heading font-bold text-lg">Hospitales, Clínicas & Spas</span>
+              </div>
+            </div>
+            
+            <div class="p-6 pb-2">
+              <div class="flex items-center gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-200 mb-4">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=150&q=80" alt="Textura de Microfibra Antifluido" class="w-12 h-12 rounded-xl object-cover border border-slate-300 shrink-0" />
+                <div>
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-teal-700 block">Tela Certificada</span>
+                  <h4 class="text-xs font-bold text-slate-900">Microfibra Antifluido Plus</h4>
+                  <p class="text-[11px] text-slate-500">Repelencia a salpicaduras &bull; Secado ultra rápido</p>
+                </div>
+              </div>
+
+              <h3 class="font-heading font-black text-xl text-brand-navy mb-2">Scrubs Clínicos & Batas Médicas</h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                Confección en tallaje anatómico cómodo para largas jornadas asistenciales. Resistencia inalterable al lavado con cloro diluido.
+              </p>
+              <div class="space-y-1.5 text-xs font-semibold text-slate-700 border-t border-slate-100 pt-3">
+                <div class="flex items-center gap-2"><span class="text-amber-600 font-bold">✓</span> Scrubs con cuello en V anatómico dama y caballero</div>
+                <div class="flex items-center gap-2"><span class="text-amber-600 font-bold">✓</span> Batas clínicas y gabachas de laboratorio</div>
+                <div class="flex items-center gap-2"><span class="text-amber-600 font-bold">✓</span> Filipinas para estética, odontología y fisioterapia</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-6 pt-4 space-y-2">
+            <button onclick="openCatalogModal('medico')" class="w-full py-2.5 px-4 text-center text-xs font-bold rounded-xl bg-amber-500/10 hover:bg-amber-500 hover:text-brand-navydark text-amber-900 border border-amber-400 transition flex items-center justify-center gap-2">
+              <span>🖼️ Ver Catálogo Completo (12 Fotos)</span>
+            </button>
+            <a href="https://wa.me/50664898613?text=Hola%20Le%20Fabrique,%20quisiera%20cotizar%20la%20L%C3%ADnea%20M%C3%A9dica%20y%20Scrubs" target="_blank" class="block w-full py-2.5 text-center text-xs font-bold rounded-xl bg-brand-navy hover:bg-brand-navydark text-white transition shadow">
+              Cotizar Línea Médica &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- CARD 4: GASTRONOMÍA & CHEF -->
+        <div class="product-item gastronomico bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl transition duration-300 flex flex-col justify-between card-zoom">
+          <div>
+            <div class="h-64 overflow-hidden relative bg-brand-navydark">
+              <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=800&q=80" alt="Chef profesional vistiendo filipina y delantal" class="w-full h-full object-cover object-top transition duration-500 main-img" />
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark/80 via-transparent to-transparent"></div>
+              <span class="absolute top-4 left-4 bg-orange-700 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Tallas Gastronómicas</span>
+              <div class="absolute bottom-4 left-4 text-white">
+                <span class="text-xs text-orange-300 font-bold block uppercase tracking-wider">Higiene & Estilo Culinario</span>
+                <span class="font-heading font-bold text-lg">Restaurantes, Cafés & Hoteles</span>
+              </div>
+            </div>
+            
+            <div class="p-6 pb-2">
+              <div class="flex items-center gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-200 mb-4">
+                <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=150&q=80" alt="Textura de Gabardina Pesada y Lona" class="w-12 h-12 rounded-xl object-cover border border-slate-300 shrink-0" />
+                <div>
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-orange-700 block">Tela Certificada</span>
+                  <h4 class="text-xs font-bold text-slate-900">Gabardina Texturada & Cool-Vent</h4>
+                  <p class="text-[11px] text-slate-500">Barrera térmica &bull; Malla transpirable en espalda</p>
+                </div>
+              </div>
+
+              <h3 class="font-heading font-black text-xl text-brand-navy mb-2">Filipinas de Chef & Delantales</h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                Uniformes por tallas estándar de hostelería, con tejidos que disipan el calor de cocina y proyectan pulcritud ante los comensales.
+              </p>
+              <div class="space-y-1.5 text-xs font-semibold text-slate-700 border-t border-slate-100 pt-3">
+                <div class="flex items-center gap-2"><span class="text-amber-600 font-bold">✓</span> Filipinas cruzadas ejecutivas blancas y negras</div>
+                <div class="flex items-center gap-2"><span class="text-amber-600 font-bold">✓</span> Delantales de lona con aplicaciones en cuero sintético</div>
+                <div class="flex items-center gap-2"><span class="text-amber-600 font-bold">✓</span> Camisas de atención para baristas y saloneros</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-6 pt-4 space-y-2">
+            <button onclick="openCatalogModal('gastronomico')" class="w-full py-2.5 px-4 text-center text-xs font-bold rounded-xl bg-amber-500/10 hover:bg-amber-500 hover:text-brand-navydark text-amber-900 border border-amber-400 transition flex items-center justify-center gap-2">
+              <span>🖼️ Ver Catálogo Completo (12 Fotos)</span>
+            </button>
+            <a href="https://wa.me/50664898613?text=Hola%20Le%20Fabrique,%20quisiera%20cotizar%20la%20L%C3%ADnea%20Gastron%C3%B3mica" target="_blank" class="block w-full py-2.5 text-center text-xs font-bold rounded-xl bg-brand-navy hover:bg-brand-navydark text-white transition shadow">
+              Cotizar Línea Gastronómica &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- CARD 5: CASUAL & POLOS -->
+        <div class="product-item casual bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl transition duration-300 flex flex-col justify-between card-zoom">
+          <div>
+            <div class="h-64 overflow-hidden relative bg-brand-navydark">
+              <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80" alt="Equipo de trabajo en camisetas polo" class="w-full h-full object-cover object-top transition duration-500 main-img" />
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark/80 via-transparent to-transparent"></div>
+              <span class="absolute top-4 left-4 bg-indigo-700 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Tallas XS a 3XL</span>
+              <div class="absolute bottom-4 left-4 text-white">
+                <span class="text-xs text-indigo-300 font-bold block uppercase tracking-wider">Versatilidad & Marca Diaria</span>
+                <span class="font-heading font-bold text-lg">Ventas, Logística & Eventos</span>
+              </div>
+            </div>
+            
+            <div class="p-6 pb-2">
+              <div class="flex items-center gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-200 mb-4">
+                <img src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=150&q=80" alt="Textura de Piqué Peinado" class="w-12 h-12 rounded-xl object-cover border border-slate-300 shrink-0" />
+                <div>
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-700 block">Tela Certificada</span>
+                  <h4 class="text-xs font-bold text-slate-900">Piqué Peinado 50/50</h4>
+                  <p class="text-[11px] text-slate-500">Tejido nido de abeja &bull; Tratamiento anti-motas</p>
+                </div>
+              </div>
+
+              <h3 class="font-heading font-black text-xl text-brand-navy mb-2">Camisetas Polo Piqué & Dry-Fit</h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                La prenda institucional más práctica. Cuello tejido que no se deforma tras lavados continuos y bordados de alta resolución.
+              </p>
+              <div class="space-y-1.5 text-xs font-semibold text-slate-700 border-t border-slate-100 pt-3">
+                <div class="flex items-center gap-2"><span class="text-amber-600 font-bold">✓</span> Polo piqué de alta densidad en amplia gama de colores</div>
+                <div class="flex items-center gap-2"><span class="text-amber-600 font-bold">✓</span> Opciones deportivas y técnicas en microfibra Dry-Fit</div>
+                <div class="flex items-center gap-2"><span class="text-amber-600 font-bold">✓</span> Jackets impermeables y gorras bordadas 3D</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-6 pt-4 space-y-2">
+            <button onclick="openCatalogModal('casual')" class="w-full py-2.5 px-4 text-center text-xs font-bold rounded-xl bg-amber-500/10 hover:bg-amber-500 hover:text-brand-navydark text-amber-900 border border-amber-400 transition flex items-center justify-center gap-2">
+              <span>🖼️ Ver Catálogo Completo (12 Fotos)</span>
+            </button>
+            <a href="https://wa.me/50664898613?text=Hola%20Le%20Fabrique,%20quisiera%20cotizar%20Camisetas%20Polo%20Piqu%C3%A9" target="_blank" class="block w-full py-2.5 text-center text-xs font-bold rounded-xl bg-brand-navy hover:bg-brand-navydark text-white transition shadow">
+              Cotizar Camisetas Polo &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- CARD 6: TRAJES EJECUTIVOS A LA MEDIDA (LA ÚNICA LÍNEA A LA MEDIDA) -->
+        <div class="product-item medida bg-gradient-to-br from-brand-navydark via-brand-navy to-slate-900 text-white rounded-3xl overflow-hidden border-2 border-amber-500/60 shadow-xl flex flex-col justify-between card-zoom">
+          <div>
+            <div class="h-64 overflow-hidden relative bg-brand-navydark">
+              <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80" alt="Traje ejecutivo sastre a la medida" class="w-full h-full object-cover object-top transition duration-500 main-img" />
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark via-brand-navydark/40 to-transparent"></div>
+              <span class="absolute top-4 left-4 bg-amber-500 text-brand-navydark text-xs font-black px-3.5 py-1 rounded-full shadow">Servicio Exclusivo a la Medida</span>
+              <div class="absolute bottom-4 left-4 text-white">
+                <span class="text-xs text-amber-400 font-bold block uppercase tracking-wider">Alta Sastrería Personal</span>
+                <span class="font-heading font-bold text-lg">Trajes Ejecutivos a la Medida</span>
+              </div>
+            </div>
+            
+            <div class="p-6 pb-2">
+              <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/10 border border-white/20 mb-4 backdrop-blur-sm">
+                <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=150&q=80" alt="Taller de alta confección y sastrería" class="w-12 h-12 rounded-xl object-cover border border-white/30 shrink-0" />
+                <div>
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-amber-300 block">Sastrería Individual</span>
+                  <h4 class="text-xs font-bold text-white">Toma de Medidas Personalizadas</h4>
+                  <p class="text-[11px] text-slate-300">Línea exclusiva para directivos y gerencias</p>
+                </div>
+              </div>
+
+              <h3 class="font-heading font-black text-xl text-white mb-2">Trajes Ejecutivos a la Medida</h3>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
+                <strong>La única línea confeccionada a la medida exacta</strong> mediante levantamiento milimétrico de medidas para directores, juntas directivas y ejecutivos de alto nivel.
+              </p>
+              <div class="space-y-1.5 text-xs font-semibold text-slate-300 border-t border-blue-900/60 pt-3">
+                <div class="flex items-center gap-2"><span class="text-amber-400 font-bold">✓</span> Patronaje individualizado por maestro sastre</div>
+                <div class="flex items-center gap-2"><span class="text-amber-400 font-bold">✓</span> Forros internos satinados y botones sastre selectos</div>
+                <div class="flex items-center gap-2"><span class="text-amber-400 font-bold">✓</span> Prueba física de ajuste en sus oficinas o taller</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-6 pt-4 space-y-2">
+            <button onclick="openCatalogModal('medida')" class="w-full py-2.5 px-4 text-center text-xs font-bold rounded-xl bg-amber-500 hover:bg-amber-400 text-brand-navydark transition shadow font-heading">
+              <span>✂️ Ver Galería de Trajes a la Medida</span>
+            </button>
+            <a href="https://wa.me/50664898613?text=Hola%20Le%20Fabrique,%20quisiera%20solicitar%20cita%20para%20Trajes%20Ejecutivos%20a%20la%20Medida" target="_blank" class="block w-full py-2.5 text-center text-xs font-bold rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 transition">
+              Agendar Cita de Medidas &rarr;
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================= -->
+  <!-- 6. SECCIÓN DE CALIDAD TEXTIL Y ACABADOS (OBSERVACIÓN 2 DEL CLIENTE) -->
+  <!-- ================================================================= -->
+  <section id="calidad-confeccion" class="py-24 bg-white border-y border-slate-200 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Enunciado Conceptual Refinado -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-amber-50 text-amber-900 border border-amber-200">
+            <span>✨</span> Muestras Físicas & Acabados de Calidad
+          </div>
+
+          <h2 class="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-brand-navy tracking-tight leading-[1.15]">
+            Muestras físicas, telas y acabados de <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-yellow-600">primera calidad</span> para su empresa.
+          </h2>
+
+          <!-- Clarificación solicitada por el cliente: tallaje Slim Fit e industrial vs trajes a la medida -->
+          <p class="text-slate-700 text-base sm:text-lg leading-relaxed font-normal">
+            En <strong>Le Fabrique</strong> trabajamos con talentosos diseñadores de indumentaria y calificados confeccionistas de Costa Rica. Nuestras colecciones corporativas e industriales se desarrollan bajo estrictos <strong>estándares industriales</strong> y siluetas contemporáneas en <strong>tallas Slim Fit y estándar industrial</strong>.
+          </p>
+
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Facilitamos curvas de tallas completas y <strong>muestrarios físicos de telas</strong> en sus instalaciones para comprobar caídas, resistencia y texturas. <em class="text-brand-navy font-semibold">El servicio de confección a la medida está destinado de forma exclusiva a nuestra distinguida línea de trajes ejecutivos sastre</em>, asegurando que todo el resto de la dotación empresarial cuente con la agilidad y uniformidad del tallaje estandarizado.
+          </p>
+
+          <!-- 3 Pilares Claros y Transparentes -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+            
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
+              <div class="w-10 h-10 rounded-xl bg-brand-navy text-white flex items-center justify-center font-bold text-sm mb-3">
+                SF
+              </div>
+              <h4 class="font-heading font-bold text-sm text-slate-900 mb-1">Tallas Slim Fit</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Silueta estilizada y moderna en camisas y blusas ejecutivas para dama y caballero.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
+              <div class="w-10 h-10 rounded-xl bg-amber-600 text-white flex items-center justify-center font-bold text-sm mb-3">
+                EI
+              </div>
+              <h4 class="font-heading font-bold text-sm text-slate-900 mb-1">Estándar Industrial</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Tallas normalizadas para faena operativa, médica y casual con costuras reforzadas.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
+              <div class="w-10 h-10 rounded-xl bg-slate-800 text-white flex items-center justify-center font-bold text-sm mb-3">
+                TM
+              </div>
+              <h4 class="font-heading font-bold text-sm text-slate-900 mb-1">Trajes a la Medida</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Servicio reservado exclusivamente para trajes y blazers ejecutivos de alta dirección.
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Acompañamiento con Muestras Físicas -->
+          <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 text-slate-800 text-xs sm:text-sm flex items-start gap-3 mt-4">
+            <span class="text-amber-600 text-xl font-bold">👔</span>
+            <div>
+              <p class="font-bold text-brand-navy">Validación Presencial con Muestras Físicas</p>
+              <p class="text-xs text-slate-600 mt-0.5">Llevamos muestras físicas de telas, cartas de colores y prendas confeccionadas a sus oficinas en la GAM para que su comité de compras o recursos humanos verifique la calidad antes de confeccionar.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Demostración Visual de Taller -->
+        <div class="lg:col-span-5">
+          <div class="relative">
+            <div class="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-amber-500/20 to-blue-900/30 blur-xl opacity-75"></div>
+            
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-brand-navydark text-white">
+              <div class="h-80 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=800&q=80" alt="Taller de alta confección y muestrario textil" class="w-full h-full object-cover object-center" />
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark via-brand-navydark/40 to-transparent"></div>
+                <span class="absolute top-4 left-4 bg-amber-500 text-brand-navydark text-xs font-black px-3.5 py-1 rounded-full shadow">
+                  Confección Textil Costarricense
+                </span>
+              </div>
+
+              <div class="p-6 sm:p-8 space-y-4">
+                <h3 class="font-heading font-black text-2xl text-white">Muestrarios de Telas en Físico</h3>
+                <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                  "Evaluamos con usted cada tejido en persona: Oxford ejecutivos, driles pesados sanforizados y microfibras antifluido certificadas. Transparencia absoluta en tallajes y confección."
+                </p>
+
+                <div class="pt-2 border-t border-blue-900/60 flex items-center justify-between">
+                  <div>
+                    <span class="text-[11px] text-amber-400 font-bold block">Taller Textil Le Fabrique</span>
+                    <span class="text-xs text-slate-400">San Miguel de Santo Domingo, Heredia</span>
+                  </div>
+                  <a href="#cotizador" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-brand-navydark font-bold text-xs transition shadow">
+                    Solicitar Muestras
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================= -->
+  <!-- 7. MÓDULO VISUAL DE TELAS Y TEXTURAS CON FOTOGRAFÍAS REALES -->
+  <!-- ================================================================= -->
+  <section id="telas" class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-xs font-bold text-blue-900 tracking-wider uppercase bg-blue-100 px-3.5 py-1.5 rounded-full border border-blue-200">
+          Muestrario Textil Certificado
+        </span>
+        <h2 class="font-heading font-black text-3xl sm:text-4xl text-brand-navy mt-4 tracking-tight">
+          Texturas y Telas de Alto Desempeño
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-2">
+          Tejidos seleccionados para resistir el uso diario y mantener la firmeza de color tras cientos de lavados.
+        </p>
+      </div>
+
+      <!-- Fichas Gráficas de Telas -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- TELA 1: OXFORD -->
+        <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition flex flex-col justify-between card-zoom">
+          <div>
+            <div class="h-52 overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1591195854242-8804547cdcab?auto=format&fit=crop&w=600&q=80" alt="Textura de tela Oxford fina" class="w-full h-full object-cover transition duration-500 main-img" />
+              <span class="absolute top-3 left-3 bg-brand-navy text-white text-[11px] font-bold px-2.5 py-1 rounded-md shadow border border-amber-500/30">Línea Ejecutiva</span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-heading font-bold text-xl text-brand-navy mb-1">Oxford & Popelina Ejecutiva</h3>
+              <p class="text-xs text-amber-600 font-bold mb-3 uppercase">Oficinas, Banca & Asesorías</p>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                Entramado cruzado de hilados peinados. Caída limpia y formal, respiración natural en jornadas extensas y tratamiento antiarrugas para un planchado ágil.
+              </p>
+              <div class="flex flex-wrap gap-1.5 text-[11px] font-semibold text-slate-700">
+                <span class="px-2.5 py-1 bg-slate-100 rounded-lg">60% Algodón / 40% Pol.</span>
+                <span class="px-2.5 py-1 bg-slate-100 rounded-lg">Fácil Planchado</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TELA 2: DRIL PESADO -->
+        <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition flex flex-col justify-between card-zoom">
+          <div>
+            <div class="h-52 overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=600&q=80" alt="Textura de Dril Pesado Industrial" class="w-full h-full object-cover transition duration-500 main-img" />
+              <span class="absolute top-3 left-3 bg-amber-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-md shadow">Línea Industrial</span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-heading font-bold text-xl text-brand-navy mb-1">Dril Pesado Sanforizado</h3>
+              <p class="text-xs text-amber-600 font-bold mb-3 uppercase">Trabajo Pesado, Plantas & Logística</p>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                Gramaje robusto en tejido sarga de alta tenacidad. Resistencia comprobada contra la fricción, tracción mecánica y contacto con polvos o grasas.
+              </p>
+              <div class="flex flex-wrap gap-1.5 text-[11px] font-semibold text-slate-700">
+                <span class="px-2.5 py-1 bg-slate-100 rounded-lg">100% Algodón / Mezcla Fuerte</span>
+                <span class="px-2.5 py-1 bg-slate-100 rounded-lg">Pre-encogido Sanforizado</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TELA 3: ANTIFLUIDO -->
+        <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition flex flex-col justify-between card-zoom">
+          <div>
+            <div class="h-52 overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Textura de Microfibra Antifluido" class="w-full h-full object-cover transition duration-500 main-img" />
+              <span class="absolute top-3 left-3 bg-teal-700 text-white text-[11px] font-bold px-2.5 py-1 rounded-md shadow">Línea Médica & Quirúrgica</span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-heading font-bold text-xl text-brand-navy mb-1">Microfibra Antifluido Plus</h3>
+              <p class="text-xs text-teal-700 font-bold mb-3 uppercase">Clínico, Odontología & Spas</p>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                Escudo hidrófugo con tecnología que repele fluidos corporales y líquidos. Inalterable frente a desinfecciones frecuentes con cloro diluido y secado rápido.
+              </p>
+              <div class="flex flex-wrap gap-1.5 text-[11px] font-semibold text-slate-700">
+                <span class="px-2.5 py-1 bg-slate-100 rounded-lg">Clororresistente</span>
+                <span class="px-2.5 py-1 bg-slate-100 rounded-lg">Secado Rápido</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================= -->
+  <!-- 8. LOOKBOOK / GALERÍA FOTOGRÁFICA -->
+  <!-- ================================================================= -->
+  <section id="lookbook" class="py-20 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-xs font-bold text-blue-900 tracking-wider uppercase bg-blue-100 px-3.5 py-1.5 rounded-full border border-blue-200">
+          Galería & Lookbook
+        </span>
+        <h2 class="font-heading font-black text-3xl sm:text-4xl text-brand-navy mt-4 tracking-tight">
+          La Excelencia en Cada Puntada
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-2">
+          Aprecie la armonía de cortes, la precisión de nuestros bordados y la prestancia que brindan nuestros uniformes en el entorno corporativo.
+        </p>
+      </div>
+
+      <!-- Mosaico Fotográfico Lookbook -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="group relative rounded-2xl overflow-hidden shadow-lg aspect-square border border-slate-200">
+          <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80" alt="Traje y camisa formal ejecutiva Slim Fit" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark/90 via-transparent to-transparent opacity-90 group-hover:opacity-100 transition p-5 flex flex-col justify-end">
+            <span class="text-[11px] font-bold text-amber-400 uppercase">Línea Ejecutiva</span>
+            <h4 class="text-white font-bold text-sm">Traje Slim Fit & Camisa Oxford</h4>
+          </div>
+        </div>
+
+        <div class="group relative rounded-2xl overflow-hidden shadow-lg aspect-square border border-slate-200">
+          <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186c5f8?auto=format&fit=crop&w=600&q=80" alt="Chaleco reflectivo y uniforme operativo" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark/90 via-transparent to-transparent opacity-90 group-hover:opacity-100 transition p-5 flex flex-col justify-end">
+            <span class="text-[11px] font-bold text-amber-400 uppercase">Línea Operativa</span>
+            <h4 class="text-white font-bold text-sm">Chaleco de Seguridad & Dril Reforzado</h4>
+          </div>
+        </div>
+
+        <div class="group relative rounded-2xl overflow-hidden shadow-lg aspect-square border border-slate-200">
+          <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&q=80" alt="Doctor en bata médica blanca" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark/90 via-transparent to-transparent opacity-90 group-hover:opacity-100 transition p-5 flex flex-col justify-end">
+            <span class="text-[11px] font-bold text-amber-400 uppercase">Línea Salud</span>
+            <h4 class="text-white font-bold text-sm">Bata Clínica de Gabardina Antifluido</h4>
+          </div>
+        </div>
+
+        <div class="group relative rounded-2xl overflow-hidden shadow-lg aspect-square border border-slate-200">
+          <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=600&q=80" alt="Cocina y chef en acción con filipina profesional" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark/90 via-transparent to-transparent opacity-90 group-hover:opacity-100 transition p-5 flex flex-col justify-end">
+            <span class="text-[11px] font-bold text-amber-400 uppercase">Línea Chef</span>
+            <h4 class="text-white font-bold text-sm">Filipina Ejecutiva Transpirable</h4>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================= -->
+  <!-- 9. COTIZADOR VISUAL INTERACTIVO -->
+  <!-- ================================================================= -->
+  <section id="cotizador" class="py-20 bg-slate-900 text-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="bg-brand-navydark rounded-3xl shadow-2xl border border-blue-900/60 overflow-hidden">
+        
+        <div class="bg-gradient-to-r from-brand-navydark via-brand-navy to-slate-900 p-8 sm:p-10 text-white text-center border-b border-blue-900/60">
+          <span class="inline-block text-xs font-bold text-amber-400 uppercase tracking-widest bg-amber-500/20 px-3.5 py-1.5 rounded-full border border-amber-400/30 mb-2">
+            Cotizador Ágil en Línea
+          </span>
+          <h2 class="font-heading font-black text-2xl sm:text-3xl">Configure sus Uniformes con Asesoría Especializada</h2>
+          <p class="text-slate-300 text-xs sm:text-sm mt-1 max-w-lg mx-auto">
+            Seleccione la línea requerida y genere una solicitud formal directamente con nuestro equipo de confección vía WhatsApp o correo electrónico.
+          </p>
+        </div>
+
+        <form id="visualQuoteForm" class="p-6 sm:p-10 space-y-8" onsubmit="handleVisualQuote(event)">
+          
+          <!-- PASO 1: SELECCIÓN VISUAL DE PRENDAS -->
+          <div>
+            <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-3">
+              1. Seleccione la Línea de Uniforme
+            </label>
+            <input type="hidden" id="selectedLineInput" value="Línea Corporativa / Ejecutiva Slim Fit" />
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3" id="visualLineSelector">
+              
+              <div onclick="selectLine('Línea Corporativa / Ejecutiva Slim Fit', this)" class="line-card active-category-card cursor-pointer p-3.5 rounded-2xl border-2 border-amber-500 bg-amber-500/10 text-center transition hover:shadow-md">
+                <span class="text-2xl block mb-1">👔</span>
+                <span class="text-xs font-bold text-slate-900 block leading-tight">Corporativo</span>
+                <span class="text-[10px] text-slate-500">Tallas Slim Fit</span>
+              </div>
+
+              <div onclick="selectLine('Línea Industrial / Operativa', this)" class="line-card cursor-pointer p-3.5 rounded-2xl border-2 border-slate-700 bg-slate-800 text-center transition hover:shadow-md hover:border-amber-500">
+                <span class="text-2xl block mb-1">⚙️</span>
+                <span class="text-xs font-bold text-white block leading-tight">Industrial</span>
+                <span class="text-[10px] text-slate-400">Estándar Industrial</span>
+              </div>
+
+              <div onclick="selectLine('Línea Médica / Estética', this)" class="line-card cursor-pointer p-3.5 rounded-2xl border-2 border-slate-700 bg-slate-800 text-center transition hover:shadow-md hover:border-amber-500">
+                <span class="text-2xl block mb-1">🩺</span>
+                <span class="text-xs font-bold text-white block leading-tight">Médico</span>
+                <span class="text-[10px] text-slate-400">Scrubs Clínicos</span>
+              </div>
+
+              <div onclick="selectLine('Línea Gastronómica / Chef', this)" class="line-card cursor-pointer p-3.5 rounded-2xl border-2 border-slate-700 bg-slate-800 text-center transition hover:shadow-md hover:border-amber-500">
+                <span class="text-2xl block mb-1">🍽️</span>
+                <span class="text-xs font-bold text-white block leading-tight">Gastronomía</span>
+                <span class="text-[10px] text-slate-400">Filipinas Chef</span>
+              </div>
+
+              <div onclick="selectLine('Línea Casual / Camisetas Polo', this)" class="line-card cursor-pointer p-3.5 rounded-2xl border-2 border-slate-700 bg-slate-800 text-center transition hover:shadow-md hover:border-amber-500">
+                <span class="text-2xl block mb-1">👕</span>
+                <span class="text-xs font-bold text-white block leading-tight">Polos Piqué</span>
+                <span class="text-[10px] text-slate-400">Tallas XS a 3XL</span>
+              </div>
+
+              <div onclick="selectLine('Servicio Exclusivo: Trajes Ejecutivos a la Medida', this)" class="line-card cursor-pointer p-3.5 rounded-2xl border-2 border-amber-600/70 bg-amber-950/30 text-center transition hover:shadow-md hover:border-amber-400">
+                <span class="text-2xl block mb-1">✂️</span>
+                <span class="text-xs font-bold text-amber-300 block leading-tight">A la Medida</span>
+                <span class="text-[10px] text-amber-400">Solo Trajes</span>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- PASO 2: CANTIDAD Y BORDADO -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            
+            <div>
+              <label for="quoteQty" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                2. Cantidad Estimada
+              </label>
+              <select id="quoteQty" onchange="renderLiveSummary()" class="w-full px-4 py-3 rounded-xl border border-slate-700 text-white text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none bg-slate-800 font-medium">
+                <option value="12 a 24 prendas (Mínimo sugerido)">12 a 24 prendas</option>
+                <option value="25 a 50 prendas">25 a 50 prendas</option>
+                <option value="51 a 100 prendas">51 a 100 prendas</option>
+                <option value="Más de 100 prendas (Tarifa especial corporativa)">Más de 100 prendas (+ volumen)</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="quoteLogo" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                3. Personalización de Marca
+              </label>
+              <select id="quoteLogo" onchange="renderLiveSummary()" class="w-full px-4 py-3 rounded-xl border border-slate-700 text-white text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none bg-slate-800 font-medium">
+                <option value="Bordado computarizado en pecho">Bordado computarizado en pecho</option>
+                <option value="Bordado en pecho + manga o espalda">Bordado en pecho + espalda/manga</option>
+                <option value="Serigrafía / Estampado industrial">Estampado / Serigrafía</option>
+                <option value="Prendas lisas sin bordado">Prendas lisas sin bordar</option>
+                <option value="Deseo asesoría para definir">Deseo asesoría de diseño</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="quoteProvince" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                4. Ubicación de Entrega
+              </label>
+              <select id="quoteProvince" onchange="renderLiveSummary()" class="w-full px-4 py-3 rounded-xl border border-slate-700 text-white text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none bg-slate-800 font-medium">
+                <option value="Heredia">Heredia</option>
+                <option value="San José">San José</option>
+                <option value="Alajuela">Alajuela</option>
+                <option value="Cartago">Cartago</option>
+                <option value="Guanacaste">Guanacaste</option>
+                <option value="Puntarenas">Puntarenas</option>
+                <option value="Limón">Limón</option>
+              </select>
+            </div>
+
+          </div>
+
+          <!-- DATOS DEL CLIENTE -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div>
+              <label for="quoteName" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Nombre Completo *</label>
+              <input type="text" id="quoteName" required oninput="renderLiveSummary()" placeholder="Ej: Berman López" class="w-full px-4 py-2.5 rounded-xl border border-slate-700 text-white text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none bg-slate-800" />
+            </div>
+            <div>
+              <label for="quoteCompany" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Empresa u Organización</label>
+              <input type="text" id="quoteCompany" oninput="renderLiveSummary()" placeholder="Ej: Corporación S.A." class="w-full px-4 py-2.5 rounded-xl border border-slate-700 text-white text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none bg-slate-800" />
+            </div>
+            <div>
+              <label for="quotePhone" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Teléfono / WhatsApp *</label>
+              <input type="tel" id="quotePhone" required placeholder="Ej: 8888-8888" class="w-full px-4 py-2.5 rounded-xl border border-slate-700 text-white text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none bg-slate-800" />
+            </div>
+          </div>
+
+          <!-- DETALLES ADICIONALES -->
+          <div>
+            <label for="quoteNotes" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Requerimientos especiales, muestras físicas o colores (opcional)</label>
+            <textarea id="quoteNotes" rows="2" placeholder="Ej: Muestras físicas de tela en oficina, bordado en color corporativo, tallas slim fit..." class="w-full px-4 py-2.5 rounded-xl border border-slate-700 text-white text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none bg-slate-800"></textarea>
+          </div>
+
+          <!-- RESUMEN DINÁMICO EN VIVO -->
+          <div class="p-4 rounded-2xl bg-brand-navy border border-blue-900/60 text-xs text-slate-200">
+            <span class="font-bold text-amber-400 block mb-1">📋 Resumen para Enviar a Le Fabrique:</span>
+            <div id="liveSummaryBox" class="text-slate-300 font-medium">
+              Seleccione sus opciones en el formulario para previsualizar la solicitud formal de cotización.
+            </div>
+          </div>
+
+          <!-- BOTONES DE ENVÍO -->
+          <div class="pt-2 flex flex-col sm:flex-row gap-4">
+            <button type="submit" class="flex-1 py-4 px-6 rounded-xl bg-amber-500 hover:bg-amber-600 text-brand-navydark font-heading font-black text-sm shadow-xl transition flex items-center justify-center gap-2">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              <span>Enviar por WhatsApp a Le Fabrique</span>
+            </button>
+            
+            <button type="button" onclick="sendQuoteEmail()" class="py-4 px-6 rounded-xl border border-slate-700 hover:bg-slate-800 text-slate-200 font-heading font-semibold text-sm transition flex items-center justify-center gap-2">
+              <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+              <span>Enviar por Correo Electrónico</span>
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================= -->
+  <!-- 10. UBICACIÓN Y CONTACTO -->
+  <!-- ================================================================= -->
+  <section id="contacto" class="py-20 bg-brand-navydark text-white border-t border-blue-900/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-6 space-y-6">
+          <span class="text-xs font-bold text-amber-400 tracking-wider uppercase bg-amber-500/20 px-3.5 py-1.5 rounded-full border border-amber-400/30">
+            Canales Oficiales
+          </span>
+          <h2 class="font-heading font-black text-3xl sm:text-4xl text-white tracking-tight">
+            Visite Nuestro Taller o Contáctenos Directamente
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Coordinamos visitas corporativas a sus instalaciones dentro de la Gran Área Metropolitana (GAM) para presentación de muestrarios físicos de telas y levantamiento de requerimientos.
+          </p>
+
+          <div class="space-y-4 pt-2">
+            
+            <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-brand-navy border border-blue-900/60">
+              <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold shrink-0 border border-amber-500/30">
+                📍
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-slate-400 uppercase">Taller & Fábrica</h4>
+                <p class="text-sm font-bold text-white mt-0.5">
+                  San Miguel, Santo Domingo, Heredia, Costa Rica.
+                </p>
+                <p class="text-xs text-slate-400 mt-0.5">
+                  (200 metros Oeste de la entrada a Paracito)
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-brand-navy border border-blue-900/60">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold shrink-0 border border-emerald-500/30">
+                📞
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-slate-400 uppercase">Teléfonos & WhatsApp</h4>
+                <p class="text-sm font-bold text-white mt-0.5">
+                  <a href="tel:+50664898613" class="hover:text-amber-400 transition">+506 6489-8613</a> &bull; <a href="tel:+50688539738" class="hover:text-amber-400 transition">+506 8853-9738</a>
+                </p>
+                <p class="text-xs text-slate-400 mt-0.5">Lunes a Viernes 8:00 AM – 5:30 PM</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-brand-navy border border-blue-900/60">
+              <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold shrink-0 border border-blue-500/30">
+                ✉️
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-slate-400 uppercase">Correo Electrónico</h4>
+                <p class="text-sm font-bold text-white mt-0.5">
+                  <a href="mailto:info.lefabrique@yahoo.com" class="hover:text-amber-400 transition">info.lefabrique@yahoo.com</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-brand-navy border border-blue-900/60">
+              <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold shrink-0 border border-indigo-500/30">
+                🌐
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-slate-400 uppercase">Redes Sociales & Directorio</h4>
+                <div class="flex items-center gap-3 text-xs font-bold text-blue-300 mt-1">
+                  <a href="https://www.facebook.com/lefabriquecr" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                    Facebook Oficial (@lefabriquecr)
+                  </a>
+                  <span>&bull;</span>
+                  <a href="https://www.empresascostarica.com/uniformes-le-fabrique" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                    Directorio Empresas Costa Rica
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Tarjeta Visual de Fábrica con el Isotipo Oficial -->
+        <div class="lg:col-span-6">
+          <div class="rounded-3xl overflow-hidden border border-blue-900/60 shadow-2xl bg-brand-navy text-white relative">
+            <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1000&q=80" alt="Confección y costura en taller Le Fabrique" class="w-full h-80 object-cover opacity-40" />
+            <div class="absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-brand-navydark via-brand-navydark/60 to-transparent">
+              <div class="w-14 h-14 rounded-full overflow-hidden mb-3 border-2 border-amber-400 bg-brand-navydark">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" class="w-full h-full">
+  <circle cx="250" cy="250" r="248" fill="#122442" />
+  <path d="M250,14 C246,14 242,28 240,48 L240,68 C235,74 230,90 228,125 L214,245 L200,342 C185,350 165,362 162,376 C160,386 170,396 185,396 L195,396 L125,488 C145,492 165,494 185,495 L205,488 C220,442 230,434 250,434 C270,434 280,442 295,488 L315,495 C335,494 355,492 375,488 L305,396 L315,396 C330,396 340,386 338,376 C335,362 315,350 300,342 L286,245 L272,125 C270,90 265,74 260,68 L260,48 C258,28 254,14 250,14 Z" fill="#ffffff" />
+  <path d="M250,28 C248,28 246,38 245,52 L245,72 C242,88 238,132 225,248 L212,348 C205,354 195,362 190,370 C188,376 192,382 200,382 L225,382 C230,364 240,328 250,328 C260,328 270,364 275,382 L300,382 C308,382 312,376 310,370 C305,362 295,354 288,348 L275,248 C262,132 258,88 255,72 L255,52 C254,38 252,28 250,28 Z" fill="#c59b27" />
+  <path d="M250,338 C244,338 236,358 233,376 L267,376 C264,358 256,338 250,338 Z" fill="#ffffff" />
+  <path d="M250,444 C232,444 222,462 215,488 L285,488 C278,462 268,444 250,444 Z" fill="#122442" />
+</svg>
+              </div>
+              <h3 class="font-heading font-black text-2xl">Taller Textil Le Fabrique Costa Rica</h3>
+              <p class="text-slate-300 text-xs sm:text-sm mt-1 max-w-md">
+                San Miguel de Santo Domingo, Heredia (200m Oeste de la entrada a Paracito). Agende su visita para apreciar muestrarios de telas y acabados.
+              </p>
+              <div class="pt-4">
+                <a href="https://wa.me/50664898613?text=Hola%20Le%20Fabrique,%20quisiera%20agendar%20una%20visita%20a%20su%20taller" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-brand-navydark font-bold text-xs transition shadow">
+                  Agendar Visita o Muestra vía WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================= -->
+  <!-- 11. FOOTER -->
+  <!-- ================================================================= -->
+  <footer class="bg-black text-slate-400 text-xs py-12 border-t border-blue-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6 pb-8 border-b border-neutral-800">
+        
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full overflow-hidden border border-amber-500/60 shrink-0 bg-brand-navydark">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" class="w-full h-full">
+  <circle cx="250" cy="250" r="248" fill="#122442" />
+  <path d="M250,14 C246,14 242,28 240,48 L240,68 C235,74 230,90 228,125 L214,245 L200,342 C185,350 165,362 162,376 C160,386 170,396 185,396 L195,396 L125,488 C145,492 165,494 185,495 L205,488 C220,442 230,434 250,434 C270,434 280,442 295,488 L315,495 C335,494 355,492 375,488 L305,396 L315,396 C330,396 340,386 338,376 C335,362 315,350 300,342 L286,245 L272,125 C270,90 265,74 260,68 L260,48 C258,28 254,14 250,14 Z" fill="#ffffff" />
+  <path d="M250,28 C248,28 246,38 245,52 L245,72 C242,88 238,132 225,248 L212,348 C205,354 195,362 190,370 C188,376 192,382 200,382 L225,382 C230,364 240,328 250,328 C260,328 270,364 275,382 L300,382 C308,382 312,376 310,370 C305,362 295,354 288,348 L275,248 C262,132 258,88 255,72 L255,52 C254,38 252,28 250,28 Z" fill="#c59b27" />
+  <path d="M250,338 C244,338 236,358 233,376 L267,376 C264,358 256,338 250,338 Z" fill="#ffffff" />
+  <path d="M250,444 C232,444 222,462 215,488 L285,488 C278,462 268,444 250,444 Z" fill="#122442" />
+</svg>
+          </div>
+          <div>
+            <div class="font-heading font-bold text-white text-lg tracking-wide">LE FABRIQUE</div>
+            <div class="text-[10px] text-slate-400">Confección de Uniformes Corporativos e Industriales de Costa Rica</div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-6 text-slate-400 font-medium">
+          <a href="#inicio" class="hover:text-amber-400 transition">Inicio</a>
+          <a href="#catalogo" class="hover:text-amber-400 transition">Colecciones</a>
+          <a href="#calidad-confeccion" class="hover:text-amber-400 transition">Telas & Acabados</a>
+          <a href="#telas" class="hover:text-amber-400 transition">Texturas Textiles</a>
+          <a href="#lookbook" class="hover:text-amber-400 transition">Lookbook</a>
+          <a href="#cotizador" class="hover:text-amber-400 transition">Cotizador</a>
+          <a href="https://www.facebook.com/lefabriquecr" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition">Facebook</a>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-slate-400">
+        <p>&copy; 2026 Le Fabrique Costa Rica. Confección Textil y Diseño Nacional.</p>
+        <p>Santo Domingo, Heredia, Costa Rica &bull; Calidad y Garantía Certificada</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================================================================= -->
+  <!-- 12. VENTANA EMERGENTE (MODAL) PARA EL CATÁLOGO DETALLADO (12 FOTOS) -->
+  <!-- ================================================================= -->
+  <div id="catalogModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6 overflow-y-auto modal-backdrop">
+    <div class="bg-white rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 relative p-6 sm:p-8">
+      
+      <!-- Botón Cerrar -->
+      <button onclick="closeCatalogModal()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-lg transition" aria-label="Cerrar ventana">
+        ✕
+      </button>
+
+      <!-- Cabecera del Modal -->
+      <div class="border-b border-slate-200 pb-4 mb-6 pr-12">
+        <span class="text-xs font-bold text-amber-600 uppercase tracking-widest bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
+          Catálogo Detallado de Colección
+        </span>
+        <h3 id="modalTitle" class="font-heading font-black text-2xl sm:text-3xl text-brand-navy mt-2">
+          Galería de Modelos
+        </h3>
+        <p id="modalSubtitle" class="text-slate-600 text-xs sm:text-sm mt-1">
+          Explore los diferentes modelos, cortes y combinaciones disponibles en esta clasificación.
+        </p>
+      </div>
+
+      <!-- Cuadrícula de 12 Fotos en Modal (FÁCILMENTE EDITABLE EN HOSTINGER) -->
+      <div id="modalGalleryGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <!-- Generado dinámicamente o editable directamente -->
+      </div>
+
+      <!-- Pie del Modal con CTA -->
+      <div class="mt-8 pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-xs text-slate-500 text-center sm:text-left">
+          * Fotografías demostrativas de referencia. Personalizamos colores, bordados y detalles corporativos.
+        </p>
+        <a id="modalWhatsAppBtn" href="https://wa.me/50664898613?text=Hola%20Le%20Fabrique,%20quisiera%20cotizar%20esta%20l%C3%ADnea" target="_blank" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-heading font-bold text-xs shadow-md transition flex items-center gap-2">
+          <span>Cotizar esta Línea por WhatsApp</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- 13. BOTÓN FLOTANTE WHATSAPP -->
+  <!-- ================================================================= -->
+  <aside aria-label="Contacto flotante de WhatsApp" class="fixed bottom-6 right-6 z-50">
+    <a href="https://wa.me/50664898613?text=Hola%20Le%20Fabrique,%20quisiera%20cotizar%20uniformes" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 px-4 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-2xl hover:scale-105 transition-all duration-300 group border border-emerald-400/40">
+      <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+      <span class="text-xs font-bold tracking-wide hidden sm:inline-block">Cotizar por WhatsApp</span>
+    </a>
+  </aside>
+
+  <!-- ================================================================= -->
+  <!-- 14. JAVASCRIPT DE FUNCIONALIDADES & FOTOS DEL CATÁLOGO PARA HOSTINGER -->
+  <!-- ================================================================= -->
+  <script>
+    // ===============================================================
+    // BANCO DE FOTOS POR CATEGORÍA (FÁCILMENTE EDITABLE EN HOSTINGER)
+    // Para cambiar fotos, simplemente cambie las URLs o rutas locales
+    // ===============================================================
+    const catalogGalleries = {
+      corporativo: {
+        title: "Línea Corporativa & Ejecutiva (Tallas Slim Fit)",
+        subtitle: "Camisas Oxford, blusas sastre, pantalones ejecutivos y blazers contemporáneos.",
+        photos: [
+          { src: "https://images.unsplash.com/photo-1588516903720-8ceb67f9ef84?auto=format&fit=crop&w=600&q=80", title: "Traje Sastre Ejecutivo Dama (Rojo)" },
+          { src: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80", title: "Camisa Oxford Slim Fit Caballero" },
+          { src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80", title: "Blusa Ejecutiva Formal Dama" },
+          { src: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80", title: "Conjunto Ejecutivo Corporativo" },
+          { src: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80", title: "Blazer Formal Slim Fit" },
+          { src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80", title: "Blusa Manga Larga de Oficina" },
+          { src: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80", title: "Camisa Oxford Azul Claro" },
+          { src: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80", title: "Pantalón de Vestir & Blazer Dama" },
+          { src: "https://images.unsplash.com/photo-1591195854242-8804547cdcab?auto=format&fit=crop&w=600&q=80", title: "Detalle de Tejido Oxford Fino" },
+          { src: "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=600&q=80", title: "Blusa Blanca de Cuello Camisero" },
+          { src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80", title: "Camisa de Faena Ejecutiva Slim" },
+          { src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80", title: "Uniforme Corporativo en Equipo" }
+        ]
+      },
+      industrial: {
+        title: "Línea Industrial & Operativa (Tallas Estándar)",
+        subtitle: "Pantalones cargo, camisas de trabajo pesado, chalecos reflectivos y overoles.",
+        photos: [
+          { src: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80", title: "Operario con Uniforme de Seguridad" },
+          { src: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80", title: "Ingeniero con Camisa Reforzada" },
+          { src: "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f8?auto=format&fit=crop&w=600&q=80", title: "Chaleco Reflectivo de Alta Visibilidad" },
+          { src: "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=600&q=80", title: "Pantalón Cargo en Dril Pesado" },
+          { src: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80", title: "Camisa Operativa con Cinta 3M" },
+          { src: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=600&q=80", title: "Overol Industrial Mecánico" },
+          { src: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80", title: "Uniforme de Técnico de Planta" },
+          { src: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=600&q=80", title: "Gabacha Industrial de Taller" },
+          { src: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80", title: "Textura Dril Sarga Reforzado" },
+          { src: "https://images.unsplash.com/photo-1581092162384-8987c1d64718?auto=format&fit=crop&w=600&q=80", title: "Chaqueta Térmica de Faena" },
+          { src: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&w=600&q=80", title: "Pantalón con Refuerzo en Rodillas" },
+          { src: "https://images.unsplash.com/photo-1581092446327-9b52bd1570c2?auto=format&fit=crop&w=600&q=80", title: "Equipo Operativo de Mantenimiento" }
+        ]
+      },
+      medico: {
+        title: "Línea Médica & Estética (Tallas Clínicas)",
+        subtitle: "Scrubs antifluido, batas clínicas, filipinas médicas y gorros quirúrgicos.",
+        photos: [
+          { src: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80", title: "Doctora en Scrubs y Bata Médica" },
+          { src: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80", title: "Médico en Scrub Clínico Azul" },
+          { src: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&q=80", title: "Bata de Laboratorio y Consultorio" },
+          { src: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80", title: "Microfibra Antifluido Clororresistente" },
+          { src: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80", title: "Scrub Quirúrgico Cuello en V" },
+          { src: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=600&q=80", title: "Uniforme Dental & Odontológico" },
+          { src: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=600&q=80", title: "Filipina para Spas & Cosmética" },
+          { src: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80", title: "Scrub en Tono Ciruela / Borgoña" },
+          { src: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80", title: "Scrub Femenino con Cinturón Ajustable" },
+          { src: "https://images.unsplash.com/photo-1584467735871-8e85353a8413?auto=format&fit=crop&w=600&q=80", title: "Bata Quirúrgica con Puño Tejido" },
+          { src: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=600&q=80", title: "Conjunto Clínico Unisex Verde Quirúrgico" },
+          { src: "https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=600&q=80", title: "Gorra Quirúrgica con Amarre" }
+        ]
+      },
+      gastronomico: {
+        title: "Línea Gastronómica & Chef (Tallas de Cocina)",
+        subtitle: "Filipinas de chef ejecutivas, delantales de lona con cuero, saloneros y baristas.",
+        photos: [
+          { src: "https://images.unsplash.com/photo-1581299894007-aaa50297cf16?auto=format&fit=crop&w=600&q=80", title: "Chef Ejecutivo en Filipina Blanca" },
+          { src: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=600&q=80", title: "Filipina Cruzada con Delantal Negro" },
+          { src: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=600&q=80", title: "Chef en Acción con Filipina Negra" },
+          { src: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80", title: "Delantal de Lona con Malla Cool-Vent" },
+          { src: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80", title: "Camisa de Servicio para Salonero" },
+          { src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80", title: "Delantal Barista con Remaches Metálicos" },
+          { src: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80", title: "Uniforme de Sommelier / Restaurante" },
+          { src: "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=600&q=80", title: "Filipina Manga Corta Transpirable" },
+          { src: "https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?auto=format&fit=crop&w=600&q=80", title: "Gorra de Cocina y Bandana Chef" },
+          { src: "https://images.unsplash.com/photo-1516714435131-44d6b64dc6a2?auto=format&fit=crop&w=600&q=80", title: "Delantal de Cintura para Camareros" },
+          { src: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=600&q=80", title: "Filipina Moderna Gris Plomo" },
+          { src: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=600&q=80", title: "Brigada de Cocina en Equipo" }
+        ]
+      },
+      casual: {
+        title: "Línea Casual & Polos (Tallas XS a 3XL)",
+        subtitle: "Camisetas polo piqué peinado, microfibra dry-fit, jackets y gorras estructuradas.",
+        photos: [
+          { src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80", title: "Equipo en Polos Corporativas" },
+          { src: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=600&q=80", title: "Piqué Peinado 50/50 Anti-Motas" },
+          { src: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=600&q=80", title: "Camiseta Polo Azul Marino Clásica" },
+          { src: "https://images.unsplash.com/photo-1506152983158-b4a74a01c721?auto=format&fit=crop&w=600&q=80", title: "Polo Dry-Fit Transpirable" },
+          { src: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80", title: "Jacket Impermeable con Bordado" },
+          { src: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80", title: "Gorra Estructurada con Logo 3D" },
+          { src: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80", title: "Camiseta Técnica Cuello Redondo" },
+          { src: "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?auto=format&fit=crop&w=600&q=80", title: "Polo Piqué Negra Ejecutivo" },
+          { src: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&q=80", title: "Polo Corporativa Blanca Fina" },
+          { src: "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=600&q=80", title: "Chaqueta Cortavientos Liviana" },
+          { src: "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=600&q=80", title: "Polo en Color Rojo Institucional" },
+          { src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80", title: "Fuerza de Ventas Uniformada" }
+        ]
+      },
+      medida: {
+        title: "Servicio Exclusivo: Trajes Ejecutivos a la Medida",
+        subtitle: "La única línea de confección a la medida exacta con toma de medidas personalizadas.",
+        photos: [
+          { src: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80", title: "Traje Ejecutivo Sastre Slim Fit" },
+          { src: "https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=600&q=80", title: "Toma de Medidas y Patronaje en Taller" },
+          { src: "https://images.unsplash.com/photo-1588516903720-8ceb67f9ef84?auto=format&fit=crop&w=600&q=80", title: "Saco Ejecutivo Dama a la Medida" },
+          { src: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=600&q=80", title: "Corte y Ensamble Artesanal" },
+          { src: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80", title: "Pantalón de Vestir Corte Italiano" },
+          { src: "https://images.unsplash.com/photo-1598808503746-f34c53b9323e?auto=format&fit=crop&w=600&q=80", title: "Forros Satinados y Botonadura Sastre" },
+          { src: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=600&q=80", title: "Blazer Formal de Alta Costura" },
+          { src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80", title: "Chaleco Sastre Cruzado para Caballero" },
+          { src: "https://images.unsplash.com/photo-1591195854242-8804547cdcab?auto=format&fit=crop&w=600&q=80", title: "Casimires y Lanas Frías Selectas" },
+          { src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80", title: "Traje Ejecutivo Femenino de Gala" },
+          { src: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=600&q=80", title: "Camisa de Gemelos a la Medida" },
+          { src: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80", title: "Prueba de Ajuste Presencial para Gerencias" }
+        ]
+      }
+    };
+
+    // Abrir Modal de Galería
+    function openCatalogModal(categoryKey) {
+      const gallery = catalogGalleries[categoryKey];
+      if (!gallery) return;
+
+      document.getElementById('modalTitle').innerText = gallery.title;
+      document.getElementById('modalSubtitle').innerText = gallery.subtitle;
+      
+      const grid = document.getElementById('modalGalleryGrid');
+      grid.innerHTML = '';
+
+      gallery.photos.forEach(photo => {
+        const item = document.createElement('div');
+        item.className = 'group relative rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 shadow-sm hover:shadow-md transition';
+        item.innerHTML = `
+          <div class="h-44 sm:h-52 overflow-hidden">
+            <img src="${photo.src}" alt="${photo.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" />
+          </div>
+          <div class="p-2.5 bg-white text-center">
+            <h5 class="text-[11px] font-bold text-slate-900 truncate">${photo.title}</h5>
+          </div>
+        `;
+        grid.appendChild(item);
+      });
+
+      document.getElementById('modalWhatsAppBtn').href = `https://wa.me/50664898613?text=${encodeURIComponent('Hola Le Fabrique, quisiera cotizar modelos de ' + gallery.title)}`;
+      document.getElementById('catalogModal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Cerrar Modal de Galería
+    function closeCatalogModal() {
+      document.getElementById('catalogModal').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Cerrar modal al pulsar fuera de él
+    document.getElementById('catalogModal').addEventListener('click', (e) => {
+      if (e.target.id === 'catalogModal') {
+        closeCatalogModal();
+      }
+    });
+
+    // Cerrar con Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeCatalogModal();
+    });
+
+    // Toggle menú móvil
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Filtrado de catálogo principal
+    function filterCatalog(cat) {
+      const items = document.querySelectorAll('.product-item');
+      const buttons = document.querySelectorAll('#catalogFilters .cat-filter-btn');
+
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-brand-navy', 'text-white');
+        btn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+      });
+
+      event.target.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+      event.target.classList.add('bg-brand-navy', 'text-white');
+
+      items.forEach(item => {
+        if (cat === 'all' || item.classList.contains(cat)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Selección interactiva en cotizador
+    function selectLine(lineName, el) {
+      document.getElementById('selectedLineInput').value = lineName;
+      document.querySelectorAll('#visualLineSelector .line-card').forEach(card => {
+        card.classList.remove('active-category-card', 'border-amber-500', 'bg-amber-500/10');
+        card.classList.add('border-slate-700', 'bg-slate-800');
+      });
+      el.classList.add('active-category-card', 'border-amber-500', 'bg-amber-500/10');
+      el.classList.remove('border-slate-700', 'bg-slate-800');
+      renderLiveSummary();
+    }
+
+    // Actualización del resumen en tiempo real
+    function renderLiveSummary() {
+      const line = document.getElementById('selectedLineInput').value;
+      const qty = document.getElementById('quoteQty').value;
+      const logo = document.getElementById('quoteLogo').value;
+      const prov = document.getElementById('quoteProvince').value;
+      const name = document.getElementById('quoteName').value || 'Cliente';
+      const company = document.getElementById('quoteCompany').value;
+      
+      const compStr = company ? ` de la empresa ${company}` : '';
+      const text = `Solicitud para ${name}${compStr}: ${qty} en ${line}, con ${logo}, para entrega en ${prov}.`;
+      document.getElementById('liveSummaryBox').innerText = text;
+    }
+
+    // Envío por WhatsApp
+    function handleVisualQuote(e) {
+      e.preventDefault();
+      
+      const line = document.getElementById('selectedLineInput').value;
+      const qty = document.getElementById('quoteQty').value;
+      const logo = document.getElementById('quoteLogo').value;
+      const prov = document.getElementById('quoteProvince').value;
+      const name = document.getElementById('quoteName').value;
+      const company = document.getElementById('quoteCompany').value || 'Particular';
+      const phone = document.getElementById('quotePhone').value;
+      const notes = document.getElementById('quoteNotes').value || 'Ninguna';
+
+      const message = `*SOLICITUD FORMAL DE UNIFORMES - LE FABRIQUE CR*%0A` +
+                      `----------------------------------%0A` +
+                      `👤 *Nombre:* ${encodeURIComponent(name)}%0A` +
+                      `🏢 *Empresa:* ${encodeURIComponent(company)}%0A` +
+                      `📞 *Teléfono:* ${encodeURIComponent(phone)}%0A` +
+                      `📍 *Entrega:* ${encodeURIComponent(prov)}%0A%0A` +
+                      `👔 *Línea Seleccionada:* ${encodeURIComponent(line)}%0A` +
+                      `🔢 *Volumen:* ${encodeURIComponent(qty)}%0A` +
+                      `✨ *Personalización:* ${encodeURIComponent(logo)}%0A` +
+                      `📝 *Detalles:* ${encodeURIComponent(notes)}%0A` +
+                      `----------------------------------%0A` +
+                      `_Enviado desde el portal web oficial de Le Fabrique Costa Rica_`;
+
+      const whatsappUrl = `https://wa.me/50664898613?text=${message}`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    // Envío por correo
+    function sendQuoteEmail() {
+      const line = document.getElementById('selectedLineInput').value;
+      const qty = document.getElementById('quoteQty').value;
+      const logo = document.getElementById('quoteLogo').value;
+      const prov = document.getElementById('quoteProvince').value;
+      const name = document.getElementById('quoteName').value || 'Cliente';
+      const company = document.getElementById('quoteCompany').value || 'Empresa';
+      const phone = document.getElementById('quotePhone').value || 'No indicado';
+      const notes = document.getElementById('quoteNotes').value || 'Ninguna';
+
+      const subject = encodeURIComponent(`Solicitud de Confección de Uniformes - ${company} (${name})`);
+      const body = encodeURIComponent(
+        `Estimado equipo de Le Fabrique Costa Rica,\n\n` +
+        `Deseamos solicitar una cotización formal y muestras físicas con los siguientes detalles:\n\n` +
+        `- Contacto: ${name}\n` +
+        `- Empresa: ${company}\n` +
+        `- Teléfono: ${phone}\n` +
+        `- Provincia de entrega: ${prov}\n` +
+        `- Línea seleccionada: ${line}\n` +
+        `- Volumen estimado: ${qty}\n` +
+        `- Personalización de marca: ${logo}\n` +
+        `- Especificaciones especiales: ${notes}\n\n` +
+        `Quedamos a la espera de su respuesta para coordinar visita técnica.\nAtentamente.`
+      );
+
+      window.location.href = `mailto:info.lefabrique@yahoo.com?subject=${subject}&body=${body}`;
+    }
+
+    // Inicializar resumen al cargar
+    renderLiveSummary();
+  </script>
+</body>
+</html>
