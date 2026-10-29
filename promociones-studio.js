@@ -129,26 +129,121 @@ function renderPromoTicker() {
   const promo = activePromos[currentTickerIndex];
   const promoPriceFmt = new Intl.NumberFormat('es-CR').format(promo.promoPrice);
   const regPriceFmt = new Intl.NumberFormat('es-CR').format(promo.regularPrice);
+  const ahorro = promo.regularPrice - promo.promoPrice;
+  const ahorroFmt = new Intl.NumberFormat('es-CR').format(ahorro);
+
+  const waMsg = encodeURIComponent(
+    `*HOLA LE FABRIQUE CR* 👔✨\n` +
+    `Me interesa aprovechar esta *OFERTA DESTACADA DE LA PÁGINA*:\n` +
+    `🏷️ *Promoción:* ${promo.title}\n` +
+    `💰 *Precio de Oferta:* ₡${promoPriceFmt} (Ahorro de ₡${ahorroFmt})\n` +
+    `✨ *Detalle:* ${promo.badgeText || 'Confección nacional'}\n\n` +
+    `¿Podrían confirmarme disponibilidad y toma de tallas? Muchas gracias.`
+  );
 
   const tickerContent = document.getElementById('promoTickerContent');
   if (tickerContent) {
     tickerContent.innerHTML = `
-      <div class="flex items-center gap-2 flex-wrap justify-center sm:justify-start transition-all duration-300 transform">
-        <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-extrabold bg-gradient-to-r from-amber-500 to-amber-600 text-brand-navydark shadow-sm uppercase tracking-wider animate-pulse">
-          ${escapeHtml(promo.discountBadge || 'OFERTA DE TEMPORADA')}
-        </span>
-        <span class="font-bold text-white text-xs sm:text-sm">
-          ${escapeHtml(promo.title)}
-        </span>
-        <span class="text-amber-300 font-extrabold text-xs sm:text-sm">
-          ₡${promoPriceFmt}
-        </span>
-        <span class="text-slate-400 line-through text-xs hidden md:inline">
-          ₡${regPriceFmt}
-        </span>
-        <span class="inline-block text-[11px] text-amber-200/90 font-medium bg-blue-900/40 px-2 py-0.5 rounded border border-amber-400/20">
-          ${escapeHtml(promo.badgeText || 'Vigencia limitada')}
-        </span>
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-4 sm:gap-6 bg-gradient-to-r from-brand-navydark/95 via-blue-950/70 to-brand-navydark/95 p-3 sm:p-4 rounded-2xl border border-amber-500/40 shadow-inner">
+        
+        <!-- Bloque Izquierdo: Imagen del uniforme en promoción + Badges -->
+        <div class="flex items-center gap-4 sm:gap-5 w-full lg:w-auto">
+          <!-- Imagen de la Prenda / Arte -->
+          <a href="#promociones" class="relative group shrink-0">
+            <div class="w-20 h-20 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-amber-400 shadow-xl bg-slate-950 group-hover:scale-105 transition-transform duration-300">
+              <img 
+                src="${escapeHtml(promo.imageUrl)}" 
+                alt="${escapeHtml(promo.title)}" 
+                class="w-full h-full object-cover object-center"
+                onerror="this.src='https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=300&q=80'"
+              />
+            </div>
+            <span class="absolute -bottom-1 -right-1 bg-amber-500 text-brand-navydark text-[9px] font-black px-1.5 py-0.5 rounded shadow border border-amber-300 uppercase tracking-tighter">
+              EN OFERTA
+            </span>
+          </a>
+
+          <!-- Información y Precios -->
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-[11px] font-black bg-gradient-to-r from-amber-500 to-amber-600 text-brand-navydark shadow uppercase tracking-wide animate-pulse">
+                🔥 ${escapeHtml(promo.discountBadge || 'OFERTA DE TEMPORADA')}
+              </span>
+              <span class="text-[11px] font-bold text-amber-300 bg-blue-900/60 px-2 py-0.5 rounded-full border border-amber-400/30 uppercase">
+                ${escapeHtml(promo.category || 'Empresarial')}
+              </span>
+              <span class="text-[11px] font-semibold text-emerald-300 bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-500/30 hidden sm:inline">
+                ✔ ${escapeHtml(promo.badgeText || 'Confección Nacional')}
+              </span>
+            </div>
+
+            <h3 class="font-heading font-black text-white text-base sm:text-xl leading-tight truncate">
+              <a href="#promociones" class="hover:text-amber-300 transition">
+                ${escapeHtml(promo.title)}
+              </a>
+            </h3>
+
+            <!-- Fila de Precios Grandes -->
+            <div class="flex items-baseline gap-2.5 sm:gap-3.5 mt-1.5 flex-wrap">
+              <span class="text-2xl sm:text-3xl font-heading font-black text-amber-300 tracking-tight">
+                ₡${promoPriceFmt}
+              </span>
+              <span class="text-xs sm:text-sm text-slate-400 line-through">
+                ₡${regPriceFmt}
+              </span>
+              <span class="text-[11px] font-black text-emerald-300 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/40">
+                Ahorras ₡${ahorroFmt}
+              </span>
+              <span class="text-[11px] text-amber-200/90 font-medium hidden md:inline">
+                ⏱️ Hasta: ${escapeHtml(promo.validUntil || 'Agotar existencias')}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bloque Derecho: Botones de Acción y Controles del Carrusel -->
+        <div class="flex items-center justify-between lg:justify-end gap-3 w-full lg:w-auto pt-2 lg:pt-0 border-t lg:border-t-0 border-slate-800">
+          
+          <!-- Controles de navegación y contador -->
+          <div class="flex items-center gap-1.5 bg-slate-900/90 px-2.5 py-1.5 rounded-xl border border-blue-900/60 text-slate-300">
+            <button onclick="prevTickerPromo()" class="p-1 text-slate-400 hover:text-amber-300 transition" title="Promoción anterior">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <span class="text-[11px] font-bold text-amber-300 px-1">
+              ${currentTickerIndex + 1} / ${activePromos.length}
+            </span>
+            <button onclick="nextTickerPromo()" class="p-1 text-slate-400 hover:text-amber-300 transition" title="Siguiente promoción">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+
+          <!-- Botones de Acción -->
+          <div class="flex items-center gap-2">
+            <a 
+              href="#promociones" 
+              class="inline-flex items-center justify-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-brand-navydark font-heading font-black text-xs sm:text-sm shadow-xl transition transform hover:scale-105"
+            >
+              <span>Ver Ofertas</span>
+              <span>✨</span>
+            </a>
+
+            <a 
+              href="https://wa.me/50664898613?text=${waMsg}" 
+              target="_blank" 
+              class="hidden sm:inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md transition"
+              title="Pedir directamente por WhatsApp"
+            >
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.966.527 1.769.78 2.796.78 3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.767-5.768-5.767z"/></svg>
+              <span>Pedir Ya</span>
+            </a>
+
+            <button onclick="closePromoTicker()" class="p-1.5 text-slate-400 hover:text-rose-400 transition rounded-lg hover:bg-slate-800" title="Cerrar cinta temporalmente">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+          </div>
+
+        </div>
+
       </div>
     `;
   }
@@ -162,7 +257,7 @@ function renderPromoTicker() {
         currentTickerIndex = (currentTickerIndex + 1) % active.length;
         renderPromoTicker();
       }
-    }, 6000);
+    }, 7000);
   }
 }
 
