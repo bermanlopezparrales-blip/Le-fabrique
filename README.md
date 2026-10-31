@@ -4,7 +4,7 @@ Sitio web oficial de **Le Fabrique**.
 - Diseño y confección de uniformes corporativos, industriales, médicos y gastronómicos en Costa Rica.
 - Silueta Slim Fit ejecutiva, tallas estándar industrial y trajes a la medida.
 - Taller ubicado en Santo Domingo de Heredia.
-- WhatsApp de Pedidos y Cotizaciones: `+506 6489-8613 / 8853-9738`.
+- WhatsApp de Pedidos y Cotizaciones: `+506 6489 8613 / 8841 9076`.
 
 ---
 

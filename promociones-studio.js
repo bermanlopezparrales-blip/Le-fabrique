@@ -859,7 +859,7 @@ function updateCanvasBanner() {
   ctx.fillStyle = '#ffffff';
   ctx.font = '700 20px "Inter", sans-serif';
   ctx.textAlign = 'left';
-  ctx.fillText('📱 Pedidos WhatsApp: +506 6489-8613', 55, h - 26);
+  ctx.fillText('📱 WhatsApp: +506 6489 8613 / 8841 9076', 55, h - 26);
 
   ctx.textAlign = 'right';
   ctx.fillStyle = '#fde68a';
