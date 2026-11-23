@@ -1,12 +1,57 @@
 /**
  * Cloudflare Worker para Le Fabrique Costa Rica
- * - Sirve los archivos estáticos (index.html, fotos/*, promociones-studio.js)
- * - Endpoint /api/generate-image: Traduce términos textiles de Costa Rica (filipina, gabacha, scrub, cargo, oxford, polo),
- *   colores y escenarios al inglés técnico y genera fotografía publicitaria fotorrealista con Cloudflare Workers AI (Flux-1-Schnell).
+ * - Base de datos en la nube (Cloudflare KV: env.PROMOS_KV) en /api/promotions para sincronizar
+ *   precios, descuentos, estados y nuevas ofertas en todos los celulares y computadoras en tiempo real.
+ * - Endpoint /api/generate-image: Traduce términos textiles de Costa Rica y genera fotografía
+ *   publicitaria con Cloudflare Workers AI (Flux-1-Schnell).
  */
 
+const INITIAL_CLOUD_PROMOTIONS = [
+  {
+    id: "promo-1",
+    title: "Paquete Corporativo: 10 Camisas Oxford Slim Fit (Precio x Unidad)",
+    category: "ejecutivo",
+    discountBadge: "-15% DESCUENTO",
+    promoPrice: 13600,
+    regularPrice: 16000,
+    badgeText: "🧵 Bordado de Logo Gratis",
+    validUntil: "2026-12-31",
+    description: "Confección nacional en tela Oxford importada de alta durabilidad, corte Slim Fit ejecutivo con bordado computarizado incluido.",
+    imageUrl: "fotos/corporativo/camisa-slimfit-7.jpg",
+    active: true,
+    createdAt: "2026-11-23"
+  },
+  {
+    id: "promo-2",
+    title: "Conjunto Clínico Scrub Antifluido Clororresistente",
+    category: "medico",
+    discountBadge: "OFERTA ESPECIAL",
+    promoPrice: 15900,
+    regularPrice: 21000,
+    badgeText: "✨ Tela Antifluido Certificada",
+    validUntil: "2026-12-20",
+    description: "Comodidad total para jornadas exigentes. Tela antifluidos repelente de líquidos con bolsillos multifuncionales.",
+    imageUrl: "fotos/medico/traje-medico-1.jpg",
+    active: true,
+    createdAt: "2026-11-23"
+  },
+  {
+    id: "promo-3",
+    title: "Filipina Chef Ejecutiva Transpirable de Alta Cocina",
+    category: "gastronomico",
+    discountBadge: "PRECIO DE TEMPORADA",
+    promoPrice: 14500,
+    regularPrice: 19000,
+    badgeText: "🔥 Edición Limitada",
+    validUntil: "2026-12-15",
+    description: "Diseño ergonómico con malla lateral transpirable y botones de alta resistencia al calor y lavados intensivos.",
+    imageUrl: "fotos/gastronomico/filipina-3.jpg",
+    active: true,
+    createdAt: "2026-11-23"
+  }
+];
+
 const CR_TEXTILE_GLOSSARY = [
-  // Prendas específicas de Costa Rica
   { pattern: /\bfilipinas?\s+m[eé]dicas?\b/gi, replacement: "tailored medical clinical scrub tunic top" },
   { pattern: /\bfilipinas?\s+(?:de\s+)?chefs?\b/gi, replacement: "double-breasted long-sleeve professional chef jacket coat" },
   { pattern: /\bfilipinas?\s+ejecutivas?\b/gi, replacement: "luxury double-breasted long-sleeve executive chef coat jacket" },
@@ -29,7 +74,6 @@ const CR_TEXTILE_GLOSSARY = [
   { pattern: /\bpolos?\s+piqu[eé]\b/gi, replacement: "corporate piqué knit polo shirt with collar" },
   { pattern: /\bdelantal(?:es)?\b/gi, replacement: "professional culinary chef canvas apron" },
   { pattern: /\btrajes?\s+sastre\b/gi, replacement: "bespoke tailored executive business suit and blazer" },
-  // Modelos
   { pattern: /\bdoctora\b/gi, replacement: "female Latin American doctor" },
   { pattern: /\bdoctor\b|\bm[eé]dico\b/gi, replacement: "male Latin American doctor" },
   { pattern: /\benfermera\b/gi, replacement: "female Latin American nurse" },
@@ -37,7 +81,6 @@ const CR_TEXTILE_GLOSSARY = [
   { pattern: /\bejecutiva\b|\bdama\b|\bmujer\b/gi, replacement: "professional Latin American corporate businesswoman" },
   { pattern: /\bejecutivo\b|\bcaballero\b|\bhombre\b/gi, replacement: "professional Latin American corporate businessman" },
   { pattern: /\boperario\b|\btrabajador\b|\bingeniero\b/gi, replacement: "professional Latin American industrial engineer worker" },
-  // Colores y acabados
   { pattern: /\bazul\s+marino\b/gi, replacement: "deep navy blue" },
   { pattern: /\bazul\s+celeste\b|\bceleste\b/gi, replacement: "light sky blue" },
   { pattern: /\bazul\b/gi, replacement: "royal blue" },
@@ -75,16 +118,71 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    const corsHeaders = {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type"
+    };
+
     if (request.method === "OPTIONS") {
-      return new Response(null, {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type"
-        }
-      });
+      return new Response(null, { headers: corsHeaders });
     }
 
+    // =====================================================================
+    // 1. ENDPOINT DE SINCRONIZACIÓN EN LA NUBE DE PROMOCIONES (/api/promotions)
+    // =====================================================================
+    if (url.pathname === "/api/promotions") {
+      try {
+        if (request.method === "GET") {
+          let stored = null;
+          if (env.PROMOS_KV) {
+            stored = await env.PROMOS_KV.get("promotions_v2", "json");
+            if (!stored) {
+              stored = INITIAL_CLOUD_PROMOTIONS;
+              await env.PROMOS_KV.put("promotions_v2", JSON.stringify(stored));
+            }
+          } else {
+            stored = INITIAL_CLOUD_PROMOTIONS;
+          }
+          return new Response(JSON.stringify({ success: true, promotions: stored }), {
+            headers: {
+              ...corsHeaders,
+              "Content-Type": "application/json",
+              "Cache-Control": "no-store, no-cache, must-revalidate"
+            }
+          });
+        }
+
+        if (request.method === "POST" || request.method === "PUT") {
+          const body = await request.json();
+          if (!Array.isArray(body.promotions)) {
+            return new Response(JSON.stringify({ success: false, error: "Formato inválido" }), {
+              status: 400,
+              headers: { ...corsHeaders, "Content-Type": "application/json" }
+            });
+          }
+          if (env.PROMOS_KV) {
+            await env.PROMOS_KV.put("promotions_v2", JSON.stringify(body.promotions));
+          }
+          return new Response(JSON.stringify({ success: true, count: body.promotions.length }), {
+            headers: {
+              ...corsHeaders,
+              "Content-Type": "application/json",
+              "Cache-Control": "no-store"
+            }
+          });
+        }
+      } catch (kvErr) {
+        return new Response(JSON.stringify({ success: false, error: kvErr.message }), {
+          status: 500,
+          headers: { ...corsHeaders, "Content-Type": "application/json" }
+        });
+      }
+    }
+
+    // =====================================================================
+    // 2. ENDPOINT DE GENERACIÓN DE IMÁGENES CON IA (/api/generate-image)
+    // =====================================================================
     if (url.pathname === "/api/generate-image") {
       try {
         let userPrompt = url.searchParams.get("prompt") || "";
@@ -123,9 +221,7 @@ export default {
             if (llmRes && llmRes.response && llmRes.response.trim().length > 15) {
               englishPrompt = llmRes.response.trim().replace(/^["']|["']$/g, "");
             }
-          } catch (llmErr) {
-            // Continuar con el glosario técnico directo
-          }
+          } catch (llmErr) {}
 
           const finalFluxPrompt = `${englishPrompt}, commercial high-end corporate uniform catalog photoshoot, professional Latin American model, realistic tailored textile fabric texture, sharp studio lighting, 8k photorealistic`;
 
@@ -142,8 +238,8 @@ export default {
             }
             return new Response(bytes, {
               headers: {
+                ...corsHeaders,
                 "Content-Type": "image/jpeg",
-                "Access-Control-Allow-Origin": "*",
                 "Cache-Control": "no-store",
                 "X-Translated-Prompt": encodeURIComponent(englishPrompt)
               }
@@ -158,18 +254,15 @@ export default {
         const imgResp = await fetch(fallbackUrl);
         return new Response(imgResp.body, {
           headers: {
+            ...corsHeaders,
             "Content-Type": imgResp.headers.get("Content-Type") || "image/jpeg",
-            "Access-Control-Allow-Origin": "*",
             "Cache-Control": "no-store"
           }
         });
       } catch (err) {
         return new Response(JSON.stringify({ error: err.message }), {
           status: 500,
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*"
-          }
+          headers: { ...corsHeaders, "Content-Type": "application/json" }
         });
       }
     }

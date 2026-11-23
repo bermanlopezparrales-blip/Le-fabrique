@@ -2504,11 +2504,11 @@ const LE_FABRIQUE_SESSION_KEY = 'lefabrique_admin_session_auth';
 const DEFAULT_PROMOTIONS = [
   {
     id: 'promo-1',
-    title: 'Paquete Corporativo: 10 Camisas Oxford Slim Fit',
+    title: 'Paquete Corporativo: 10 Camisas Oxford Slim Fit (Precio x Unidad)',
     category: 'ejecutivo',
-    discountBadge: '-20% DESCUENTO',
-    promoPrice: 125000,
-    regularPrice: 156000,
+    discountBadge: '-15% DESCUENTO',
+    promoPrice: 13600,
+    regularPrice: 16000,
     badgeText: '🧵 Bordado de Logo Gratis',
     validUntil: '2026-12-31',
     description: 'Confección nacional en tela Oxford importada de alta durabilidad, corte Slim Fit ejecutivo con bordado computarizado incluido.',
@@ -2555,7 +2555,7 @@ let editingPromoId = null; // ID de la oferta en edición
 let quickEditingPromoId = null; // ID de la oferta en el modal de modificación rápida
 
 // =========================================================================
-// 2. INICIALIZACIÓN
+// 2. INICIALIZACIÓN & SINCRONIZACIÓN EN LA NUBE (CLOUDFLARE KV)
 // =========================================================================
 document.addEventListener('DOMContentLoaded', () => {
   initPromotionsDatabase();
@@ -2566,27 +2566,26 @@ document.addEventListener('DOMContentLoaded', () => {
   populateRealPhotosSelector();
 });
 
-// Cargar o sembrar base de datos local
-function initPromotionsDatabase() {
+// Cargar base de datos y sincronizar desde el servidor Cloudflare KV (/api/promotions)
+async function initPromotionsDatabase() {
   try {
     const stored = localStorage.getItem(LE_FABRIQUE_STORAGE_KEY);
     if (!stored) {
-      // Migrar promociones personalizadas creadas por el usuario en v1 si existen
-      const oldV1 = localStorage.getItem('lefabrique_promotions_db_v1');
-      let customFromV1 = [];
-      if (oldV1) {
-        try {
-          const parsedOld = JSON.parse(oldV1);
-          customFromV1 = parsedOld.filter(p => p.id && !['promo-1', 'promo-2', 'promo-3'].includes(p.id));
-        } catch (e) {}
-      }
-      promotionsState = [...customFromV1, ...DEFAULT_PROMOTIONS];
+      promotionsState = [...DEFAULT_PROMOTIONS];
       localStorage.setItem(LE_FABRIQUE_STORAGE_KEY, JSON.stringify(promotionsState));
     } else {
       promotionsState = JSON.parse(stored);
+      // Si tenía el precio viejo por defecto (125000), actualizarlo al nuevo valor
+      const p1 = promotionsState.find(p => p.id === 'promo-1');
+      if (p1 && p1.promoPrice === 125000 && p1.regularPrice === 156000) {
+        p1.title = DEFAULT_PROMOTIONS[0].title;
+        p1.discountBadge = DEFAULT_PROMOTIONS[0].discountBadge;
+        p1.promoPrice = DEFAULT_PROMOTIONS[0].promoPrice;
+        p1.regularPrice = DEFAULT_PROMOTIONS[0].regularPrice;
+      }
     }
   } catch (err) {
-    console.error('Error cargando promociones:', err);
+    console.error('Error cargando promociones locales:', err);
     promotionsState = [...DEFAULT_PROMOTIONS];
   }
 
@@ -2597,13 +2596,46 @@ function initPromotionsDatabase() {
       authorizedEmail: 'bermanlopezparrales@gmail.com'
     }));
   }
+
+  // Consultar el servidor en la nube (/api/promotions) para que celulares y computadoras vean exactamente lo mismo
+  try {
+    const resp = await fetch('/api/promotions?t=' + Date.now(), {
+      headers: { 'Cache-Control': 'no-cache' }
+    });
+    if (resp.ok) {
+      const data = await resp.json();
+      if (data && data.success && Array.isArray(data.promotions) && data.promotions.length > 0) {
+        promotionsState = data.promotions;
+        localStorage.setItem(LE_FABRIQUE_STORAGE_KEY, JSON.stringify(promotionsState));
+        renderPromoTicker();
+        renderPublicPromos();
+        renderAdminPromoList();
+      }
+    }
+  } catch (cloudErr) {
+    // En modo archivo local (file://) usa localStorage
+  }
 }
 
-function savePromotionsDatabase() {
+async function savePromotionsDatabase() {
   localStorage.setItem(LE_FABRIQUE_STORAGE_KEY, JSON.stringify(promotionsState));
   renderPromoTicker();
   renderPublicPromos();
   renderAdminPromoList();
+
+  // Guardar inmediatamente en la base de datos en la nube de Cloudflare (PROMOS_KV)
+  try {
+    const resp = await fetch('/api/promotions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ promotions: promotionsState })
+    });
+    if (resp.ok) {
+      console.log('Promociones sincronizadas en el servidor Cloudflare KV.');
+    }
+  } catch (err) {
+    console.warn('No se pudo sincronizar con la nube en este momento:', err);
+  }
 }
 
 // Poblar selector de las 59 fotos reales del catálogo en el Estudio
