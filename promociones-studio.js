@@ -65,6 +65,8 @@ let promotionsState = [];
 let currentTickerIndex = 0;
 let tickerInterval = null;
 let currentBannerImage = null; // Image object para el canvas
+let editingPromoId = null; // ID de la oferta en edición
+let quickEditingPromoId = null; // ID de la oferta en el modal de modificación rápida
 
 // =========================================================================
 // 2. INICIALIZACIÓN
@@ -1110,6 +1112,29 @@ function saveCanvasAsPromotion() {
   const validUntil = document.getElementById('bannerValidUntil')?.value || '2026-12-31';
 
   const dataUrl = canvas.toDataURL('image/jpeg', 0.88);
+  const baseImgSrc = (currentBannerImage && currentBannerImage.src) ? currentBannerImage.src : '';
+
+  if (editingPromoId) {
+    const existing = promotionsState.find(p => p.id === editingPromoId);
+    if (existing) {
+      existing.title = title;
+      existing.category = category;
+      existing.discountBadge = badge;
+      existing.promoPrice = promoPrice;
+      existing.regularPrice = regularPrice;
+      existing.badgeText = extraBadge;
+      existing.validUntil = validUntil;
+      existing.imageUrl = dataUrl;
+      if (baseImgSrc && !baseImgSrc.startsWith('data:')) {
+        existing.baseImageUrl = baseImgSrc;
+      }
+      cancelCanvasEditMode();
+      savePromotionsDatabase();
+      showStudioToast('¡Oferta modificada y actualizada en la página web! ✏️🎉');
+      switchStudioTab('catalogo');
+      return;
+    }
+  }
 
   const newPromo = {
     id: 'promo-' + Date.now(),
@@ -1122,6 +1147,7 @@ function saveCanvasAsPromotion() {
     validUntil: validUntil,
     description: `Aprovecha esta oferta de temporada en ${title}. Calidad y confección garantizada por Le Fabrique Costa Rica.`,
     imageUrl: dataUrl,
+    baseImageUrl: baseImgSrc,
     active: true,
     createdAt: new Date().toISOString().split('T')[0]
   };
@@ -1342,7 +1368,7 @@ function closeMetaSuccessModal() {
 }
 
 // =========================================================================
-// 11. GESTIÓN DEL CATÁLOGO DE OFERTAS EN EL PANEL ADMIN
+// 11. GESTIÓN Y MODIFICACIÓN DEL CATÁLOGO DE OFERTAS EN EL PANEL ADMIN
 // =========================================================================
 function renderAdminPromoList() {
   const container = document.getElementById('adminPromoTableBody');
@@ -1362,41 +1388,72 @@ function renderAdminPromoList() {
   container.innerHTML = promotionsState.map((promo) => {
     const promoFmt = new Intl.NumberFormat('es-CR').format(promo.promoPrice);
     const regFmt = new Intl.NumberFormat('es-CR').format(promo.regularPrice);
+    const ahorro = Math.max(0, (promo.regularPrice || 0) - (promo.promoPrice || 0));
+    const ahorroFmt = new Intl.NumberFormat('es-CR').format(ahorro);
+    const pct = (promo.regularPrice > 0 && ahorro > 0)
+      ? Math.round((ahorro / promo.regularPrice) * 100)
+      : 0;
 
     return `
       <tr class="border-b border-slate-800 hover:bg-slate-800/50 transition">
         <td class="py-3 px-4">
-          <img src="${escapeHtml(promo.imageUrl)}" class="w-14 h-14 rounded-lg object-cover border border-slate-700" onerror="this.src='fotos/corporativo/camisa-slimfit-7.jpg'" />
+          <img src="${escapeHtml(promo.imageUrl)}" class="w-16 h-16 rounded-xl object-cover border border-slate-700 shadow" onerror="this.src='fotos/corporativo/camisa-slimfit-7.jpg'" />
         </td>
         <td class="py-3 px-4 font-semibold text-white">
-          <div class="text-sm font-bold">${escapeHtml(promo.title)}</div>
-          <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
-            ${escapeHtml(promo.discountBadge || 'OFERTA')}
-          </span>
+          <div class="text-sm font-bold leading-snug">${escapeHtml(promo.title)}</div>
+          <div class="flex flex-wrap items-center gap-1.5 mt-1">
+            <span class="inline-block px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+              ${escapeHtml(promo.discountBadge || 'OFERTA')}
+            </span>
+            <span class="inline-block px-2 py-0.5 rounded text-[10px] font-semibold bg-blue-900/50 text-slate-300 border border-blue-800/60">
+              ${escapeHtml(promo.badgeText || 'Confección Nacional')}
+            </span>
+          </div>
+          <div class="text-[10px] text-slate-400 mt-1">
+            ⏱️ Vigencia: <strong class="text-slate-300">${escapeHtml(promo.validUntil || 'Activa')}</strong>
+          </div>
         </td>
-        <td class="py-3 px-4 text-xs capitalize text-slate-300">
+        <td class="py-3 px-4 text-xs capitalize text-slate-300 font-semibold">
           ${escapeHtml(promo.category || 'General')}
         </td>
         <td class="py-3 px-4">
-          <div class="text-sm font-extrabold text-amber-300">₡${promoFmt}</div>
+          <div class="text-base font-black text-amber-300">₡${promoFmt}</div>
           <div class="text-xs text-slate-400 line-through">₡${regFmt}</div>
+          ${pct > 0 ? `<div class="text-[10px] font-bold text-emerald-400 mt-0.5">Ahorro: ₡${ahorroFmt} (-${pct}%)</div>` : ''}
         </td>
         <td class="py-3 px-4">
           <button 
             onclick="togglePromoStatus('${promo.id}')" 
-            class="px-2.5 py-1 rounded-full text-xs font-bold transition ${promo.active ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : 'bg-slate-700 text-slate-400 border border-slate-600'}"
+            title="Clic para cambiar entre Activa e Inactiva"
+            class="px-3 py-1.5 rounded-full text-xs font-bold transition shadow-sm flex items-center gap-1.5 ${promo.active ? 'bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40' : 'bg-slate-800 hover:bg-slate-700 text-slate-400 border border-slate-600'}"
           >
-            ${promo.active ? '🟢 Activa' : '⚪ Inactiva'}
+            <span>${promo.active ? '🟢 Activa' : '⚪ Inactiva'}</span>
           </button>
         </td>
         <td class="py-3 px-4 text-right">
-          <button 
-            onclick="deletePromoItem('${promo.id}')" 
-            class="p-2 text-rose-400 hover:text-rose-300 hover:bg-rose-950/40 rounded-lg transition" 
-            title="Eliminar Promoción"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
-          </button>
+          <div class="flex items-center justify-end gap-1.5 flex-wrap">
+            <button 
+              onclick="openEditPromoModal('${promo.id}')" 
+              class="px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-brand-navydark font-heading font-black text-xs rounded-lg shadow transition flex items-center gap-1" 
+              title="Modificar Precio, Descuento, Vigencia y Estado"
+            >
+              <span>✏️ Modificar</span>
+            </button>
+            <button 
+              onclick="openPromoInCanvasEditor('${promo.id}')" 
+              class="px-2.5 py-1.5 bg-blue-900/60 hover:bg-blue-800 text-blue-200 font-bold text-xs rounded-lg border border-blue-700/60 transition flex items-center gap-1" 
+              title="Abrir en el Lienzo del Banner para rediseñar imagen"
+            >
+              <span>🎨 Lienzo</span>
+            </button>
+            <button 
+              onclick="deletePromoItem('${promo.id}')" 
+              class="p-1.5 text-rose-400 hover:text-rose-300 hover:bg-rose-950/50 rounded-lg transition border border-transparent hover:border-rose-800/60" 
+              title="Eliminar Promoción"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+            </button>
+          </div>
         </td>
       </tr>
     `;
@@ -1408,7 +1465,7 @@ function togglePromoStatus(id) {
   if (!promo) return;
   promo.active = !promo.active;
   savePromotionsDatabase();
-  showStudioToast(`Promoción marcada como ${promo.active ? 'ACTIVA' : 'INACTIVA'}`);
+  showStudioToast(`Oferta "${promo.title}" ahora está ${promo.active ? '🟢 ACTIVA en la página' : '⚪ INACTIVA (oculta)'}`);
 }
 
 function deletePromoItem(id) {
@@ -1416,6 +1473,216 @@ function deletePromoItem(id) {
   promotionsState = promotionsState.filter(p => p.id !== id);
   savePromotionsDatabase();
   showStudioToast('Promoción eliminada');
+}
+
+// =========================================================================
+// 11.B MODAL DE MODIFICACIÓN DIRECTA DE OFERTA (PRECIO, DESCUENTO, ESTADO)
+// =========================================================================
+function openEditPromoModal(promoId) {
+  const promo = promotionsState.find(p => p.id === promoId);
+  if (!promo) return;
+
+  quickEditingPromoId = promoId;
+
+  // Poblar selector de fotos reales dentro del modal de edición
+  const photoSelect = document.getElementById('editPromoPhotoSelect');
+  if (photoSelect && typeof catalogGalleries !== 'undefined') {
+    let opts = '<option value="">-- Mantener imagen actual de la oferta --</option>';
+    Object.keys(catalogGalleries).forEach(catKey => {
+      const grp = catalogGalleries[catKey];
+      opts += `<optgroup label="${escapeHtml(grp.title)}">`;
+      grp.photos.forEach(ph => {
+        if (ph.src && ph.src.startsWith('fotos/')) {
+          const selected = (promo.imageUrl === ph.src) ? 'selected' : '';
+          opts += `<option value="${escapeHtml(ph.src)}" ${selected}>${escapeHtml(ph.title)}</option>`;
+        }
+      });
+      opts += '</optgroup>';
+    });
+    photoSelect.innerHTML = opts;
+  }
+
+  // Llenar campos con los valores actuales de la oferta
+  const previewImg = document.getElementById('editPromoPreviewImg');
+  if (previewImg) previewImg.src = promo.imageUrl;
+
+  if (document.getElementById('editPromoTitle')) document.getElementById('editPromoTitle').value = promo.title || '';
+  if (document.getElementById('editPromoCategory')) document.getElementById('editPromoCategory').value = promo.category || 'ejecutivo';
+  if (document.getElementById('editPromoStatus')) document.getElementById('editPromoStatus').value = promo.active ? 'true' : 'false';
+  if (document.getElementById('editPromoPrice')) document.getElementById('editPromoPrice').value = promo.promoPrice || 0;
+  if (document.getElementById('editPromoRegularPrice')) document.getElementById('editPromoRegularPrice').value = promo.regularPrice || 0;
+  if (document.getElementById('editPromoDiscountBadge')) document.getElementById('editPromoDiscountBadge').value = promo.discountBadge || '';
+  if (document.getElementById('editPromoBadgeText')) document.getElementById('editPromoBadgeText').value = promo.badgeText || '';
+  if (document.getElementById('editPromoValidUntil')) document.getElementById('editPromoValidUntil').value = promo.validUntil || '2026-12-31';
+  if (document.getElementById('editPromoDescription')) document.getElementById('editPromoDescription').value = promo.description || '';
+
+  recalcEditPromoDiscount();
+
+  const modal = document.getElementById('editPromoModal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  }
+}
+
+function closeEditPromoModal() {
+  quickEditingPromoId = null;
+  const modal = document.getElementById('editPromoModal');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+}
+
+function previewEditModalPhoto(newSrc) {
+  if (!newSrc) return;
+  const previewImg = document.getElementById('editPromoPreviewImg');
+  if (previewImg) previewImg.src = newSrc;
+}
+
+function recalcEditPromoDiscount() {
+  const promoPrice = parseInt(document.getElementById('editPromoPrice')?.value || '0', 10);
+  const regPrice = parseInt(document.getElementById('editPromoRegularPrice')?.value || '0', 10);
+  const summaryEl = document.getElementById('editPromoCalcSummary');
+  if (!summaryEl) return;
+
+  if (regPrice > 0 && promoPrice > 0 && regPrice > promoPrice) {
+    const ahorro = regPrice - promoPrice;
+    const pct = Math.round((ahorro / regPrice) * 100);
+    const ahorroFmt = new Intl.NumberFormat('es-CR').format(ahorro);
+    summaryEl.innerHTML = `
+      <div class="flex items-center justify-between gap-2 flex-wrap">
+        <span>💰 Ahorro para el cliente: <strong class="text-emerald-300">₡${ahorroFmt} (-${pct}% de descuento)</strong></span>
+        <button type="button" onclick="applyCalculatedDiscountBadge(${pct})" class="px-2.5 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500 hover:text-brand-navydark text-amber-300 font-bold text-[11px] border border-amber-500/40 transition">
+          ⚡ Usar "-${pct}% DESCUENTO" en Insignia
+        </button>
+      </div>
+    `;
+  } else {
+    summaryEl.innerHTML = `<span class="text-slate-400">Ingresa un precio regular mayor al precio de oferta para calcular el % de descuento automático.</span>`;
+  }
+}
+
+function applyCalculatedDiscountBadge(pct) {
+  const badgeInput = document.getElementById('editPromoDiscountBadge');
+  if (badgeInput && pct > 0) {
+    badgeInput.value = `-${pct}% DESCUENTO`;
+    showStudioToast(`Insignia actualizada a "-${pct}% DESCUENTO" 🏷️`);
+  }
+}
+
+function saveEditedPromotion(e) {
+  if (e) e.preventDefault();
+  if (!quickEditingPromoId) return;
+
+  const promo = promotionsState.find(p => p.id === quickEditingPromoId);
+  if (!promo) return;
+
+  const newTitle = (document.getElementById('editPromoTitle')?.value || promo.title).trim();
+  const newCat = document.getElementById('editPromoCategory')?.value || promo.category;
+  const newActive = document.getElementById('editPromoStatus')?.value === 'true';
+  const newPromoPrice = parseInt(document.getElementById('editPromoPrice')?.value || promo.promoPrice, 10);
+  const newRegPrice = parseInt(document.getElementById('editPromoRegularPrice')?.value || promo.regularPrice, 10);
+  const newDiscountBadge = (document.getElementById('editPromoDiscountBadge')?.value || promo.discountBadge).trim();
+  const newBadgeText = (document.getElementById('editPromoBadgeText')?.value || promo.badgeText).trim();
+  const newValidUntil = document.getElementById('editPromoValidUntil')?.value || promo.validUntil;
+  const newDesc = (document.getElementById('editPromoDescription')?.value || promo.description).trim();
+  const selectedPhoto = document.getElementById('editPromoPhotoSelect')?.value || '';
+  const shouldStampBanner = document.getElementById('editPromoStampBannerCheckbox')?.checked || false;
+
+  promo.title = newTitle;
+  promo.category = newCat;
+  promo.active = newActive;
+  promo.promoPrice = isNaN(newPromoPrice) ? promo.promoPrice : newPromoPrice;
+  promo.regularPrice = isNaN(newRegPrice) ? promo.regularPrice : newRegPrice;
+  promo.discountBadge = newDiscountBadge;
+  promo.badgeText = newBadgeText;
+  promo.validUntil = newValidUntil;
+  promo.description = newDesc;
+
+  if (selectedPhoto) {
+    promo.imageUrl = selectedPhoto;
+    promo.baseImageUrl = selectedPhoto;
+  }
+
+  // Si el usuario marcó "Estampar nuevos precios dentro de la imagen del banner"
+  if (shouldStampBanner) {
+    const sourceImgUrl = selectedPhoto || promo.baseImageUrl || promo.imageUrl;
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => {
+      currentBannerImage = img;
+      if (document.getElementById('bannerTitleInput')) document.getElementById('bannerTitleInput').value = promo.title;
+      if (document.getElementById('bannerCategorySelect')) document.getElementById('bannerCategorySelect').value = promo.category;
+      if (document.getElementById('bannerBadgeInput')) document.getElementById('bannerBadgeInput').value = promo.discountBadge;
+      if (document.getElementById('bannerPromoPrice')) document.getElementById('bannerPromoPrice').value = promo.promoPrice;
+      if (document.getElementById('bannerRegularPrice')) document.getElementById('bannerRegularPrice').value = promo.regularPrice;
+      if (document.getElementById('bannerExtraBadge')) document.getElementById('bannerExtraBadge').value = promo.badgeText;
+      if (document.getElementById('bannerValidUntil')) document.getElementById('bannerValidUntil').value = promo.validUntil;
+      updateCanvasBanner();
+      const canvas = document.getElementById('promoStudioCanvas');
+      if (canvas) {
+        promo.imageUrl = canvas.toDataURL('image/jpeg', 0.88);
+      }
+      savePromotionsDatabase();
+      closeEditPromoModal();
+      showStudioToast('¡Oferta y arte del banner actualizados con éxito! ✅');
+    };
+    img.onerror = () => {
+      savePromotionsDatabase();
+      closeEditPromoModal();
+      showStudioToast('¡Oferta modificada con éxito! ✅');
+    };
+    img.src = sourceImgUrl;
+    return;
+  }
+
+  savePromotionsDatabase();
+  closeEditPromoModal();
+  showStudioToast('¡Oferta modificada y actualizada en la página web! ✅');
+}
+
+// Cargar una oferta existente en el Lienzo del Banner (Pestaña 1) para rediseñarla
+function openPromoInCanvasEditor(promoId) {
+  const promo = promotionsState.find(p => p.id === promoId);
+  if (!promo) return;
+
+  editingPromoId = promoId;
+
+  if (document.getElementById('bannerTitleInput')) document.getElementById('bannerTitleInput').value = promo.title || '';
+  if (document.getElementById('bannerCategorySelect')) document.getElementById('bannerCategorySelect').value = promo.category || 'ejecutivo';
+  if (document.getElementById('bannerBadgeInput')) document.getElementById('bannerBadgeInput').value = promo.discountBadge || '';
+  if (document.getElementById('bannerPromoPrice')) document.getElementById('bannerPromoPrice').value = promo.promoPrice || 0;
+  if (document.getElementById('bannerRegularPrice')) document.getElementById('bannerRegularPrice').value = promo.regularPrice || 0;
+  if (document.getElementById('bannerExtraBadge')) document.getElementById('bannerExtraBadge').value = promo.badgeText || '';
+  if (document.getElementById('bannerValidUntil')) document.getElementById('bannerValidUntil').value = promo.validUntil || '2026-12-31';
+
+  const editBar = document.getElementById('canvasEditModeBar');
+  const editBarTitle = document.getElementById('canvasEditModeTitle');
+  const saveBtnText = document.getElementById('btnSaveCanvasText');
+  if (editBar) editBar.classList.remove('hidden');
+  if (editBarTitle) editBarTitle.textContent = promo.title;
+  if (saveBtnText) saveBtnText.textContent = 'Guardar Cambios en esta Oferta';
+
+  const imgSource = promo.baseImageUrl || promo.imageUrl;
+  const img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.onload = () => {
+    currentBannerImage = img;
+    updateCanvasBanner();
+  };
+  img.src = imgSource;
+
+  switchStudioTab('creador');
+  showStudioToast(`Editando en lienzo: "${promo.title}" 🎨`);
+}
+
+function cancelCanvasEditMode() {
+  editingPromoId = null;
+  const editBar = document.getElementById('canvasEditModeBar');
+  const saveBtnText = document.getElementById('btnSaveCanvasText');
+  if (editBar) editBar.classList.add('hidden');
+  if (saveBtnText) saveBtnText.textContent = 'Activar en la Página Web';
 }
 
 // =========================================================================
