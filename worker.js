@@ -99,7 +99,7 @@ export default {
           // 2. Generar imagen fotorrealista con Flux-1-Schnell en Cloudflare Workers AI
           const fluxRes = await env.AI.run("@cf/black-forest-labs/flux-1-schnell", {
             prompt: `${englishPrompt}, professional commercial uniform catalog photography, Latin American model, sharp textile stitching detail, high-end studio lighting, 8k photorealistic`,
-            num_steps: 8
+            steps: 8
           });
 
           if (fluxRes && fluxRes.image) {
