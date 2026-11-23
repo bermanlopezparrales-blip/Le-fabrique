@@ -123,7 +123,7 @@
   <!-- ================================================================= -->
   
   <!-- ================================================================= -->
-  <!-- 1.B CINTA PROMOCIONAL DINÁMICA DE TEMPORADA -->
+  <!-- 1.B GRAN VITRINA PROMOCIONAL DINÁMICA DE TEMPORADA -->
   <!-- ================================================================= -->
   <aside id="promoTickerContainer" aria-label="Gran vitrina de promociones de temporada" class="bg-gradient-to-r from-brand-navydark via-[#0d1d36] to-brand-navydark text-white border-b-2 border-amber-500/60 shadow-2xl relative z-30 transition-all duration-300">
     <div class="w-full px-4 sm:px-8 lg:px-12 xl:px-16 py-3 sm:py-4">
@@ -161,7 +161,7 @@
         </a>
 
         <!-- Enlaces de Navegación -->
-        <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-200">
+        <nav class="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-200">
           <a href="#inicio" class="hover:text-amber-400 transition">Inicio</a>
           <a href="#promociones" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-500/25 via-amber-500/15 to-transparent text-amber-300 border border-amber-400/50 hover:bg-amber-500 hover:text-brand-navydark font-extrabold text-sm shadow-md transition transform hover:scale-105">
             <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
@@ -270,17 +270,17 @@
           <div class="grid grid-cols-2 gap-5 w-full">
             
             <div class="space-y-4">
-              <!-- 1. Línea Ejecutiva: Muchacha con traje notorio rojo/amarillo (Solicitado por el cliente) -->
-              <div class="rounded-2xl overflow-hidden shadow-2xl border-2 border-amber-500/40 card-zoom relative bg-brand-navydark">
-                <img src="https://images.unsplash.com/photo-1588516903720-8ceb67f9ef84?auto=format&fit=crop&w=600&q=80" alt="Ejecutiva en traje formal sastre notorio" class="w-full h-48 sm:h-56 xl:h-64 object-cover object-top transition duration-500 main-img" />
+              <!-- 1. Línea Ejecutiva: Pareja en camisas corporativas Slim Fit -->
+              <div onclick="openCatalogModal('corporativo')" title="Clic para abrir carrusel de fotos reales" class="cursor-pointer group rounded-2xl overflow-hidden shadow-2xl border-2 border-amber-500/40 hover:border-amber-400 card-zoom relative bg-brand-navydark">
+                <img src="fotos/corporativo/camisa-slimfit-7.jpg" alt="Dúo corporativo en camisas ejecutivas Slim Fit" class="w-full h-48 sm:h-56 xl:h-64 object-cover object-top transition duration-500 main-img" />
                 <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-brand-navydark via-brand-navydark/70 to-transparent p-3 text-center">
                   <span class="text-[11px] font-bold text-amber-400 uppercase tracking-wider">Línea Ejecutiva</span>
                 </div>
               </div>
               
-              <!-- 2. Línea Industrial: Operario con uniforme industrial de alta visibilidad -->
-              <div class="rounded-2xl overflow-hidden shadow-2xl border-2 border-amber-500/40 card-zoom relative bg-brand-navydark">
-                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80" alt="Trabajador industrial en uniforme de seguridad" class="w-full h-48 sm:h-56 xl:h-64 object-cover transition duration-500 main-img" />
+              <!-- 2. Línea Industrial: Pantalones Cargo y Faena -->
+              <div onclick="openCatalogModal('industrial')" title="Clic para abrir carrusel de fotos reales" class="cursor-pointer group rounded-2xl overflow-hidden shadow-2xl border-2 border-amber-500/40 hover:border-amber-400 card-zoom relative bg-brand-navydark">
+                <img src="fotos/industrial/cargo-2.jpg" alt="Pantalones Cargo en Dril Pesado Industrial" class="w-full h-48 sm:h-56 xl:h-64 object-cover object-top transition duration-500 main-img" />
                 <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-brand-navydark via-brand-navydark/70 to-transparent p-3 text-center">
                   <span class="text-[11px] font-bold text-amber-400 uppercase tracking-wider">Línea Industrial</span>
                 </div>
@@ -288,17 +288,17 @@
             </div>
 
             <div class="space-y-4 pt-6">
-              <!-- 3. Línea Médica: Doctora/enfermera con scrubs y gabacha (Sin agujas/vacunas, solicitado por el cliente) -->
-              <div class="rounded-2xl overflow-hidden shadow-2xl border-2 border-amber-500/40 card-zoom relative bg-brand-navydark">
-                <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80" alt="Doctora vistiendo scrubs clínicos y bata médica" class="w-full h-48 sm:h-56 xl:h-64 object-cover transition duration-500 main-img" />
+              <!-- 3. Línea Médica: Scrubs y batas clínicas -->
+              <div onclick="openCatalogModal('medico')" title="Clic para abrir carrusel de fotos reales" class="cursor-pointer group rounded-2xl overflow-hidden shadow-2xl border-2 border-amber-500/40 hover:border-amber-400 card-zoom relative bg-brand-navydark">
+                <img src="fotos/medico/traje-medico-1.jpg" alt="Conjunto scrub clínico anatómico con ribetes" class="w-full h-48 sm:h-56 xl:h-64 object-cover object-top transition duration-500 main-img" />
                 <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-brand-navydark via-brand-navydark/70 to-transparent p-3 text-center">
                   <span class="text-[11px] font-bold text-amber-400 uppercase tracking-wider">Línea Salud & Scrubs</span>
                 </div>
               </div>
               
-              <!-- 4. Línea Chef & Cocina: Filipina y delantal más de cerca (Solicitado por el cliente) -->
-              <div class="rounded-2xl overflow-hidden shadow-2xl border-2 border-amber-500/40 card-zoom relative bg-brand-navydark">
-                <img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?auto=format&fit=crop&w=600&q=80" alt="Chef profesional en primer plano con filipina ejecutiva" class="w-full h-48 sm:h-56 xl:h-64 object-cover object-top transition duration-500 main-img" />
+              <!-- 4. Línea Chef & Cocina: Filipinas ejecutivas -->
+              <div onclick="openCatalogModal('gastronomico')" title="Clic para abrir carrusel de fotos reales" class="cursor-pointer group rounded-2xl overflow-hidden shadow-2xl border-2 border-amber-500/40 hover:border-amber-400 card-zoom relative bg-brand-navydark">
+                <img src="fotos/gastronomico/filipina-3.jpg" alt="Brigada de Chef en filipina ejecutiva y pantalón de cocina" class="w-full h-48 sm:h-56 xl:h-64 object-cover object-top transition duration-500 main-img" />
                 <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-brand-navydark via-brand-navydark/70 to-transparent p-3 text-center">
                   <span class="text-[11px] font-bold text-amber-400 uppercase tracking-wider">Línea Chef & Filipinas</span>
                 </div>
@@ -343,7 +343,6 @@
   <!-- 4.B SECCIÓN DE OFERTAS Y PROMOCIONES DE TEMPORADA -->
   <!-- ================================================================= -->
   <section id="promociones" class="py-20 bg-gradient-to-b from-slate-100 via-white to-slate-50 border-b border-slate-200 relative overflow-hidden">
-    <!-- Adornos visuales de fondo -->
     <div class="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-900/5 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -423,8 +422,8 @@
         <!-- CARD 1: CORPORATIVO & SLIM FIT -->
         <div class="product-item corporativo bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl transition duration-300 flex flex-col justify-between card-zoom">
           <div>
-            <div class="h-64 overflow-hidden relative bg-brand-navydark">
-              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="Ejecutivo con camisa formal Slim Fit" class="w-full h-full object-cover object-top transition duration-500 main-img" />
+            <div onclick="openCatalogModal('corporativo')" title="Clic para ver galería y carrusel de fotos" class="h-64 overflow-hidden relative bg-brand-navydark cursor-pointer group">
+              <img src="fotos/corporativo/camisa-slimfit-7.jpg" alt="Dúo ejecutivo con camisas formales Slim Fit" class="w-full h-full object-cover object-top transition duration-500 main-img" />
               <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark/80 via-transparent to-transparent"></div>
               <span class="absolute top-4 left-4 bg-brand-navy text-white text-xs font-bold px-3 py-1 rounded-full shadow border border-amber-500/30">Tallas Slim Fit</span>
               <div class="absolute bottom-4 left-4 text-white">
@@ -459,7 +458,7 @@
           <div class="p-6 pt-4 space-y-2">
             <!-- Botón de Catálogo Emergente -->
             <button onclick="openCatalogModal('corporativo')" class="w-full py-2.5 px-4 text-center text-xs font-bold rounded-xl bg-amber-500/10 hover:bg-amber-500 hover:text-brand-navydark text-amber-900 border border-amber-400 transition flex items-center justify-center gap-2">
-              <span>🖼️ Ver Catálogo Completo (12 Fotos)</span>
+              <span>🖼️ Ver Catálogo Completo (10 Fotos Reales)</span>
             </button>
             <a href="https://wa.me/50664898613?text=Hola%20Le%20Fabrique,%20quisiera%20cotizar%20la%20L%C3%ADnea%20Corporativa%20Slim%20Fit" target="_blank" class="block w-full py-2.5 text-center text-xs font-bold rounded-xl bg-brand-navy hover:bg-brand-navydark text-white transition shadow">
               Cotizar Línea Corporativa &rarr;
@@ -470,8 +469,8 @@
         <!-- CARD 2: INDUSTRIAL & OPERATIVO -->
         <div class="product-item industrial bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl transition duration-300 flex flex-col justify-between card-zoom">
           <div>
-            <div class="h-64 overflow-hidden relative bg-brand-navydark">
-              <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Ingeniero en uniforme industrial" class="w-full h-full object-cover object-top transition duration-500 main-img" />
+            <div onclick="openCatalogModal('industrial')" title="Clic para ver galería y carrusel de fotos" class="h-64 overflow-hidden relative bg-brand-navydark cursor-pointer group">
+              <img src="fotos/industrial/cargo-2.jpg" alt="Pantalones Cargo en Dril Pesado Industrial" class="w-full h-full object-cover object-top transition duration-500 main-img" />
               <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark/80 via-transparent to-transparent"></div>
               <span class="absolute top-4 left-4 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Tallas Estándar Industrial</span>
               <div class="absolute bottom-4 left-4 text-white">
@@ -505,7 +504,7 @@
           
           <div class="p-6 pt-4 space-y-2">
             <button onclick="openCatalogModal('industrial')" class="w-full py-2.5 px-4 text-center text-xs font-bold rounded-xl bg-amber-500/10 hover:bg-amber-500 hover:text-brand-navydark text-amber-900 border border-amber-400 transition flex items-center justify-center gap-2">
-              <span>🖼️ Ver Catálogo Completo (12 Fotos)</span>
+              <span>🖼️ Ver Catálogo Completo (9 Fotos Reales)</span>
             </button>
             <a href="https://wa.me/50664898613?text=Hola%20Le%20Fabrique,%20quisiera%20cotizar%20la%20L%C3%ADnea%20Industrial%20y%20Operativa" target="_blank" class="block w-full py-2.5 text-center text-xs font-bold rounded-xl bg-brand-navy hover:bg-brand-navydark text-white transition shadow">
               Cotizar Línea Industrial &rarr;
@@ -516,8 +515,8 @@
         <!-- CARD 3: MÉDICO & SALUD -->
         <div class="product-item medico bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl transition duration-300 flex flex-col justify-between card-zoom">
           <div>
-            <div class="h-64 overflow-hidden relative bg-brand-navydark">
-              <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80" alt="Médico en uniforme scrub clínico" class="w-full h-full object-cover object-top transition duration-500 main-img" />
+            <div onclick="openCatalogModal('medico')" title="Clic para ver galería y carrusel de fotos" class="h-64 overflow-hidden relative bg-brand-navydark cursor-pointer group">
+              <img src="fotos/medico/traje-medico-1.jpg" alt="Conjunto scrub clínico anatómico Le Fabrique" class="w-full h-full object-cover object-top transition duration-500 main-img" />
               <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark/80 via-transparent to-transparent"></div>
               <span class="absolute top-4 left-4 bg-teal-700 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Tallas Clínicas</span>
               <div class="absolute bottom-4 left-4 text-white">
@@ -550,7 +549,7 @@
           
           <div class="p-6 pt-4 space-y-2">
             <button onclick="openCatalogModal('medico')" class="w-full py-2.5 px-4 text-center text-xs font-bold rounded-xl bg-amber-500/10 hover:bg-amber-500 hover:text-brand-navydark text-amber-900 border border-amber-400 transition flex items-center justify-center gap-2">
-              <span>🖼️ Ver Catálogo Completo (12 Fotos)</span>
+              <span>🖼️ Ver Catálogo Completo (12 Fotos Reales)</span>
             </button>
             <a href="https://wa.me/50664898613?text=Hola%20Le%20Fabrique,%20quisiera%20cotizar%20la%20L%C3%ADnea%20M%C3%A9dica%20y%20Scrubs" target="_blank" class="block w-full py-2.5 text-center text-xs font-bold rounded-xl bg-brand-navy hover:bg-brand-navydark text-white transition shadow">
               Cotizar Línea Médica &rarr;
@@ -561,8 +560,8 @@
         <!-- CARD 4: GASTRONOMÍA & CHEF -->
         <div class="product-item gastronomico bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl transition duration-300 flex flex-col justify-between card-zoom">
           <div>
-            <div class="h-64 overflow-hidden relative bg-brand-navydark">
-              <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=800&q=80" alt="Chef profesional vistiendo filipina y delantal" class="w-full h-full object-cover object-top transition duration-500 main-img" />
+            <div onclick="openCatalogModal('gastronomico')" title="Clic para ver galería y carrusel de fotos" class="h-64 overflow-hidden relative bg-brand-navydark cursor-pointer group">
+              <img src="fotos/gastronomico/filipina-3.jpg" alt="Brigada de Chef en filipina ejecutiva y delantal" class="w-full h-full object-cover object-top transition duration-500 main-img" />
               <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark/80 via-transparent to-transparent"></div>
               <span class="absolute top-4 left-4 bg-orange-700 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Tallas Gastronómicas</span>
               <div class="absolute bottom-4 left-4 text-white">
@@ -595,7 +594,7 @@
           
           <div class="p-6 pt-4 space-y-2">
             <button onclick="openCatalogModal('gastronomico')" class="w-full py-2.5 px-4 text-center text-xs font-bold rounded-xl bg-amber-500/10 hover:bg-amber-500 hover:text-brand-navydark text-amber-900 border border-amber-400 transition flex items-center justify-center gap-2">
-              <span>🖼️ Ver Catálogo Completo (12 Fotos)</span>
+              <span>🖼️ Ver Catálogo Completo (16 Fotos Reales)</span>
             </button>
             <a href="https://wa.me/50664898613?text=Hola%20Le%20Fabrique,%20quisiera%20cotizar%20la%20L%C3%ADnea%20Gastron%C3%B3mica" target="_blank" class="block w-full py-2.5 text-center text-xs font-bold rounded-xl bg-brand-navy hover:bg-brand-navydark text-white transition shadow">
               Cotizar Línea Gastronómica &rarr;
@@ -606,8 +605,8 @@
         <!-- CARD 5: CASUAL & POLOS -->
         <div class="product-item casual bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl transition duration-300 flex flex-col justify-between card-zoom">
           <div>
-            <div class="h-64 overflow-hidden relative bg-brand-navydark">
-              <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80" alt="Equipo de trabajo en camisetas polo" class="w-full h-full object-cover object-top transition duration-500 main-img" />
+            <div onclick="openCatalogModal('casual')" title="Clic para ver galería y carrusel de fotos" class="h-64 overflow-hidden relative bg-brand-navydark cursor-pointer group">
+              <img src="fotos/casual/polo-1.jpg" alt="Camiseta Polo piqué y dry-fit Le Fabrique" class="w-full h-full object-cover object-top transition duration-500 main-img" />
               <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark/80 via-transparent to-transparent"></div>
               <span class="absolute top-4 left-4 bg-indigo-700 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Tallas XS a 3XL</span>
               <div class="absolute bottom-4 left-4 text-white">
@@ -640,7 +639,7 @@
           
           <div class="p-6 pt-4 space-y-2">
             <button onclick="openCatalogModal('casual')" class="w-full py-2.5 px-4 text-center text-xs font-bold rounded-xl bg-amber-500/10 hover:bg-amber-500 hover:text-brand-navydark text-amber-900 border border-amber-400 transition flex items-center justify-center gap-2">
-              <span>🖼️ Ver Catálogo Completo (12 Fotos)</span>
+              <span>🖼️ Ver Catálogo Completo (12 Fotos Reales)</span>
             </button>
             <a href="https://wa.me/50664898613?text=Hola%20Le%20Fabrique,%20quisiera%20cotizar%20Camisetas%20Polo%20Piqu%C3%A9" target="_blank" class="block w-full py-2.5 text-center text-xs font-bold rounded-xl bg-brand-navy hover:bg-brand-navydark text-white transition shadow">
               Cotizar Camisetas Polo &rarr;
@@ -651,8 +650,8 @@
         <!-- CARD 6: TRAJES EJECUTIVOS A LA MEDIDA (LA ÚNICA LÍNEA A LA MEDIDA) -->
         <div class="product-item medida bg-gradient-to-br from-brand-navydark via-brand-navy to-slate-900 text-white rounded-3xl overflow-hidden border-2 border-amber-500/60 shadow-xl flex flex-col justify-between card-zoom">
           <div>
-            <div class="h-64 overflow-hidden relative bg-brand-navydark">
-              <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80" alt="Traje ejecutivo sastre a la medida" class="w-full h-full object-cover object-top transition duration-500 main-img" />
+            <div onclick="openCatalogModal('medida')" title="Clic para ver galería y carrusel de fotos" class="h-64 overflow-hidden relative bg-brand-navydark cursor-pointer group">
+              <img src="fotos/corporativo/camisa-slimfit-2.jpg" alt="Blusa sastre ejecutiva a la medida" class="w-full h-full object-cover object-top transition duration-500 main-img" />
               <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark via-brand-navydark/40 to-transparent"></div>
               <span class="absolute top-4 left-4 bg-amber-500 text-brand-navydark text-xs font-black px-3.5 py-1 rounded-full shadow">Servicio Exclusivo a la Medida</span>
               <div class="absolute bottom-4 left-4 text-white">
@@ -920,35 +919,35 @@
       <!-- Mosaico Fotográfico Lookbook -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         
-        <div class="group relative rounded-2xl overflow-hidden shadow-lg aspect-square border border-slate-200">
-          <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80" alt="Traje y camisa formal ejecutiva Slim Fit" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+        <div onclick="openCategoryCarouselAt('corporativo', 4)" title="Clic para abrir en carrusel de alta definición" class="group relative rounded-2xl overflow-hidden shadow-lg aspect-square border border-slate-200 cursor-pointer">
+          <img src="fotos/corporativo/camisa-slimfit-5.jpg" alt="Camisa corporativa con bordado computarizado" class="w-full h-full object-cover object-top group-hover:scale-110 transition duration-500" />
           <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark/90 via-transparent to-transparent opacity-90 group-hover:opacity-100 transition p-5 flex flex-col justify-end">
             <span class="text-[11px] font-bold text-amber-400 uppercase">Línea Ejecutiva</span>
-            <h4 class="text-white font-bold text-sm">Traje Slim Fit & Camisa Oxford</h4>
+            <h4 class="text-white font-bold text-sm">Camisa Corporativa & Bordado HD</h4>
           </div>
         </div>
 
-        <div class="group relative rounded-2xl overflow-hidden shadow-lg aspect-square border border-slate-200">
-          <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186c5f8?auto=format&fit=crop&w=600&q=80" alt="Chaleco reflectivo y uniforme operativo" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+        <div onclick="openCategoryCarouselAt('industrial', 7)" title="Clic para abrir en carrusel de alta definición" class="group relative rounded-2xl overflow-hidden shadow-lg aspect-square border border-slate-200 cursor-pointer">
+          <img src="fotos/industrial/cargo-8.png" alt="Chaleco reflectivo industrial de alta visibilidad" class="w-full h-full object-cover object-top group-hover:scale-110 transition duration-500" />
           <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark/90 via-transparent to-transparent opacity-90 group-hover:opacity-100 transition p-5 flex flex-col justify-end">
             <span class="text-[11px] font-bold text-amber-400 uppercase">Línea Operativa</span>
             <h4 class="text-white font-bold text-sm">Chaleco de Seguridad & Dril Reforzado</h4>
           </div>
         </div>
 
-        <div class="group relative rounded-2xl overflow-hidden shadow-lg aspect-square border border-slate-200">
-          <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&q=80" alt="Doctor en bata médica blanca" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+        <div onclick="openCategoryCarouselAt('medico', 1)" title="Clic para abrir en carrusel de alta definición" class="group relative rounded-2xl overflow-hidden shadow-lg aspect-square border border-slate-200 cursor-pointer">
+          <img src="fotos/medico/traje-medico-2.jpg" alt="Scrub clínico anatómico con cremallera dorada" class="w-full h-full object-cover object-top group-hover:scale-110 transition duration-500" />
           <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark/90 via-transparent to-transparent opacity-90 group-hover:opacity-100 transition p-5 flex flex-col justify-end">
             <span class="text-[11px] font-bold text-amber-400 uppercase">Línea Salud</span>
-            <h4 class="text-white font-bold text-sm">Bata Clínica de Gabardina Antifluido</h4>
+            <h4 class="text-white font-bold text-sm">Scrub Clínico Ergonómico Antifluido</h4>
           </div>
         </div>
 
-        <div class="group relative rounded-2xl overflow-hidden shadow-lg aspect-square border border-slate-200">
-          <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=600&q=80" alt="Cocina y chef en acción con filipina profesional" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+        <div onclick="openCategoryCarouselAt('gastronomico', 0)" title="Clic para abrir en carrusel de alta definición" class="group relative rounded-2xl overflow-hidden shadow-lg aspect-square border border-slate-200 cursor-pointer">
+          <img src="fotos/gastronomico/filipina-1.jpg" alt="Filipina de chef ejecutiva blanca" class="w-full h-full object-cover object-top group-hover:scale-110 transition duration-500" />
           <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark/90 via-transparent to-transparent opacity-90 group-hover:opacity-100 transition p-5 flex flex-col justify-end">
             <span class="text-[11px] font-bold text-amber-400 uppercase">Línea Chef</span>
-            <h4 class="text-white font-bold text-sm">Filipina Ejecutiva Transpirable</h4>
+            <h4 class="text-white font-bold text-sm">Filipina Ejecutiva de Alta Cocina</h4>
           </div>
         </div>
 
@@ -1260,11 +1259,6 @@
 
         <div class="flex flex-wrap items-center justify-center gap-6 text-slate-400 font-medium">
           <a href="#inicio" class="hover:text-amber-400 transition">Inicio</a>
-          <a href="#promociones" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-500/25 via-amber-500/15 to-transparent text-amber-300 border border-amber-400/50 hover:bg-amber-500 hover:text-brand-navydark font-extrabold text-sm shadow-md transition transform hover:scale-105">
-            <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
-            <span>Promociones</span>
-            <span class="text-[10px] bg-amber-500 text-brand-navydark px-1.5 py-0.2 rounded font-black tracking-wider">OFERTAS</span>
-          </a>
           <a href="#catalogo" class="hover:text-amber-400 transition">Colecciones</a>
           <a href="#calidad-confeccion" class="hover:text-amber-400 transition">Telas & Acabados</a>
           <a href="#telas" class="hover:text-amber-400 transition">Texturas Textiles</a>
@@ -1283,44 +1277,106 @@
   </footer>
 
   <!-- ================================================================= -->
-  <!-- 12. VENTANA EMERGENTE (MODAL) PARA EL CATÁLOGO DETALLADO (12 FOTOS) -->
+  <!-- 12. VENTANA EMERGENTE (MODAL) PARA EL CATÁLOGO DETALLADO -->
   <!-- ================================================================= -->
-  <div id="catalogModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6 overflow-y-auto modal-backdrop">
-    <div class="bg-white rounded-3xl max-w-[95vw] xl:max-w-[90vw] w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 relative p-6 sm:p-8">
+  <div id="catalogModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-6 overflow-y-auto modal-backdrop">
+    <div class="bg-white rounded-3xl max-w-[95vw] xl:max-w-[90vw] w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-slate-200 relative p-5 sm:p-8">
       
       <!-- Botón Cerrar -->
-      <button onclick="closeCatalogModal()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-lg transition" aria-label="Cerrar ventana">
+      <button onclick="closeCatalogModal()" class="absolute top-5 right-5 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-lg transition z-10" aria-label="Cerrar ventana">
         ✕
       </button>
 
-      <!-- Cabecera del Modal -->
-      <div class="border-b border-slate-200 pb-4 mb-6 pr-12">
-        <span class="text-xs font-bold text-amber-600 uppercase tracking-widest bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
-          Catálogo Detallado de Colección
-        </span>
-        <h3 id="modalTitle" class="font-heading font-black text-2xl sm:text-3xl text-brand-navy mt-2">
-          Galería de Modelos
-        </h3>
-        <p id="modalSubtitle" class="text-slate-600 text-xs sm:text-sm mt-1">
-          Explore los diferentes modelos, cortes y combinaciones disponibles en esta clasificación.
-        </p>
+      <!-- Cabecera del Modal + Botón Modo Carrusel -->
+      <div class="border-b border-slate-200 pb-4 mb-6 pr-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-bold text-amber-600 uppercase tracking-widest bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
+            Catálogo Detallado de Colección
+          </span>
+          <h3 id="modalTitle" class="font-heading font-black text-2xl sm:text-3xl text-brand-navy mt-2">
+            Galería de Modelos
+          </h3>
+          <p id="modalSubtitle" class="text-slate-600 text-xs sm:text-sm mt-1">
+            Toque cualquier fotografía para abrir el carrusel interactivo en pantalla completa.
+          </p>
+        </div>
+        <button onclick="openCategoryCarouselAt(currentCatalogCategoryKey, 0)" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-brand-navy hover:bg-brand-navydark text-amber-300 font-heading font-bold text-xs shadow-lg transition shrink-0">
+          <span>▶️ Ver en Carrusel Pantalla Completa</span>
+        </button>
       </div>
 
-      <!-- Cuadrícula de 12 Fotos en Modal (FÁCILMENTE EDITABLE EN HOSTINGER) -->
+      <!-- Cuadrícula de Fotos Reales en Modal -->
       <div id="modalGalleryGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-        <!-- Generado dinámicamente o editable directamente -->
+        <!-- Generado dinámicamente -->
       </div>
 
       <!-- Pie del Modal con CTA -->
       <div class="mt-8 pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4">
         <p class="text-xs text-slate-500 text-center sm:text-left">
-          * Fotografías demostrativas de referencia. Personalizamos colores, bordados y detalles corporativos.
+          * Fotografías reales del taller Le Fabrique. Personalizamos colores, bordados y detalles corporativos.
         </p>
         <a id="modalWhatsAppBtn" href="https://wa.me/50664898613?text=Hola%20Le%20Fabrique,%20quisiera%20cotizar%20esta%20l%C3%ADnea" target="_blank" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-heading font-bold text-xs shadow-md transition flex items-center gap-2">
           <span>Cotizar esta Línea por WhatsApp</span>
         </a>
       </div>
 
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- 12.1 CARRUSEL INTERACTIVO LIGHTBOX PARA AMPLIAR Y DESLIZAR FOTOS -->
+  <!-- ================================================================= -->
+  <div id="imageLightboxModal" class="fixed inset-0 z-[60] hidden flex items-center justify-center p-2 sm:p-6 bg-brand-navydark/95 backdrop-blur-md transition-opacity select-none">
+    <div class="relative max-w-5xl w-full max-h-[96vh] flex flex-col items-center">
+      
+      <!-- Barra Superior del Carrusel -->
+      <div class="w-full flex items-center justify-between mb-3 px-2">
+        <div class="flex items-center gap-2">
+          <span id="lightboxCounterBadge" class="px-3 py-1 rounded-full bg-amber-500 text-brand-navydark font-heading font-black text-xs shadow">
+            1 / 10
+          </span>
+          <span id="lightboxCategoryLabel" class="text-xs font-bold text-slate-300 hidden sm:inline">
+            Catálogo Le Fabrique
+          </span>
+        </div>
+        <button onclick="closeImageLightbox()" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-amber-400 text-xl font-bold flex items-center justify-center focus:outline-none transition" aria-label="Cerrar carrusel">
+          ✕
+        </button>
+      </div>
+
+      <!-- Contenedor Principal de la Imagen + Flechas Anterior / Siguiente -->
+      <div id="lightboxTouchArea" class="relative w-full rounded-2xl overflow-hidden max-h-[68vh] min-h-[300px] flex items-center justify-center bg-brand-navydark border-2 border-amber-500/40 shadow-2xl">
+        
+        <!-- Botón Anterior -->
+        <button id="lightboxPrevBtn" onclick="prevCarouselPhoto(event)" class="absolute left-3 sm:left-5 z-20 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-brand-navydark/85 hover:bg-amber-500 text-white hover:text-brand-navydark border border-amber-400/50 shadow-2xl flex items-center justify-center transition transform hover:scale-105 focus:outline-none" aria-label="Foto anterior">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+
+        <img id="lightboxImg" src="" alt="" class="max-h-[66vh] w-auto max-w-full object-contain transition-all duration-300" />
+
+        <!-- Botón Siguiente -->
+        <button id="lightboxNextBtn" onclick="nextCarouselPhoto(event)" class="absolute right-3 sm:right-5 z-20 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-brand-navydark/85 hover:bg-amber-500 text-white hover:text-brand-navydark border border-amber-400/50 shadow-2xl flex items-center justify-center transition transform hover:scale-105 focus:outline-none" aria-label="Siguiente foto">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
+        </button>
+
+      </div>
+
+      <!-- Tira de Miniaturas del Carrusel -->
+      <div id="lightboxThumbnailsStrip" class="w-full flex items-center gap-2 overflow-x-auto py-2.5 px-1 mt-2 scrollbar-thin">
+        <!-- Miniaturas inyectadas dinámicamente -->
+      </div>
+
+      <!-- Pie del Carrusel con Título del Modelo y Botón WhatsApp -->
+      <div class="mt-1 flex flex-col sm:flex-row items-center justify-between w-full gap-3 bg-brand-navy/90 p-4 rounded-2xl border border-blue-900/60 shadow-lg">
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-amber-400 block">Modelo Seleccionado</span>
+          <h4 id="lightboxTitle" class="text-white font-heading font-bold text-sm sm:text-base text-center sm:text-left"></h4>
+        </div>
+        <a id="lightboxWhatsAppBtn" href="#" target="_blank" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-heading font-bold text-xs shadow-lg transition flex items-center gap-2 shrink-0">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          <span>Cotizar este Modelo por WhatsApp</span>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -1335,144 +1391,152 @@
   </aside>
 
   <!-- ================================================================= -->
-  <!-- 14. JAVASCRIPT DE FUNCIONALIDADES & FOTOS DEL CATÁLOGO PARA HOSTINGER -->
+  <!-- 14. JAVASCRIPT DE FUNCIONALIDADES & CARRUSEL DE FOTOS REALES -->
   <!-- ================================================================= -->
   <script>
-    // ===============================================================
-    // BANCO DE FOTOS POR CATEGORÍA (FÁCILMENTE EDITABLE EN HOSTINGER)
-    // Para cambiar fotos, simplemente cambie las URLs o rutas locales
-    // ===============================================================
     const catalogGalleries = {
       corporativo: {
         title: "Línea Corporativa & Ejecutiva (Tallas Slim Fit)",
-        subtitle: "Camisas Oxford, blusas sastre, pantalones ejecutivos y blazers contemporáneos.",
+        subtitle: "Camisas Oxford, blusas sastre, pantalones ejecutivos y conjuntos corporativos.",
         photos: [
-          { src: "https://images.unsplash.com/photo-1588516903720-8ceb67f9ef84?auto=format&fit=crop&w=600&q=80", title: "Traje Sastre Ejecutivo Dama (Rojo)" },
-          { src: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80", title: "Camisa Oxford Slim Fit Caballero" },
-          { src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80", title: "Blusa Ejecutiva Formal Dama" },
-          { src: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80", title: "Conjunto Ejecutivo Corporativo" },
-          { src: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80", title: "Blazer Formal Slim Fit" },
-          { src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80", title: "Blusa Manga Larga de Oficina" },
-          { src: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80", title: "Camisa Oxford Azul Claro" },
-          { src: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80", title: "Pantalón de Vestir & Blazer Dama" },
-          { src: "https://images.unsplash.com/photo-1591195854242-8804547cdcab?auto=format&fit=crop&w=600&q=80", title: "Detalle de Tejido Oxford Fino" },
-          { src: "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=600&q=80", title: "Blusa Blanca de Cuello Camisero" },
-          { src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80", title: "Camisa de Faena Ejecutiva Slim" },
-          { src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80", title: "Uniforme Corporativo en Equipo" }
+          { src: "fotos/corporativo/camisa-slimfit-1.jpg", title: "Camisa Oxford Celeste Slim Fit Dama" },
+          { src: "fotos/corporativo/camisa-slimfit-2.jpg", title: "Blusa Ejecutiva Manga 3/4 Blanca Slim Fit" },
+          { src: "fotos/corporativo/camisa-slimfit-3.jpg", title: "Camisa Formal Oxford Manga Larga Caballero" },
+          { src: "fotos/corporativo/camisa-slimfit-4.jpg", title: "Blusa Sastre Ejecutiva Formal Dama" },
+          { src: "fotos/corporativo/camisa-slimfit-5.jpg", title: "Camisa Corporativa Azul con Bordado HD y Vivos" },
+          { src: "fotos/corporativo/camisa-slimfit-6.jpg", title: "Camisa Oxford Ejecutiva de Oficina" },
+          { src: "fotos/corporativo/camisa-slimfit-7.jpg", title: "Dúo Ejecutivo: Camisa y Blusa Corporativa Azul Marino" },
+          { src: "fotos/corporativo/camisa-slimfit-8.jpg", title: "Camisa Formal Slim Fit Caballero Manga Larga" },
+          { src: "fotos/corporativo/camisa-slimfit-9.jpg", title: "Blusa Ejecutiva Moderna Silueta Slim Fit" },
+          { src: "fotos/corporativo/camisa-slimfit-10.jpg", title: "Camisa Oxford Clásica Empresarial" }
         ]
       },
       industrial: {
         title: "Línea Industrial & Operativa (Tallas Estándar)",
-        subtitle: "Pantalones cargo, camisas de trabajo pesado, chalecos reflectivos y overoles.",
+        subtitle: "Pantalones cargo, chalecos tácticos reflectivos, conjuntos de faena y trabajo pesado.",
         photos: [
-          { src: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80", title: "Operario con Uniforme de Seguridad" },
-          { src: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80", title: "Ingeniero con Camisa Reforzada" },
-          { src: "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f8?auto=format&fit=crop&w=600&q=80", title: "Chaleco Reflectivo de Alta Visibilidad" },
-          { src: "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=600&q=80", title: "Pantalón Cargo en Dril Pesado" },
-          { src: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80", title: "Camisa Operativa con Cinta 3M" },
-          { src: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=600&q=80", title: "Overol Industrial Mecánico" },
-          { src: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80", title: "Uniforme de Técnico de Planta" },
-          { src: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=600&q=80", title: "Gabacha Industrial de Taller" },
-          { src: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80", title: "Textura Dril Sarga Reforzado" },
-          { src: "https://images.unsplash.com/photo-1581092162384-8987c1d64718?auto=format&fit=crop&w=600&q=80", title: "Chaqueta Térmica de Faena" },
-          { src: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&w=600&q=80", title: "Pantalón con Refuerzo en Rodillas" },
-          { src: "https://images.unsplash.com/photo-1581092446327-9b52bd1570c2?auto=format&fit=crop&w=600&q=80", title: "Equipo Operativo de Mantenimiento" }
+          { src: "fotos/industrial/cargo-1.jpg", title: "Pantalón Cargo Industrial Negro con Bolsillo Fuelle" },
+          { src: "fotos/industrial/cargo-2.jpg", title: "Pantalones Cargo en Dril Pesado (Negro, Marino y Gris)" },
+          { src: "fotos/industrial/cargo-3.jpg", title: "Pantalón Operativo de Faena Reforzado" },
+          { src: "fotos/industrial/cargo-4.jpg", title: "Conjunto de Faena: Chaleco y Pantalón Bicolor" },
+          { src: "fotos/industrial/cargo-5.jpg", title: "Pantalón Táctico Cargo con Refuerzo en Rodillas" },
+          { src: "fotos/industrial/cargo-6.jpg", title: "Pantalón de Trabajo Pesado con Multi-Bolsillos" },
+          { src: "fotos/industrial/cargo-7.jpg", title: "Chaleco Táctico de Faena Multi-Bolsillos con Malla" },
+          { src: "fotos/industrial/cargo-8.png", title: "Chaleco de Seguridad Reflectivo de Alta Visibilidad 3M" },
+          { src: "fotos/industrial/cargo-9.jpg", title: "Chaleco Operativo Industrial Verde Militar con Cuello Alto" }
         ]
       },
       medico: {
         title: "Línea Médica & Estética (Tallas Clínicas)",
-        subtitle: "Scrubs antifluido, batas clínicas, filipinas médicas y gorros quirúrgicos.",
+        subtitle: "Scrubs antifluido, batas clínicas, chaquetas médicas y filipinas de salud.",
         photos: [
-          { src: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80", title: "Doctora en Scrubs y Bata Médica" },
-          { src: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80", title: "Médico en Scrub Clínico Azul" },
-          { src: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&q=80", title: "Bata de Laboratorio y Consultorio" },
-          { src: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80", title: "Microfibra Antifluido Clororresistente" },
-          { src: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80", title: "Scrub Quirúrgico Cuello en V" },
-          { src: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=600&q=80", title: "Uniforme Dental & Odontológico" },
-          { src: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=600&q=80", title: "Filipina para Spas & Cosmética" },
-          { src: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80", title: "Scrub en Tono Ciruela / Borgoña" },
-          { src: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80", title: "Scrub Femenino con Cinturón Ajustable" },
-          { src: "https://images.unsplash.com/photo-1584467735871-8e85353a8413?auto=format&fit=crop&w=600&q=80", title: "Bata Quirúrgica con Puño Tejido" },
-          { src: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=600&q=80", title: "Conjunto Clínico Unisex Verde Quirúrgico" },
-          { src: "https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=600&q=80", title: "Gorra Quirúrgica con Amarre" }
+          { src: "fotos/medico/traje-medico-1.jpg", title: "Conjunto Scrub Clínico Anatómico Beige con Ribetes" },
+          { src: "fotos/medico/traje-medico-2.jpg", title: "Scrub Estético con Cremallera Frontal Dorada y Bolsillo" },
+          { src: "fotos/medico/traje-medico-3.jpg", title: "Scrub Médico Clínico Antifluido Clororresistente" },
+          { src: "fotos/medico/traje-medico-4.jpg", title: "Uniforme Odontológico y Clínico Ergonómico" },
+          { src: "fotos/medico/traje-medico-5.jpg", title: "Chaqueta Médica Ejecutiva con Cuello Mao y Bordado" },
+          { src: "fotos/medico/traje-medico-6.jpg", title: "Scrub Quirúrgico con Cuello V Anatómico" },
+          { src: "fotos/medico/traje-medico-7.jpg", title: "Pantalón Clínico con Cintura Elástica y Cordón" },
+          { src: "fotos/medico/traje-medico-8.jpg", title: "Filipina Médica para Estética y Dermatología" },
+          { src: "fotos/medico/traje-medico-9.jpg", title: "Scrub Clínico Femenino de Corte Moderno" },
+          { src: "fotos/medico/traje-medico-10.jpg", title: "Conjunto de Salud y Hospitalario Unisex" },
+          { src: "fotos/medico/traje-medico-11.jpg", title: "Uniforme Clínico Hospitalario en Color Quirúrgico" },
+          { src: "fotos/medico/traje-medico-12.jpg", title: "Scrub Médico Cómodo para Jornadas Extensas" }
         ]
       },
       gastronomico: {
         title: "Línea Gastronómica & Chef (Tallas de Cocina)",
         subtitle: "Filipinas de chef ejecutivas, delantales de lona con cuero, saloneros y baristas.",
         photos: [
-          { src: "https://images.unsplash.com/photo-1581299894007-aaa50297cf16?auto=format&fit=crop&w=600&q=80", title: "Chef Ejecutivo en Filipina Blanca" },
-          { src: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=600&q=80", title: "Filipina Cruzada con Delantal Negro" },
-          { src: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=600&q=80", title: "Chef en Acción con Filipina Negra" },
-          { src: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80", title: "Delantal de Lona con Malla Cool-Vent" },
-          { src: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80", title: "Camisa de Servicio para Salonero" },
-          { src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80", title: "Delantal Barista con Remaches Metálicos" },
-          { src: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80", title: "Uniforme de Sommelier / Restaurante" },
-          { src: "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=600&q=80", title: "Filipina Manga Corta Transpirable" },
-          { src: "https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?auto=format&fit=crop&w=600&q=80", title: "Gorra de Cocina y Bandana Chef" },
-          { src: "https://images.unsplash.com/photo-1516714435131-44d6b64dc6a2?auto=format&fit=crop&w=600&q=80", title: "Delantal de Cintura para Camareros" },
-          { src: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=600&q=80", title: "Filipina Moderna Gris Plomo" },
-          { src: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=600&q=80", title: "Brigada de Cocina en Equipo" }
+          { src: "fotos/gastronomico/filipina-1.jpg", title: "Filipina de Chef Ejecutiva Blanca con Ribetes Negros" },
+          { src: "fotos/gastronomico/filipina-2.jpg", title: "Filipina Cruzada Clásica de Alta Cocina" },
+          { src: "fotos/gastronomico/filipina-3.jpg", title: "Brigada de Chef: Filipina Ejecutiva y Pantalón de Cocina" },
+          { src: "fotos/gastronomico/filipina-4.jpg", title: "Filipina de Chef Negra de Gabardina Pesada" },
+          { src: "fotos/gastronomico/filipina-5.jpg", title: "Delantal de Lona con Aplicaciones y Remaches" },
+          { src: "fotos/gastronomico/filipina-6.jpg", title: "Filipina Transpirable con Malla Cool-Vent" },
+          { src: "fotos/gastronomico/filipina-7.jpg", title: "Filipina de Cocina Manga Corta Liviana" },
+          { src: "fotos/gastronomico/filipina-8.jpg", title: "Uniforme de Chef Ejecutivo con Doble Botonadura" },
+          { src: "fotos/gastronomico/filipina-9.jpg", title: "Delantal Barista / Salonero de Alta Resistencia" },
+          { src: "fotos/gastronomico/filipina-10.jpg", title: "Filipina Ejecutiva en Tono Carbón / Gris" },
+          { src: "fotos/gastronomico/filipina-11.jpg", title: "Filipina Moderna con Cuello Mao y Vivos de Contraste" },
+          { src: "fotos/gastronomico/filipina-12.jpg", title: "Chaqueta de Cocina Profesional Antipanchado" },
+          { src: "fotos/gastronomico/filipina-13.jpg", title: "Delantal Pechera con Bolsillos para Hostelería" },
+          { src: "fotos/gastronomico/filipina-14.jpg", title: "Filipina Femenina Estilizada para Chef de Pastelería" },
+          { src: "fotos/gastronomico/filipina-15.jpg", title: "Uniforme Completo de Brigada Gastronómica" },
+          { src: "fotos/gastronomico/filipina-16.jpg", title: "Delantal de Servicio y Atención al Comensal" }
         ]
       },
       casual: {
         title: "Línea Casual & Polos (Tallas XS a 3XL)",
-        subtitle: "Camisetas polo piqué peinado, microfibra dry-fit, jackets y gorras estructuradas.",
+        subtitle: "Camisetas polo piqué peinado, microfibra dry-fit, compresión y camisetas técnicas.",
         photos: [
-          { src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80", title: "Equipo en Polos Corporativas" },
-          { src: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=600&q=80", title: "Piqué Peinado 50/50 Anti-Motas" },
-          { src: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=600&q=80", title: "Camiseta Polo Azul Marino Clásica" },
-          { src: "https://images.unsplash.com/photo-1506152983158-b4a74a01c721?auto=format&fit=crop&w=600&q=80", title: "Polo Dry-Fit Transpirable" },
-          { src: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80", title: "Jacket Impermeable con Bordado" },
-          { src: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80", title: "Gorra Estructurada con Logo 3D" },
-          { src: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80", title: "Camiseta Técnica Cuello Redondo" },
-          { src: "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?auto=format&fit=crop&w=600&q=80", title: "Polo Piqué Negra Ejecutivo" },
-          { src: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&q=80", title: "Polo Corporativa Blanca Fina" },
-          { src: "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=600&q=80", title: "Chaqueta Cortavientos Liviana" },
-          { src: "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=600&q=80", title: "Polo en Color Rojo Institucional" },
-          { src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80", title: "Fuerza de Ventas Uniformada" }
+          { src: "fotos/casual/polo-1.jpg", title: "Camiseta Polo Técnica Dry-Fit Tono Arena / Beige" },
+          { src: "fotos/casual/polo-2.jpg", title: "Polo Clásica Piqué Peinado Anti-Motas" },
+          { src: "fotos/casual/polo-3.jpg", title: "Camiseta Polo Corporativa Azul Marino" },
+          { src: "fotos/casual/polo-4.jpg", title: "Polo Piqué Amarilla con Cuello y Vivos Negros" },
+          { src: "fotos/casual/polo-5.jpg", title: "Camiseta Polo Institucional en Piqué Peinado 50/50" },
+          { src: "fotos/casual/polo-6.jpg", title: "Polo Ejecutiva de Alta Densidad con Botones a Tono" },
+          { src: "fotos/casual/polo-7.jpg", title: "Polo Femenina de Corte Estilizado Negra" },
+          { src: "fotos/casual/polo-8.jpg", title: "Camiseta Polo Casual para Eventos y Logística" },
+          { src: "fotos/casual/polo-9.jpg", title: "Polo Dry-Fit Transpirable de Secado Rápido" },
+          { src: "fotos/casual/polo-10.jpg", title: "Camiseta Deportiva de Alto Rendimiento Dry-Fit Manga Larga" },
+          { src: "fotos/casual/polo-11.jpg", title: "Camiseta Técnica Deportiva Negra de Entrenamiento" },
+          { src: "fotos/casual/polo-12.jpg", title: "Camiseta en Microfibra Suave Cuello Redondo" }
         ]
       },
       medida: {
         title: "Servicio Exclusivo: Trajes Ejecutivos a la Medida",
         subtitle: "La única línea de confección a la medida exacta con toma de medidas personalizadas.",
         photos: [
+          { src: "fotos/corporativo/camisa-slimfit-7.jpg", title: "Dúo Ejecutivo Sastre con Ajuste Personalizado" },
+          { src: "fotos/corporativo/camisa-slimfit-2.jpg", title: "Blusa Sastre Femenina a la Medida" },
+          { src: "fotos/corporativo/camisa-slimfit-5.jpg", title: "Camisa Ejecutiva con Bordado Computarizado HD" },
+          { src: "fotos/corporativo/camisa-slimfit-8.jpg", title: "Camisa Formal de Etiqueta con Cuello Italiano" },
+          { src: "fotos/corporativo/camisa-slimfit-1.jpg", title: "Camisa Oxford Fina con Silueta Slim Fit" },
+          { src: "fotos/corporativo/camisa-slimfit-10.jpg", title: "Confección Sastre de Alta Definición" },
           { src: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80", title: "Traje Ejecutivo Sastre Slim Fit" },
           { src: "https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=600&q=80", title: "Toma de Medidas y Patronaje en Taller" },
-          { src: "https://images.unsplash.com/photo-1588516903720-8ceb67f9ef84?auto=format&fit=crop&w=600&q=80", title: "Saco Ejecutivo Dama a la Medida" },
-          { src: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=600&q=80", title: "Corte y Ensamble Artesanal" },
           { src: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80", title: "Pantalón de Vestir Corte Italiano" },
           { src: "https://images.unsplash.com/photo-1598808503746-f34c53b9323e?auto=format&fit=crop&w=600&q=80", title: "Forros Satinados y Botonadura Sastre" },
           { src: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=600&q=80", title: "Blazer Formal de Alta Costura" },
-          { src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80", title: "Chaleco Sastre Cruzado para Caballero" },
-          { src: "https://images.unsplash.com/photo-1591195854242-8804547cdcab?auto=format&fit=crop&w=600&q=80", title: "Casimires y Lanas Frías Selectas" },
-          { src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80", title: "Traje Ejecutivo Femenino de Gala" },
-          { src: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=600&q=80", title: "Camisa de Gemelos a la Medida" },
-          { src: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80", title: "Prueba de Ajuste Presencial para Gerencias" }
+          { src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80", title: "Chaleco Sastre Cruzado para Caballero" }
         ]
       }
     };
 
-    // Abrir Modal de Galería
+    
+    let currentCatalogCategoryKey = 'corporativo';
+    let currentCarouselPhotos = [];
+    let currentCarouselIndex = 0;
+
+    // Abrir Modal de Galería por Categoría
     function openCatalogModal(categoryKey) {
       const gallery = catalogGalleries[categoryKey];
       if (!gallery) return;
+      currentCatalogCategoryKey = categoryKey;
 
       document.getElementById('modalTitle').innerText = gallery.title;
-      document.getElementById('modalSubtitle').innerText = gallery.subtitle;
+      document.getElementById('modalSubtitle').innerText = `${gallery.subtitle} (${gallery.photos.length} modelos disponibles — toca cualquier foto para ver en carrusel)`;
       
       const grid = document.getElementById('modalGalleryGrid');
       grid.innerHTML = '';
 
-      gallery.photos.forEach(photo => {
+      gallery.photos.forEach((photo, idx) => {
         const item = document.createElement('div');
-        item.className = 'group relative rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 shadow-sm hover:shadow-md transition';
+        item.className = 'group relative rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm hover:shadow-lg transition cursor-pointer flex flex-col justify-between';
+        item.onclick = () => openCategoryCarouselAt(categoryKey, idx);
         item.innerHTML = `
-          <div class="h-44 sm:h-52 overflow-hidden">
-            <img src="${photo.src}" alt="${photo.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" />
+          <div class="h-52 sm:h-60 overflow-hidden bg-slate-100 relative">
+            <img src="${photo.src}" alt="${photo.title}" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" loading="lazy" />
+            <div class="absolute inset-0 bg-brand-navydark/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center p-2">
+              <span class="px-3 py-1.5 rounded-full bg-white/95 text-brand-navy font-bold text-xs shadow-lg flex items-center gap-1.5 backdrop-blur-sm">
+                🔍 Ver en Carrusel (${idx + 1}/${gallery.photos.length})
+              </span>
+            </div>
           </div>
-          <div class="p-2.5 bg-white text-center">
-            <h5 class="text-[11px] font-bold text-slate-900 truncate">${photo.title}</h5>
+          <div class="p-3 bg-white text-center border-t border-slate-100">
+            <h5 class="text-[11px] font-bold text-brand-navy truncate" title="${photo.title}">${photo.title}</h5>
+            <span class="text-[10px] text-amber-600 font-semibold block mt-0.5">Tocar para ampliar en carrusel</span>
           </div>
         `;
         grid.appendChild(item);
@@ -1483,22 +1547,155 @@
       document.body.style.overflow = 'hidden';
     }
 
+    // Abrir el Carrusel Interactivo en una categoría e índice específico
+    function openCategoryCarouselAt(categoryKey, index = 0) {
+      const gallery = catalogGalleries[categoryKey];
+      if (!gallery || !gallery.photos.length) return;
+      currentCatalogCategoryKey = categoryKey;
+      currentCarouselPhotos = gallery.photos;
+      currentCarouselIndex = Math.max(0, Math.min(index, currentCarouselPhotos.length - 1));
+
+      const catLabel = document.getElementById('lightboxCategoryLabel');
+      if (catLabel) catLabel.innerText = gallery.title;
+
+      renderCarouselSlide();
+      document.getElementById('imageLightboxModal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Abrir una imagen individual (ej. arte de promoción) en el visor
+    function openSingleImageLightbox(src, title) {
+      currentCarouselPhotos = [{ src: src, title: title || 'Promoción Le Fabrique' }];
+      currentCarouselIndex = 0;
+      const catLabel = document.getElementById('lightboxCategoryLabel');
+      if (catLabel) catLabel.innerText = 'Promoción Destacada Le Fabrique';
+      renderCarouselSlide();
+      document.getElementById('imageLightboxModal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Compatibilidad con openLightbox(src, title)
+    function openLightbox(src, title) {
+      const gallery = catalogGalleries[currentCatalogCategoryKey];
+      if (gallery && gallery.photos) {
+        const foundIdx = gallery.photos.findIndex(p => p.src === src);
+        if (foundIdx !== -1) {
+          openCategoryCarouselAt(currentCatalogCategoryKey, foundIdx);
+          return;
+        }
+      }
+      openSingleImageLightbox(src, title);
+    }
+
+    function renderCarouselSlide() {
+      if (!currentCarouselPhotos.length) return;
+      const photo = currentCarouselPhotos[currentCarouselIndex];
+      const total = currentCarouselPhotos.length;
+
+      const imgEl = document.getElementById('lightboxImg');
+      imgEl.src = photo.src;
+      imgEl.alt = photo.title;
+
+      document.getElementById('lightboxTitle').innerText = photo.title;
+      document.getElementById('lightboxCounterBadge').innerText = `Foto ${currentCarouselIndex + 1} de ${total}`;
+      document.getElementById('lightboxWhatsAppBtn').href = `https://wa.me/50664898613?text=${encodeURIComponent('Hola Le Fabrique, quisiera consultar y cotizar el modelo: ' + photo.title)}`;
+
+      const prevBtn = document.getElementById('lightboxPrevBtn');
+      const nextBtn = document.getElementById('lightboxNextBtn');
+      const strip = document.getElementById('lightboxThumbnailsStrip');
+
+      if (total <= 1) {
+        prevBtn.classList.add('hidden');
+        nextBtn.classList.add('hidden');
+        strip.classList.add('hidden');
+      } else {
+        prevBtn.classList.remove('hidden');
+        nextBtn.classList.remove('hidden');
+        strip.classList.remove('hidden');
+
+        strip.innerHTML = currentCarouselPhotos.map((p, idx) => `
+          <button 
+            type="button"
+            onclick="jumpToCarouselSlide(${idx})" 
+            class="relative shrink-0 w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden border-2 transition-all ${idx === currentCarouselIndex ? 'border-amber-400 scale-105 shadow-lg ring-2 ring-amber-400/50' : 'border-slate-700 opacity-50 hover:opacity-90'}"
+            title="${p.title}"
+          >
+            <img src="${p.src}" alt="${p.title}" class="w-full h-full object-cover object-top" />
+          </button>
+        `).join('');
+      }
+    }
+
+    function nextCarouselPhoto(e) {
+      if (e) e.stopPropagation();
+      if (currentCarouselPhotos.length <= 1) return;
+      currentCarouselIndex = (currentCarouselIndex + 1) % currentCarouselPhotos.length;
+      renderCarouselSlide();
+    }
+
+    function prevCarouselPhoto(e) {
+      if (e) e.stopPropagation();
+      if (currentCarouselPhotos.length <= 1) return;
+      currentCarouselIndex = (currentCarouselIndex - 1 + currentCarouselPhotos.length) % currentCarouselPhotos.length;
+      renderCarouselSlide();
+    }
+
+    function jumpToCarouselSlide(idx) {
+      if (idx < 0 || idx >= currentCarouselPhotos.length) return;
+      currentCarouselIndex = idx;
+      renderCarouselSlide();
+    }
+
+    function closeImageLightbox() {
+      document.getElementById('imageLightboxModal').classList.add('hidden');
+      if (document.getElementById('catalogModal').classList.contains('hidden')) {
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    document.getElementById('imageLightboxModal').addEventListener('click', (e) => {
+      if (e.target.id === 'imageLightboxModal') {
+        closeImageLightbox();
+      }
+    });
+
+    // Soporte de deslizamiento táctil (Swipe) en el carrusel para celulares
+    let touchStartX = 0;
+    const touchArea = document.getElementById('lightboxTouchArea');
+    if (touchArea) {
+      touchArea.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      touchArea.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 45) nextCarouselPhoto();
+        if (touchEndX - touchStartX > 45) prevCarouselPhoto();
+      }, { passive: true });
+    }
+
     // Cerrar Modal de Galería
     function closeCatalogModal() {
       document.getElementById('catalogModal').classList.add('hidden');
       document.body.style.overflow = 'auto';
     }
 
-    // Cerrar modal al pulsar fuera de él
     document.getElementById('catalogModal').addEventListener('click', (e) => {
       if (e.target.id === 'catalogModal') {
         closeCatalogModal();
       }
     });
 
-    // Cerrar con Escape
+    // Navegación por teclado (Flechas Izquierda/Derecha y Escape)
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeCatalogModal();
+      const lightboxOpen = !document.getElementById('imageLightboxModal').classList.contains('hidden');
+      if (lightboxOpen) {
+        if (e.key === 'ArrowRight') nextCarouselPhoto();
+        if (e.key === 'ArrowLeft') prevCarouselPhoto();
+      }
+      if (e.key === 'Escape') {
+        closeImageLightbox();
+        closeCatalogModal();
+      }
     });
 
     // Toggle menú móvil
@@ -1698,7 +1895,7 @@
               <h2 class="text-lg sm:text-xl font-heading font-black text-white">Estudio de Promociones Le Fabrique</h2>
               <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">PROPIETARIO</span>
             </div>
-            <p class="text-xs text-slate-400">Genera artes con IA, publica en Facebook & Instagram y gestiona tu catálogo web</p>
+            <p class="text-xs text-slate-400">Genera artes con IA, usa tus 59 fotos reales, publica en Facebook & Instagram y gestiona tu catálogo web</p>
           </div>
         </div>
 
@@ -1753,10 +1950,10 @@
               <div>
                 <div class="flex items-center justify-between mb-2">
                   <label class="text-xs font-bold text-amber-300 uppercase tracking-wider flex items-center gap-1.5">
-                    <span>1.</span> Generación Fotográfica con IA
+                    <span>1.</span> Fotografía con IA o Catálogo Real
                   </label>
                   <span class="text-[10px] text-emerald-400 font-semibold bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
-                    Motor Gratuito Activo
+                    Workers AI Flux Activo
                   </span>
                 </div>
 
@@ -1779,9 +1976,9 @@
                 <textarea 
                   id="aiCustomPrompt" 
                   rows="2" 
-                  placeholder="Describe la prenda o uniforme que deseas modelar..." 
+                  placeholder="Describe el uniforme exacto que deseas generar con IA (ej: Doctora con scrub médico verde quirúrgico, Chef con filipina negra y ribetes dorados, Pantalón cargo azul marino)..." 
                   class="w-full bg-slate-950 border border-slate-700 focus:border-amber-500 rounded-xl p-3 text-xs text-white focus:outline-none focus:ring-1 focus:ring-amber-500 transition"
-                >Camisa ejecutiva azul Oxford Slim Fit Le Fabrique en oficina moderna</textarea>
+                >Ejecutivo y ejecutiva vistiendo camisa Oxford azul marino Slim Fit en oficina moderna</textarea>
 
                 <div class="flex items-center gap-2 mt-2">
                   <button 
@@ -1789,7 +1986,7 @@
                     onclick="enhancePromptWithAI()" 
                     class="flex-1 py-2 px-3 bg-blue-900/50 hover:bg-blue-900 text-amber-300 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 border border-amber-500/30"
                   >
-                    ✨ Optimizar Prompt
+                    ✨ Mejorar Descripción
                   </button>
 
                   <button 
@@ -1802,16 +1999,30 @@
                   </button>
                 </div>
 
+                <div id="aiGenerationStatus" class="mt-2 hidden"></div>
+
+                <!-- Selector de las 59 fotos reales del taller Le Fabrique -->
+                <div class="mt-3 pt-3 border-t border-slate-800/80">
+                  <label class="block text-[11px] font-bold text-amber-200 mb-1">
+                    📸 O elegir una de las 59 Fotos Reales del Taller Le Fabrique:
+                  </label>
+                  <select 
+                    id="realCatalogPhotoSelect" 
+                    onchange="selectRealCatalogPhoto(this.value)" 
+                    class="w-full bg-slate-950 border border-slate-700 focus:border-amber-500 rounded-lg p-2 text-xs text-slate-200"
+                  >
+                    <option value="">-- Selecciona una foto real del taller --</option>
+                  </select>
+                </div>
+
                 <!-- O subir imagen propia -->
                 <div class="mt-2.5 text-center">
                   <label class="text-[11px] text-slate-400 hover:text-amber-300 cursor-pointer inline-flex items-center gap-1">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
-                    <span>O subir foto desde tu computadora</span>
+                    <span>O subir foto desde tu computadora / celular</span>
                     <input type="file" accept="image/*" onchange="handleUserImageUpload(event)" class="hidden" />
                   </label>
                 </div>
-
-                <div id="aiGenerationStatus" class="mt-2 hidden"></div>
               </div>
 
               <!-- 2. Personalización de Textos y Precios del Banner -->
@@ -1846,7 +2057,7 @@
                     <input 
                       type="text" 
                       id="bannerBadgeInput" 
-                      value="OFERTA CORPORATIVA -25%" 
+                      value="OFERTA CORPORATIVA -20%" 
                       oninput="updateCanvasBanner()" 
                       class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-white"
                     />
@@ -1859,7 +2070,7 @@
                     <input 
                       type="number" 
                       id="bannerPromoPrice" 
-                      value="119000" 
+                      value="125000" 
                       oninput="updateCanvasBanner()" 
                       class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-amber-300 font-bold"
                     />
@@ -1869,7 +2080,7 @@
                     <input 
                       type="number" 
                       id="bannerRegularPrice" 
-                      value="150000" 
+                      value="156000" 
                       oninput="updateCanvasBanner()" 
                       class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-slate-400"
                     />
@@ -1892,7 +2103,7 @@
                     <input 
                       type="date" 
                       id="bannerValidUntil" 
-                      value="2026-11-30" 
+                      value="2026-12-31" 
                       oninput="updateCanvasBanner()" 
                       class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-white"
                     />
@@ -1915,7 +2126,6 @@
                   </span>
                 </div>
 
-                <!-- Canvas de renderizado de alta fidelidad -->
                 <canvas 
                   id="promoStudioCanvas" 
                   width="1080" 
@@ -2006,7 +2216,6 @@
         <div id="tab-redes" class="studio-tab-content hidden space-y-6">
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Conexión Meta (Facebook & Instagram) -->
             <div class="bg-slate-900/80 p-5 rounded-2xl border border-blue-900/40 space-y-4">
               <div class="flex items-center gap-2">
                 <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold">
@@ -2045,7 +2254,6 @@
               </div>
             </div>
 
-            <!-- Seguridad del Panel & Berman -->
             <div class="bg-slate-900/80 p-5 rounded-2xl border border-blue-900/40 space-y-4">
               <div class="flex items-center gap-2">
                 <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">
@@ -2150,19 +2358,20 @@
 /**
  * LE FABRIQUE - ESTUDIO DE PROMOCIONES, GENERADOR IA Y PUBLICACIÓN EN META
  * Sistema integral para la gestión de ofertas de temporada, compositor de banners con IA,
- * publicación directa en Facebook / Instagram y catálogo interactivo.
+ * selector de las 59 fotos reales del taller, publicación directa en Facebook / Instagram
+ * y catálogo interactivo.
  * Desarrollado para Le Fabrique Costa Rica.
  */
 
 // =========================================================================
 // 1. CONFIGURACIÓN INICIAL & ESTADO GLOBAL
 // =========================================================================
-const LE_FABRIQUE_STORAGE_KEY = 'lefabrique_promotions_db_v1';
+const LE_FABRIQUE_STORAGE_KEY = 'lefabrique_promotions_db_v2';
 const LE_FABRIQUE_META_KEY = 'lefabrique_meta_credentials_v1';
 const LE_FABRIQUE_SECURITY_KEY = 'lefabrique_admin_security_v1';
 const LE_FABRIQUE_SESSION_KEY = 'lefabrique_admin_session_auth';
 
-// Promociones por defecto de alta calidad (Costa Rica)
+// Promociones por defecto con las fotografías reales del taller Le Fabrique
 const DEFAULT_PROMOTIONS = [
   {
     id: 'promo-1',
@@ -2172,39 +2381,39 @@ const DEFAULT_PROMOTIONS = [
     promoPrice: 125000,
     regularPrice: 156000,
     badgeText: '🧵 Bordado de Logo Gratis',
-    validUntil: '2026-11-30',
+    validUntil: '2026-12-31',
     description: 'Confección nacional en tela Oxford importada de alta durabilidad, corte Slim Fit ejecutivo con bordado computarizado incluido.',
-    imageUrl: 'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=1080&q=80',
+    imageUrl: 'fotos/corporativo/camisa-slimfit-7.jpg',
     active: true,
-    createdAt: '2026-10-29'
+    createdAt: '2026-11-23'
   },
   {
     id: 'promo-2',
-    title: 'Conjunto Clínico Scrub Antifluido Cloro-Resistente',
+    title: 'Conjunto Clínico Scrub Antifluido Clororresistente',
     category: 'medico',
     discountBadge: 'OFERTA ESPECIAL',
     promoPrice: 15900,
     regularPrice: 21000,
     badgeText: '✨ Tela Antifluido Certificada',
-    validUntil: '2026-11-20',
+    validUntil: '2026-12-20',
     description: 'Comodidad total para jornadas exigentes. Tela antifluidos repelente de líquidos con bolsillos multifuncionales.',
-    imageUrl: 'https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1080&q=80',
+    imageUrl: 'fotos/medico/traje-medico-1.jpg',
     active: true,
-    createdAt: '2026-10-29'
+    createdAt: '2026-11-23'
   },
   {
     id: 'promo-3',
-    title: 'Filipina Chef Ejecutiva Transpirable con Ribetes Dorados',
+    title: 'Filipina Chef Ejecutiva Transpirable de Alta Cocina',
     category: 'gastronomico',
     discountBadge: 'PRECIO DE TEMPORADA',
     promoPrice: 14500,
     regularPrice: 19000,
     badgeText: '🔥 Edición Limitada',
-    validUntil: '2026-11-15',
+    validUntil: '2026-12-15',
     description: 'Diseño ergonómico con malla lateral transpirable y botones de alta resistencia al calor y lavados intensivos.',
-    imageUrl: 'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1080&q=80',
+    imageUrl: 'fotos/gastronomico/filipina-3.jpg',
     active: true,
-    createdAt: '2026-10-29'
+    createdAt: '2026-11-23'
   }
 ];
 
@@ -2223,6 +2432,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderPublicPromos();
   setupAdminListeners();
   initBannerCanvas();
+  populateRealPhotosSelector();
 });
 
 // Cargar o sembrar base de datos local
@@ -2230,7 +2440,16 @@ function initPromotionsDatabase() {
   try {
     const stored = localStorage.getItem(LE_FABRIQUE_STORAGE_KEY);
     if (!stored) {
-      promotionsState = [...DEFAULT_PROMOTIONS];
+      // Migrar promociones personalizadas creadas por el usuario en v1 si existen
+      const oldV1 = localStorage.getItem('lefabrique_promotions_db_v1');
+      let customFromV1 = [];
+      if (oldV1) {
+        try {
+          const parsedOld = JSON.parse(oldV1);
+          customFromV1 = parsedOld.filter(p => p.id && !['promo-1', 'promo-2', 'promo-3'].includes(p.id));
+        } catch (e) {}
+      }
+      promotionsState = [...customFromV1, ...DEFAULT_PROMOTIONS];
       localStorage.setItem(LE_FABRIQUE_STORAGE_KEY, JSON.stringify(promotionsState));
     } else {
       promotionsState = JSON.parse(stored);
@@ -2256,8 +2475,39 @@ function savePromotionsDatabase() {
   renderAdminPromoList();
 }
 
+// Poblar selector de las 59 fotos reales del catálogo en el Estudio
+function populateRealPhotosSelector() {
+  const select = document.getElementById('realCatalogPhotoSelect');
+  if (!select || typeof catalogGalleries === 'undefined') return;
+
+  let optionsHtml = '<option value="">-- Selecciona una foto real del taller (59 disponibles) --</option>';
+  Object.keys(catalogGalleries).forEach(catKey => {
+    const group = catalogGalleries[catKey];
+    optionsHtml += `<optgroup label="${escapeHtml(group.title)}">`;
+    group.photos.forEach(photo => {
+      if (photo.src && photo.src.startsWith('fotos/')) {
+        optionsHtml += `<option value="${escapeHtml(photo.src)}">${escapeHtml(photo.title)}</option>`;
+      }
+    });
+    optionsHtml += '</optgroup>';
+  });
+  select.innerHTML = optionsHtml;
+}
+
+function selectRealCatalogPhoto(photoSrc) {
+  if (!photoSrc) return;
+  const img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.onload = () => {
+    currentBannerImage = img;
+    updateCanvasBanner();
+    showStudioToast('Fotografía real del taller cargada en el banner 📸');
+  };
+  img.src = photoSrc;
+}
+
 // =========================================================================
-// 3. CINTA PROMOCIONAL SUPERIOR (TICKER ROTATIVO)
+// 3. CINTA PROMOCIONAL SUPERIOR (TICKER ROTATIVO CON FOTO REAL)
 // =========================================================================
 function renderPromoTicker() {
   const tickerContainer = document.getElementById('promoTickerContainer');
@@ -2297,20 +2547,20 @@ function renderPromoTicker() {
         
         <!-- Bloque Izquierdo: Imagen del uniforme en promoción + Badges -->
         <div class="flex items-center gap-4 sm:gap-5 w-full lg:w-auto">
-          <!-- Imagen de la Prenda / Arte -->
-          <a href="#promociones" class="relative group shrink-0">
+          <!-- Imagen de la Prenda / Arte (Clic para ampliar) -->
+          <div onclick="openSingleImageLightbox('${escapeHtml(promo.imageUrl)}', '${escapeHtml(promo.title)}')" class="relative group shrink-0 cursor-pointer" title="Clic para ampliar imagen">
             <div class="w-20 h-20 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-amber-400 shadow-xl bg-slate-950 group-hover:scale-105 transition-transform duration-300">
               <img 
                 src="${escapeHtml(promo.imageUrl)}" 
                 alt="${escapeHtml(promo.title)}" 
-                class="w-full h-full object-cover object-center"
-                onerror="this.src='https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=300&q=80'"
+                class="w-full h-full object-cover object-top"
+                onerror="this.src='fotos/corporativo/camisa-slimfit-7.jpg'"
               />
             </div>
             <span class="absolute -bottom-1 -right-1 bg-amber-500 text-brand-navydark text-[9px] font-black px-1.5 py-0.5 rounded shadow border border-amber-300 uppercase tracking-tighter">
-              EN OFERTA
+              🔍 AMPLIAR
             </span>
-          </a>
+          </div>
 
           <!-- Información y Precios -->
           <div class="flex-1 min-w-0">
@@ -2481,22 +2731,27 @@ function renderPublicPromos(filter = 'all') {
     return `
       <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-slate-200/80 flex flex-col group relative">
         <!-- Badge de Descuento Flotante -->
-        <div class="absolute top-3 left-3 z-10">
+        <div class="absolute top-3 left-3 z-10 pointer-events-none">
           <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black tracking-wide bg-brand-navy text-amber-300 border border-amber-400/40 shadow-lg backdrop-blur-sm">
             <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
             ${escapeHtml(promo.discountBadge || 'OFERTA')}
           </span>
         </div>
 
-        <!-- Imagen de Portada -->
-        <div class="relative h-64 overflow-hidden bg-slate-900">
+        <!-- Imagen de Portada (Clic para ampliar en alta definición) -->
+        <div onclick="openSingleImageLightbox('${escapeHtml(promo.imageUrl)}', '${escapeHtml(promo.title)}')" class="relative h-64 sm:h-72 overflow-hidden bg-slate-900 cursor-pointer" title="Clic para ampliar imagen">
           <img 
             src="${escapeHtml(promo.imageUrl)}" 
             alt="${escapeHtml(promo.title)}" 
-            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-            onerror="this.src='https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80'"
+            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+            onerror="this.src='fotos/corporativo/camisa-slimfit-7.jpg'"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark/80 via-transparent to-transparent"></div>
+          <div class="absolute inset-0 bg-brand-navydark/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+            <span class="px-3.5 py-1.5 rounded-full bg-white/95 text-brand-navy font-bold text-xs shadow-xl flex items-center gap-1.5">
+              🔍 Ver imagen ampliada
+            </span>
+          </div>
           <div class="absolute bottom-3 right-3">
             <span class="text-[11px] font-semibold text-slate-200 bg-brand-navydark/90 px-2.5 py-1 rounded-md border border-blue-900/60 shadow">
               ⏱️ Válido hasta: ${escapeHtml(promo.validUntil || 'Agotar existencias')}
@@ -2605,7 +2860,6 @@ function setupAdminListeners() {
 }
 
 function openAdminSecurityModal() {
-  // Verificar si ya tiene sesión activa
   const isAuth = sessionStorage.getItem(LE_FABRIQUE_SESSION_KEY);
   if (isAuth === 'true') {
     openAdminStudio();
@@ -2676,6 +2930,7 @@ function openAdminStudio() {
     studioModal.classList.remove('hidden');
     studioModal.classList.add('flex');
     document.body.classList.add('overflow-hidden');
+    populateRealPhotosSelector();
     renderAdminPromoList();
     loadMetaCredentialsToForm();
     updateCanvasBanner();
@@ -2715,15 +2970,83 @@ function switchStudioTab(tabName) {
 }
 
 // =========================================================================
-// 7. MOTOR DE INTELIGENCIA ARTIFICIAL PARA IMÁGENES
+// 7. MOTOR DE INTELIGENCIA ARTIFICIAL PARA IMÁGENES (CON TRADUCTOR TEXTIL CR)
 // =========================================================================
-const AI_STYLE_PRESETS = {
-  ejecutivo: 'Professional commercial fashion studio photography of corporate executives wearing luxurious slim fit Oxford shirts in modern bright corporate headquarters, Costa Rica business elegance, sharp fabric texture, cinematic soft lighting, 8k resolution, photorealistic.',
-  medico: 'High-end commercial medical apparel photoshoot, smiling doctor in clinical environment wearing modern tailored antimicrobial surgical scrubs, clean bright hospital background, photorealistic 8k.',
-  gastronomico: 'Master chef in luxury gourmet restaurant kitchen wearing high-end tailored breathable chef coat with gold embroidery details, commercial culinary photography, sharp focus 8k.',
-  industrial: 'Industrial safety workwear photoshoot, worker wearing heavy-duty reflective high-visibility uniform in clean architectural logistics site, professional studio lighting 8k.',
-  bordado: 'Macro extreme close-up of intricate metallic gold computer embroidery thread on navy blue luxury fabric, razor-sharp needlework texture, 8k commercial textile detail.'
-};
+
+// Traductor especializado de terminología textil de Costa Rica a Inglés Fotográfico
+// Evita que "filipina" se interprete como nacionalidad filipina o "gabacha" se pierda.
+function translateTextilePromptToEnglish(spanishText, category = 'ejecutivo') {
+  let text = (spanishText || '').trim();
+
+  const rules = [
+    // Prendas específicas de Costa Rica
+    { rx: /\bfilipinas?\s+m[eé]dicas?\b/gi, en: 'tailored medical clinical scrub tunic top' },
+    { rx: /\bfilipinas?\s+(?:de\s+)?chefs?\b/gi, en: 'double-breasted professional chef jacket coat with buttons' },
+    { rx: /\bfilipinas?\s+ejecutivas?\b/gi, en: 'luxury double-breasted executive chef coat jacket' },
+    { rx: /\bfilipinas?\b/gi, en: 'double-breasted professional chef coat jacket' },
+    { rx: /\bgabachas?\s+m[eé]dicas?\b/gi, en: 'professional tailored white medical doctor lab coat' },
+    { rx: /\bgabachas?\b/gi, en: 'tailored professional medical lab coat smock' },
+    { rx: /\bscrubs?\s+m[eé]dicos?\b/gi, en: 'tailored clinical medical scrubs uniform (V-neck scrub top and pants)' },
+    { rx: /\bscrubs?\b/gi, en: 'tailored clinical medical scrubs uniform set' },
+    { rx: /\btrajes?\s+m[eé]dicos?\b/gi, en: 'clinical medical scrubs uniform set' },
+    { rx: /\bconjuntos?\s+cl[ií]nicos?\b/gi, en: 'clinical medical scrubs uniform set' },
+    { rx: /\bpantal[oó]n(?:es)?\s+cargo\b/gi, en: 'heavy-duty tactical industrial cargo work pants with side utility pockets' },
+    { rx: /\bpantal[oó]n(?:es)?\s+de\s+faena\b/gi, en: 'heavy-duty industrial workwear trousers' },
+    { rx: /\bchalecos?\s+reflectivos?\b/gi, en: 'high-visibility industrial safety work vest with 3M reflective stripes' },
+    { rx: /\bchalecos?\s+t[aá]cticos?\b/gi, en: 'multi-pocket industrial utility tactical work vest' },
+    { rx: /\bcamisas?\s+oxford\b/gi, en: 'tailored corporate Oxford button-down dress shirt' },
+    { rx: /\bcamisas?\s+ejecutivas?\b/gi, en: 'tailored slim-fit corporate executive button-down dress shirt' },
+    { rx: /\bblusas?\s+ejecutivas?\b/gi, en: 'tailored women corporate executive dress blouse' },
+    { rx: /\bblusas?\s+sastre\b/gi, en: 'tailored women formal corporate dress blouse' },
+    { rx: /\bcamisetas?\s+polo\b/gi, en: 'corporate embroidered piqué knit polo shirt with collar' },
+    { rx: /\bpolos?\s+piqu[eé]\b/gi, en: 'corporate piqué knit polo shirt with collar' },
+    { rx: /\bdelantal(?:es)?\b/gi, en: 'professional culinary chef canvas apron' },
+    { rx: /\btrajes?\s+sastre\b/gi, en: 'bespoke tailored executive business suit and blazer' },
+    // Personas / Modelos
+    { rx: /\bdoctora\b/gi, en: 'female Latin American doctor' },
+    { rx: /\bdoctor\b|\bm[eé]dico\b/gi, en: 'male Latin American doctor' },
+    { rx: /\benfermera\b/gi, en: 'female Latin American nurse' },
+    { rx: /\bchef\b|\bcocinero\b/gi, en: 'professional Latin American master chef' },
+    { rx: /\bejecutiva\b|\bdama\b|\bmujer\b/gi, en: 'professional Latin American corporate businesswoman' },
+    { rx: /\bejecutivo\b|\bcaballero\b|\bhombre\b/gi, en: 'professional Latin American corporate businessman' },
+    { rx: /\boperario\b|\btrabajador\b|\bingeniero\b/gi, en: 'professional industrial engineer worker' },
+    // Colores y detalles
+    { rx: /\bazul\s+marino\b/gi, en: 'deep navy blue' },
+    { rx: /\bazul\s+celeste\b|\bceleste\b/gi, en: 'light sky blue' },
+    { rx: /\bazul\b/gi, en: 'royal blue' },
+    { rx: /\bblanco\b|\bblanca\b/gi, en: 'crisp pure white' },
+    { rx: /\bnegro\b|\bnegra\b/gi, en: 'jet black' },
+    { rx: /\bgris\b/gi, en: 'charcoal grey' },
+    { rx: /\bverde\s+militar\b/gi, en: 'olive drab military green' },
+    { rx: /\bverde\s+quir[uú]rgico\b|\bverde\b/gi, en: 'clinical teal surgical green' },
+    { rx: /\bbeige\b|\barena\b/gi, en: 'warm sand beige' },
+    { rx: /\brojo\b|\broja\b|\bvino\b/gi, en: 'burgundy crimson red' },
+    { rx: /\bamarillo\b|\bamarilla\b/gi, en: 'high-visibility golden yellow' },
+    { rx: /\bribetes?\s+dorados?\b/gi, en: 'metallic gold piping trim accents' },
+    { rx: /\bbordado\s+computarizado\b|\bbordado\b/gi, en: 'subtle high-definition embroidered corporate emblem on chest' },
+    { rx: /\bcinta\s+reflectiva\b/gi, en: '3M silver-yellow reflective safety tape stripes' },
+    { rx: /\bantifluido\b/gi, en: 'smooth water-repellent technical microfiber fabric' },
+    { rx: /\bdril\s+pesado\b/gi, en: 'heavy-duty cotton twill drill fabric' },
+    { rx: /\boficina\s+moderna\b/gi, en: 'modern bright corporate glass office background' },
+    { rx: /\bcocina\b|\brestaurante\b/gi, en: 'upscale stainless steel gourmet restaurant kitchen background' },
+    { rx: /\bcl[ií]nica\b|\bhospital\b/gi, en: 'clean modern bright medical clinic interior background' },
+    { rx: /\bplanta\b|\bbodega\b/gi, en: 'clean modern industrial logistics warehouse background' },
+    { rx: /\ble\s+fabrique\b/gi, en: 'bespoke tailored luxury' }
+  ];
+
+  for (const r of rules) {
+    text = text.replace(r.rx, r.en);
+  }
+
+  const categoryContext = {
+    ejecutivo: 'corporate executive business attire, tailored slim-fit shirt',
+    medico: 'clinical medical healthcare scrubs uniform, modern hospital setting',
+    gastronomico: 'culinary chef coat uniform, gourmet kitchen setting',
+    industrial: 'industrial safety workwear uniform, cargo pants and reflective vest'
+  }[category] || 'professional corporate uniform apparel';
+
+  return `Commercial high-end fashion catalog photography of ${text} (${categoryContext}), worn by a professional Latin American model, crisp realistic textile fabric texture, studio lighting, 8k photorealistic, clean composition`;
+}
 
 function applyAIPreset(type) {
   const promptInput = document.getElementById('aiCustomPrompt');
@@ -2731,109 +3054,160 @@ function applyAIPreset(type) {
   const titleInput = document.getElementById('bannerTitleInput');
   const regularInput = document.getElementById('bannerRegularPrice');
   const promoInput = document.getElementById('bannerPromoPrice');
+  const categorySelect = document.getElementById('bannerCategorySelect');
 
   if (type === 'ejecutivo') {
-    if (promptInput) promptInput.value = 'Camisa ejecutiva azul Oxford Slim Fit Le Fabrique';
-    if (badgeInput) badgeInput.value = 'OFERTA CORPORATIVA -25%';
+    if (promptInput) promptInput.value = 'Ejecutivo y ejecutiva vistiendo camisa Oxford azul marino Slim Fit en oficina moderna';
+    if (badgeInput) badgeInput.value = 'OFERTA CORPORATIVA -20%';
     if (titleInput) titleInput.value = 'Paquete 10 Camisas Oxford Slim Fit';
-    if (regularInput) regularInput.value = '150000';
-    if (promoInput) promoInput.value = '119000';
+    if (regularInput) regularInput.value = '156000';
+    if (promoInput) promoInput.value = '125000';
+    if (categorySelect) categorySelect.value = 'ejecutivo';
+    selectRealCatalogPhoto('fotos/corporativo/camisa-slimfit-7.jpg');
   } else if (type === 'medico') {
-    if (promptInput) promptInput.value = 'Doctora vistiendo scrub médico antifluido azul marino';
+    if (promptInput) promptInput.value = 'Doctora vistiendo conjunto scrub médico clínico antifluido con ribetes en clínica moderna';
     if (badgeInput) badgeInput.value = 'ANTIFLUIDO CERTIFICADO';
-    if (titleInput) titleInput.value = 'Conjunto Scrub Clínico Confort';
-    if (regularInput) regularInput.value = '22000';
-    if (promoInput) promoInput.value = '16900';
+    if (titleInput) titleInput.value = 'Conjunto Scrub Clínico Antifluido';
+    if (regularInput) regularInput.value = '21000';
+    if (promoInput) promoInput.value = '15900';
+    if (categorySelect) categorySelect.value = 'medico';
+    selectRealCatalogPhoto('fotos/medico/traje-medico-1.jpg');
   } else if (type === 'gastronomico') {
-    if (promptInput) promptInput.value = 'Chef profesional con filipina ejecutiva blanca y ribetes dorados';
+    if (promptInput) promptInput.value = 'Chef profesional con filipina de chef ejecutiva blanca cruzada y ribetes negros en cocina de restaurante';
     if (badgeInput) badgeInput.value = 'ALTA GASTRONOMÍA';
     if (titleInput) titleInput.value = 'Filipina Chef Ejecutiva Transpirable';
-    if (regularInput) regularInput.value = '19500';
+    if (regularInput) regularInput.value = '19000';
     if (promoInput) promoInput.value = '14500';
+    if (categorySelect) categorySelect.value = 'gastronomico';
+    selectRealCatalogPhoto('fotos/gastronomico/filipina-3.jpg');
   } else if (type === 'industrial') {
-    if (promptInput) promptInput.value = 'Uniformes industriales de alta visibilidad con cinta reflectiva 3M';
+    if (promptInput) promptInput.value = 'Operario con pantalón cargo en dril pesado y chaleco reflectivo de alta visibilidad 3M';
     if (badgeInput) badgeInput.value = 'SEGURIDAD INDUSTRIAL';
-    if (titleInput) titleInput.value = 'Camisa Industrial con Reflectivo 3M';
-    if (regularInput) regularInput.value = '16000';
-    if (promoInput) promoInput.value = '12500';
+    if (titleInput) titleInput.value = 'Pantalón Cargo Dril Pesado & Chaleco';
+    if (regularInput) regularInput.value = '18500';
+    if (promoInput) promoInput.value = '14900';
+    if (categorySelect) categorySelect.value = 'industrial';
+    selectRealCatalogPhoto('fotos/industrial/cargo-2.jpg');
   }
 
-  showStudioToast(`Plantilla "${type.toUpperCase()}" aplicada ✨`);
-  updateCanvasBanner();
+  showStudioToast(`Plantilla "${type.toUpperCase()}" cargada con foto real (o pulsa "Crear Foto con IA") ✨`);
 }
 
 function enhancePromptWithAI() {
   const promptInput = document.getElementById('aiCustomPrompt');
+  const category = document.getElementById('bannerCategorySelect')?.value || 'ejecutivo';
   if (!promptInput) return;
+
   const current = promptInput.value.trim();
   if (!current) {
-    promptInput.value = 'Camisa ejecutiva de alta gama Le Fabrique Slim Fit en oficina moderna';
-  } else {
-    promptInput.value = `${current}, fotografía comercial de catálogo publicitario textil, luz natural de estudio, corte elegante y alta definición de costuras`;
+    promptInput.value = 'Ejecutivo vistiendo camisa Oxford azul marino Slim Fit con bordado corporativo en oficina moderna con iluminación de estudio';
+  } else if (!current.includes('iluminación de estudio')) {
+    const detailsByCat = {
+      ejecutivo: 'con corte sastre Slim Fit, tela Oxford peinada, en oficina corporativa moderna con iluminación de estudio fotográfico',
+      medico: 'con corte anatómico clínico, tela microfibra antifluido, en clínica médica moderna iluminada',
+      gastronomico: 'con doble botonadura ejecutiva, tela gabardina transpirable, en cocina gourmet profesional',
+      industrial: 'con costuras triples reforzadas en dril pesado y cinta reflectiva de alta visibilidad'
+    };
+    promptInput.value = `${current}, ${detailsByCat[category] || detailsByCat.ejecutivo}`;
   }
-  showStudioToast('Prompt optimizado con parámetros fotográficos publicitarios ✨');
+  showStudioToast('Descripción enriquecida con detalles textiles profesionales ✨');
 }
 
 async function generateAIImageForPromo() {
   const promptInput = document.getElementById('aiCustomPrompt');
-  const userPrompt = (promptInput ? promptInput.value : '').trim() || 'Uniformes corporativos elegantes Le Fabrique Costa Rica';
+  const category = document.getElementById('bannerCategorySelect')?.value || 'ejecutivo';
+  const userPrompt = (promptInput ? promptInput.value : '').trim() || 'Camisa ejecutiva azul marino Oxford Slim Fit';
   
   const statusEl = document.getElementById('aiGenerationStatus');
   const btn = document.getElementById('btnGenerateAI');
 
+  // Traducir términos textiles de Costa Rica a inglés técnico preciso
+  const translatedEnglishPrompt = translateTextilePromptToEnglish(userPrompt, category);
+
   if (statusEl) {
     statusEl.classList.remove('hidden');
     statusEl.innerHTML = `
-      <div class="flex items-center gap-3 p-3 bg-blue-950/80 rounded-xl border border-amber-500/40 text-amber-300 text-xs animate-pulse">
-        <svg class="w-5 h-5 animate-spin text-amber-400" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
-        <span><strong>Creando fotografía con IA:</strong> Modelando uniformes, iluminación de estudio y acabados textiles...</span>
+      <div class="flex flex-col gap-1.5 p-3 bg-blue-950/90 rounded-xl border border-amber-500/40 text-amber-300 text-xs animate-pulse">
+        <div class="flex items-center gap-2.5">
+          <svg class="w-5 h-5 animate-spin text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
+          <span><strong>Generando fotografía a medida con IA:</strong> Interpretando prenda, color y textura textil...</span>
+        </div>
       </div>
     `;
   }
   if (btn) btn.disabled = true;
 
   try {
-    // Generación de prompt enriquecido
-    const enrichedPrompt = encodeURIComponent(
-      `commercial high-end catalog photoshoot of ${userPrompt}, elegant fashion studio lighting, realistic textile cotton polyester fabric texture, 8k resolution, crisp clean background`
-    );
-    const randomSeed = Math.floor(Math.random() * 1000000);
-    const aiUrl = `https://image.pollinations.ai/prompt/${enrichedPrompt}?width=1080&height=1080&nologo=true&seed=${randomSeed}&model=flux`;
+    let blob = null;
 
-    // Cargar la imagen generada en un Image object para el canvas
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.onload = () => {
-      currentBannerImage = img;
-      updateCanvasBanner();
-      if (statusEl) {
-        statusEl.innerHTML = `
-          <div class="flex items-center gap-2 p-2.5 bg-emerald-950/60 rounded-xl border border-emerald-500/40 text-emerald-300 text-xs">
-            <span>✅ ¡Fotografía generada exitosamente por IA y montada en tu banner!</span>
-          </div>
-        `;
-        setTimeout(() => statusEl.classList.add('hidden'), 5000);
+    // 1. Intentar primero con el motor nativo Cloudflare Workers AI (/api/generate-image)
+    try {
+      const apiResp = await fetch('/api/generate-image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          prompt: userPrompt,
+          category: category,
+          translatedHint: translatedEnglishPrompt
+        })
+      });
+      if (apiResp.ok && (apiResp.headers.get('Content-Type') || '').includes('image')) {
+        blob = await apiResp.blob();
       }
-      if (btn) btn.disabled = false;
-      showStudioToast('¡Arte generado con éxito! Puedes personalizar textos y precios.');
-    };
-    img.onerror = () => {
-      throw new Error('Error al cargar la imagen generada');
-    };
-    img.src = aiUrl;
+    } catch (workerErr) {
+      console.warn('Usando motor IA directo de respaldo:', workerErr);
+    }
+
+    // 2. Respaldo directo con el prompt traducido (evita errores con palabras como "filipina" o "gabacha")
+    if (!blob || blob.size < 2000) {
+      const randomSeed = Math.floor(Math.random() * 1000000);
+      const fallbackUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(translatedEnglishPrompt)}?width=1080&height=1080&nologo=true&enhance=false&seed=${randomSeed}&model=flux`;
+      const directResp = await fetch(fallbackUrl);
+      if (!directResp.ok) throw new Error('Respuesta no válida del servidor de imágenes');
+      blob = await directResp.blob();
+    }
+
+    // Convertir Blob a DataURL para dibujar en Canvas sin problemas de CORS
+    const dataUrl = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+
+    await new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        currentBannerImage = img;
+        updateCanvasBanner();
+        resolve();
+      };
+      img.onerror = reject;
+      img.src = dataUrl;
+    });
+
+    if (statusEl) {
+      statusEl.innerHTML = `
+        <div class="flex items-center gap-2 p-2.5 bg-emerald-950/80 rounded-xl border border-emerald-500/40 text-emerald-300 text-xs">
+          <span>✅ <strong>¡Fotografía creada con éxito por IA!</strong> Prenda montada en tu banner promocional.</span>
+        </div>
+      `;
+      setTimeout(() => statusEl.classList.add('hidden'), 6000);
+    }
+    if (btn) btn.disabled = false;
+    showStudioToast('¡Fotografía generada por IA según tu descripción! 🎨');
 
   } catch (error) {
     console.error('Error generando imagen IA:', error);
     if (statusEl) {
       statusEl.innerHTML = `
-        <div class="p-2.5 bg-rose-950/60 rounded-xl border border-rose-500/40 text-rose-300 text-xs">
-          ⚠️ Ocurrió una interrupción al conectar con el motor de IA. Usando imagen base de respaldo.
+        <div class="p-2.5 bg-amber-950/80 rounded-xl border border-amber-500/40 text-amber-200 text-xs">
+          ⚠️ El servidor de IA tardó más de lo esperado. Se cargó la fotografía real de la categoría seleccionada.
         </div>
       `;
     }
     if (btn) btn.disabled = false;
-    // Respaldo
-    loadFallbackBannerImage();
+    loadFallbackBannerImage(category);
   }
 }
 
@@ -2854,21 +3228,27 @@ function handleUserImageUpload(event) {
   reader.readAsDataURL(file);
 }
 
-function loadFallbackBannerImage() {
+function loadFallbackBannerImage(category = 'ejecutivo') {
+  const map = {
+    ejecutivo: 'fotos/corporativo/camisa-slimfit-7.jpg',
+    medico: 'fotos/medico/traje-medico-1.jpg',
+    gastronomico: 'fotos/gastronomico/filipina-3.jpg',
+    industrial: 'fotos/industrial/cargo-2.jpg'
+  };
   const img = new Image();
   img.crossOrigin = 'anonymous';
   img.onload = () => {
     currentBannerImage = img;
     updateCanvasBanner();
   };
-  img.src = 'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=1080&q=80';
+  img.src = map[category] || 'fotos/corporativo/camisa-slimfit-7.jpg';
 }
 
 // =========================================================================
 // 8. COMPOSITOR DE BANNERS EN TIEMPO REAL (CANVAS HTML5)
 // =========================================================================
 function initBannerCanvas() {
-  loadFallbackBannerImage();
+  loadFallbackBannerImage('ejecutivo');
 }
 
 function updateCanvasBanner() {
@@ -2891,20 +3271,17 @@ function updateCanvasBanner() {
     const centerShiftY = (h - img.height * ratio) / 2;
     ctx.drawImage(img, 0, 0, img.width, img.height, centerShiftX, centerShiftY, img.width * ratio, img.height * ratio);
   } else {
-    // Fondo fallback
     ctx.fillStyle = '#0f223f';
     ctx.fillRect(0, 0, w, h);
   }
 
   // 3. Degradado cinematográfico para máxima legibilidad
-  // Degradado superior (para el logo)
   const gradTop = ctx.createLinearGradient(0, 0, 0, h * 0.35);
   gradTop.addColorStop(0, 'rgba(10, 22, 41, 0.92)');
   gradTop.addColorStop(1, 'rgba(10, 22, 41, 0)');
   ctx.fillStyle = gradTop;
   ctx.fillRect(0, 0, w, h * 0.35);
 
-  // Degradado inferior (para precios y textos)
   const gradBottom = ctx.createLinearGradient(0, h * 0.45, 0, h);
   gradBottom.addColorStop(0, 'rgba(10, 22, 41, 0)');
   gradBottom.addColorStop(0.5, 'rgba(10, 22, 41, 0.88)');
@@ -2923,7 +3300,6 @@ function updateCanvasBanner() {
   ctx.strokeRect(24, 24, w - 48, h - 48);
 
   // 6. ENCABEZADO CON LOGO DE LE FABRIQUE
-  // Dibujar Torre Eiffel dorada vectorial estilizada
   drawBrandEiffelTower(ctx, 80, 50, 0.6);
 
   ctx.fillStyle = '#ffffff';
@@ -2943,7 +3319,6 @@ function updateCanvasBanner() {
   const badgeX = w - badgeWidth - 40;
   const badgeY = 55;
 
-  // Fondo del badge con gradiente dorado
   const gradBadge = ctx.createLinearGradient(badgeX, badgeY, badgeX + badgeWidth, badgeY);
   gradBadge.addColorStop(0, '#c59b27');
   gradBadge.addColorStop(1, '#dfb749');
@@ -2969,12 +3344,10 @@ function updateCanvasBanner() {
   const promoFmt = new Intl.NumberFormat('es-CR').format(promoPrice);
   const regFmt = new Intl.NumberFormat('es-CR').format(regularPrice);
 
-  // Precio regular tachado
   ctx.fillStyle = '#94a3b8';
   ctx.font = '600 28px "Inter", sans-serif';
   ctx.fillText(`Precio Regular: ₡${regFmt}`, 55, h - 170);
   
-  // Línea de tachado
   const regWidth = ctx.measureText(`Precio Regular: ₡${regFmt}`).width;
   ctx.strokeStyle = '#ef4444';
   ctx.lineWidth = 4;
@@ -2983,12 +3356,10 @@ function updateCanvasBanner() {
   ctx.lineTo(55 + regWidth, h - 178);
   ctx.stroke();
 
-  // Precio de oferta gigante
   ctx.fillStyle = '#dfb749';
   ctx.font = '900 64px "Outfit", sans-serif';
   ctx.fillText(`₡${promoFmt}`, 55, h - 100);
 
-  // Etiqueta "IVA y Bordado Incluido"
   const extraBadge = document.getElementById('bannerExtraBadge')?.value || 'Bordado Computarizado Incluido';
   ctx.fillStyle = '#10b981';
   ctx.font = '800 22px "Inter", sans-serif';
@@ -3012,11 +3383,10 @@ function updateCanvasBanner() {
 
   ctx.textAlign = 'right';
   ctx.fillStyle = '#fde68a';
-  const validUntil = document.getElementById('bannerValidUntil')?.value || '2026-11-30';
+  const validUntil = document.getElementById('bannerValidUntil')?.value || '2026-12-31';
   ctx.fillText(`📍 Taller en Heredia • Válido hasta: ${validUntil}`, w - 55, h - 26);
 }
 
-// Auxiliares de Canvas
 function drawBrandEiffelTower(ctx, x, y, scale = 0.5) {
   ctx.save();
   ctx.translate(x, y);
@@ -3094,9 +3464,8 @@ function saveCanvasAsPromotion() {
   const extraBadge = (document.getElementById('bannerExtraBadge')?.value || 'Bordado Incluido').trim();
   const promoPrice = parseInt(document.getElementById('bannerPromoPrice')?.value || '15000', 10);
   const regularPrice = parseInt(document.getElementById('bannerRegularPrice')?.value || '20000', 10);
-  const validUntil = document.getElementById('bannerValidUntil')?.value || '2026-11-30';
+  const validUntil = document.getElementById('bannerValidUntil')?.value || '2026-12-31';
 
-  // Exportar imagen del canvas en Base64/PNG
   const dataUrl = canvas.toDataURL('image/jpeg', 0.88);
 
   const newPromo = {
@@ -3121,7 +3490,6 @@ function saveCanvasAsPromotion() {
   switchStudioTab('catalogo');
 }
 
-// Descargar arte gráfico en PNG
 function downloadCanvasImage(format = 'feed') {
   const canvas = document.getElementById('promoStudioCanvas');
   if (!canvas) return;
@@ -3138,7 +3506,6 @@ function downloadCanvasImage(format = 'feed') {
   showStudioToast('Arte descargado en alta resolución (1080x1080 px) ⬇️');
 }
 
-// Copiar texto para redes
 function copySocialCopyText() {
   const title = document.getElementById('bannerTitleInput')?.value || 'Uniformes Empresariales';
   const promoPrice = new Intl.NumberFormat('es-CR').format(document.getElementById('bannerPromoPrice')?.value || '15900');
@@ -3240,12 +3607,10 @@ async function testMetaConnection() {
   }
 }
 
-// Acción de publicación integral sin descargas
 async function publishDirectToMetaSocial() {
   const creds = JSON.parse(localStorage.getItem(LE_FABRIQUE_META_KEY) || '{}');
   const canvas = document.getElementById('promoStudioCanvas');
 
-  // Si no ha configurado credenciales aún, brindamos la alternativa directa con 1 clic a Meta Business Suite
   if (!creds.metaAccessToken || !creds.facebookPageId) {
     openMetaFallbackModal();
     return;
@@ -3270,10 +3635,8 @@ async function publishDirectToMetaSocial() {
       `📲 Escríbenos por WhatsApp: https://wa.me/50664898613\n` +
       `#LeFabrique #UniformesCostaRica`;
 
-    // 1. Obtener imagen en Blob
     const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.92));
 
-    // 2. Publicar en Facebook Page
     const fbFormData = new FormData();
     fbFormData.append('source', blob, 'le-fabrique-promo.jpg');
     fbFormData.append('caption', caption);
@@ -3289,7 +3652,6 @@ async function publishDirectToMetaSocial() {
       throw new Error(`Facebook API: ${fbResult.error.message}`);
     }
 
-    // 3. Resultado y enlace a Pauta en Meta Ads
     showMetaSuccessModal(fbResult.id, creds.facebookPageId);
 
   } catch (err) {
@@ -3354,14 +3716,14 @@ function renderAdminPromoList() {
     return;
   }
 
-  container.innerHTML = promotionsState.map((promo, idx) => {
+  container.innerHTML = promotionsState.map((promo) => {
     const promoFmt = new Intl.NumberFormat('es-CR').format(promo.promoPrice);
     const regFmt = new Intl.NumberFormat('es-CR').format(promo.regularPrice);
 
     return `
       <tr class="border-b border-slate-800 hover:bg-slate-800/50 transition">
         <td class="py-3 px-4">
-          <img src="${escapeHtml(promo.imageUrl)}" class="w-14 h-14 rounded-lg object-cover border border-slate-700" onerror="this.src='https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=200&q=80'" />
+          <img src="${escapeHtml(promo.imageUrl)}" class="w-14 h-14 rounded-lg object-cover border border-slate-700" onerror="this.src='fotos/corporativo/camisa-slimfit-7.jpg'" />
         </td>
         <td class="py-3 px-4 font-semibold text-white">
           <div class="text-sm font-bold">${escapeHtml(promo.title)}</div>

@@ -1,8 +1,14 @@
 {
   "name": "lefabriquecr",
+  "main": "worker.js",
   "compatibility_date": "2026-10-29",
+  "workers_dev": true,
   "assets": {
-    "directory": "."
+    "directory": ".",
+    "binding": "ASSETS"
+  },
+  "ai": {
+    "binding": "AI"
   },
   "routes": [
     {

@@ -2,3 +2,5 @@
 README.md
 wrangler.jsonc
 .assetsignore
+worker.js
+version1_cloudflare.html

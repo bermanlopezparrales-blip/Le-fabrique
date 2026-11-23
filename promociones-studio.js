@@ -1,19 +1,20 @@
 /**
  * LE FABRIQUE - ESTUDIO DE PROMOCIONES, GENERADOR IA Y PUBLICACIÓN EN META
  * Sistema integral para la gestión de ofertas de temporada, compositor de banners con IA,
- * publicación directa en Facebook / Instagram y catálogo interactivo.
+ * selector de las 59 fotos reales del taller, publicación directa en Facebook / Instagram
+ * y catálogo interactivo.
  * Desarrollado para Le Fabrique Costa Rica.
  */
 
 // =========================================================================
 // 1. CONFIGURACIÓN INICIAL & ESTADO GLOBAL
 // =========================================================================
-const LE_FABRIQUE_STORAGE_KEY = 'lefabrique_promotions_db_v1';
+const LE_FABRIQUE_STORAGE_KEY = 'lefabrique_promotions_db_v2';
 const LE_FABRIQUE_META_KEY = 'lefabrique_meta_credentials_v1';
 const LE_FABRIQUE_SECURITY_KEY = 'lefabrique_admin_security_v1';
 const LE_FABRIQUE_SESSION_KEY = 'lefabrique_admin_session_auth';
 
-// Promociones por defecto de alta calidad (Costa Rica)
+// Promociones por defecto con las fotografías reales del taller Le Fabrique
 const DEFAULT_PROMOTIONS = [
   {
     id: 'promo-1',
@@ -23,39 +24,39 @@ const DEFAULT_PROMOTIONS = [
     promoPrice: 125000,
     regularPrice: 156000,
     badgeText: '🧵 Bordado de Logo Gratis',
-    validUntil: '2026-11-30',
+    validUntil: '2026-12-31',
     description: 'Confección nacional en tela Oxford importada de alta durabilidad, corte Slim Fit ejecutivo con bordado computarizado incluido.',
-    imageUrl: 'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=1080&q=80',
+    imageUrl: 'fotos/corporativo/camisa-slimfit-7.jpg',
     active: true,
-    createdAt: '2026-10-29'
+    createdAt: '2026-11-23'
   },
   {
     id: 'promo-2',
-    title: 'Conjunto Clínico Scrub Antifluido Cloro-Resistente',
+    title: 'Conjunto Clínico Scrub Antifluido Clororresistente',
     category: 'medico',
     discountBadge: 'OFERTA ESPECIAL',
     promoPrice: 15900,
     regularPrice: 21000,
     badgeText: '✨ Tela Antifluido Certificada',
-    validUntil: '2026-11-20',
+    validUntil: '2026-12-20',
     description: 'Comodidad total para jornadas exigentes. Tela antifluidos repelente de líquidos con bolsillos multifuncionales.',
-    imageUrl: 'https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1080&q=80',
+    imageUrl: 'fotos/medico/traje-medico-1.jpg',
     active: true,
-    createdAt: '2026-10-29'
+    createdAt: '2026-11-23'
   },
   {
     id: 'promo-3',
-    title: 'Filipina Chef Ejecutiva Transpirable con Ribetes Dorados',
+    title: 'Filipina Chef Ejecutiva Transpirable de Alta Cocina',
     category: 'gastronomico',
     discountBadge: 'PRECIO DE TEMPORADA',
     promoPrice: 14500,
     regularPrice: 19000,
     badgeText: '🔥 Edición Limitada',
-    validUntil: '2026-11-15',
+    validUntil: '2026-12-15',
     description: 'Diseño ergonómico con malla lateral transpirable y botones de alta resistencia al calor y lavados intensivos.',
-    imageUrl: 'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1080&q=80',
+    imageUrl: 'fotos/gastronomico/filipina-3.jpg',
     active: true,
-    createdAt: '2026-10-29'
+    createdAt: '2026-11-23'
   }
 ];
 
@@ -74,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderPublicPromos();
   setupAdminListeners();
   initBannerCanvas();
+  populateRealPhotosSelector();
 });
 
 // Cargar o sembrar base de datos local
@@ -81,7 +83,16 @@ function initPromotionsDatabase() {
   try {
     const stored = localStorage.getItem(LE_FABRIQUE_STORAGE_KEY);
     if (!stored) {
-      promotionsState = [...DEFAULT_PROMOTIONS];
+      // Migrar promociones personalizadas creadas por el usuario en v1 si existen
+      const oldV1 = localStorage.getItem('lefabrique_promotions_db_v1');
+      let customFromV1 = [];
+      if (oldV1) {
+        try {
+          const parsedOld = JSON.parse(oldV1);
+          customFromV1 = parsedOld.filter(p => p.id && !['promo-1', 'promo-2', 'promo-3'].includes(p.id));
+        } catch (e) {}
+      }
+      promotionsState = [...customFromV1, ...DEFAULT_PROMOTIONS];
       localStorage.setItem(LE_FABRIQUE_STORAGE_KEY, JSON.stringify(promotionsState));
     } else {
       promotionsState = JSON.parse(stored);
@@ -107,8 +118,39 @@ function savePromotionsDatabase() {
   renderAdminPromoList();
 }
 
+// Poblar selector de las 59 fotos reales del catálogo en el Estudio
+function populateRealPhotosSelector() {
+  const select = document.getElementById('realCatalogPhotoSelect');
+  if (!select || typeof catalogGalleries === 'undefined') return;
+
+  let optionsHtml = '<option value="">-- Selecciona una foto real del taller (59 disponibles) --</option>';
+  Object.keys(catalogGalleries).forEach(catKey => {
+    const group = catalogGalleries[catKey];
+    optionsHtml += `<optgroup label="${escapeHtml(group.title)}">`;
+    group.photos.forEach(photo => {
+      if (photo.src && photo.src.startsWith('fotos/')) {
+        optionsHtml += `<option value="${escapeHtml(photo.src)}">${escapeHtml(photo.title)}</option>`;
+      }
+    });
+    optionsHtml += '</optgroup>';
+  });
+  select.innerHTML = optionsHtml;
+}
+
+function selectRealCatalogPhoto(photoSrc) {
+  if (!photoSrc) return;
+  const img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.onload = () => {
+    currentBannerImage = img;
+    updateCanvasBanner();
+    showStudioToast('Fotografía real del taller cargada en el banner 📸');
+  };
+  img.src = photoSrc;
+}
+
 // =========================================================================
-// 3. CINTA PROMOCIONAL SUPERIOR (TICKER ROTATIVO)
+// 3. CINTA PROMOCIONAL SUPERIOR (TICKER ROTATIVO CON FOTO REAL)
 // =========================================================================
 function renderPromoTicker() {
   const tickerContainer = document.getElementById('promoTickerContainer');
@@ -148,20 +190,20 @@ function renderPromoTicker() {
         
         <!-- Bloque Izquierdo: Imagen del uniforme en promoción + Badges -->
         <div class="flex items-center gap-4 sm:gap-5 w-full lg:w-auto">
-          <!-- Imagen de la Prenda / Arte -->
-          <a href="#promociones" class="relative group shrink-0">
+          <!-- Imagen de la Prenda / Arte (Clic para ampliar) -->
+          <div onclick="openSingleImageLightbox('${escapeHtml(promo.imageUrl)}', '${escapeHtml(promo.title)}')" class="relative group shrink-0 cursor-pointer" title="Clic para ampliar imagen">
             <div class="w-20 h-20 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-amber-400 shadow-xl bg-slate-950 group-hover:scale-105 transition-transform duration-300">
               <img 
                 src="${escapeHtml(promo.imageUrl)}" 
                 alt="${escapeHtml(promo.title)}" 
-                class="w-full h-full object-cover object-center"
-                onerror="this.src='https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=300&q=80'"
+                class="w-full h-full object-cover object-top"
+                onerror="this.src='fotos/corporativo/camisa-slimfit-7.jpg'"
               />
             </div>
             <span class="absolute -bottom-1 -right-1 bg-amber-500 text-brand-navydark text-[9px] font-black px-1.5 py-0.5 rounded shadow border border-amber-300 uppercase tracking-tighter">
-              EN OFERTA
+              🔍 AMPLIAR
             </span>
-          </a>
+          </div>
 
           <!-- Información y Precios -->
           <div class="flex-1 min-w-0">
@@ -332,22 +374,27 @@ function renderPublicPromos(filter = 'all') {
     return `
       <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-slate-200/80 flex flex-col group relative">
         <!-- Badge de Descuento Flotante -->
-        <div class="absolute top-3 left-3 z-10">
+        <div class="absolute top-3 left-3 z-10 pointer-events-none">
           <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black tracking-wide bg-brand-navy text-amber-300 border border-amber-400/40 shadow-lg backdrop-blur-sm">
             <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
             ${escapeHtml(promo.discountBadge || 'OFERTA')}
           </span>
         </div>
 
-        <!-- Imagen de Portada -->
-        <div class="relative h-64 overflow-hidden bg-slate-900">
+        <!-- Imagen de Portada (Clic para ampliar en alta definición) -->
+        <div onclick="openSingleImageLightbox('${escapeHtml(promo.imageUrl)}', '${escapeHtml(promo.title)}')" class="relative h-64 sm:h-72 overflow-hidden bg-slate-900 cursor-pointer" title="Clic para ampliar imagen">
           <img 
             src="${escapeHtml(promo.imageUrl)}" 
             alt="${escapeHtml(promo.title)}" 
-            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-            onerror="this.src='https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80'"
+            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+            onerror="this.src='fotos/corporativo/camisa-slimfit-7.jpg'"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-brand-navydark/80 via-transparent to-transparent"></div>
+          <div class="absolute inset-0 bg-brand-navydark/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+            <span class="px-3.5 py-1.5 rounded-full bg-white/95 text-brand-navy font-bold text-xs shadow-xl flex items-center gap-1.5">
+              🔍 Ver imagen ampliada
+            </span>
+          </div>
           <div class="absolute bottom-3 right-3">
             <span class="text-[11px] font-semibold text-slate-200 bg-brand-navydark/90 px-2.5 py-1 rounded-md border border-blue-900/60 shadow">
               ⏱️ Válido hasta: ${escapeHtml(promo.validUntil || 'Agotar existencias')}
@@ -456,7 +503,6 @@ function setupAdminListeners() {
 }
 
 function openAdminSecurityModal() {
-  // Verificar si ya tiene sesión activa
   const isAuth = sessionStorage.getItem(LE_FABRIQUE_SESSION_KEY);
   if (isAuth === 'true') {
     openAdminStudio();
@@ -527,6 +573,7 @@ function openAdminStudio() {
     studioModal.classList.remove('hidden');
     studioModal.classList.add('flex');
     document.body.classList.add('overflow-hidden');
+    populateRealPhotosSelector();
     renderAdminPromoList();
     loadMetaCredentialsToForm();
     updateCanvasBanner();
@@ -566,15 +613,83 @@ function switchStudioTab(tabName) {
 }
 
 // =========================================================================
-// 7. MOTOR DE INTELIGENCIA ARTIFICIAL PARA IMÁGENES
+// 7. MOTOR DE INTELIGENCIA ARTIFICIAL PARA IMÁGENES (CON TRADUCTOR TEXTIL CR)
 // =========================================================================
-const AI_STYLE_PRESETS = {
-  ejecutivo: 'Professional commercial fashion studio photography of corporate executives wearing luxurious slim fit Oxford shirts in modern bright corporate headquarters, Costa Rica business elegance, sharp fabric texture, cinematic soft lighting, 8k resolution, photorealistic.',
-  medico: 'High-end commercial medical apparel photoshoot, smiling doctor in clinical environment wearing modern tailored antimicrobial surgical scrubs, clean bright hospital background, photorealistic 8k.',
-  gastronomico: 'Master chef in luxury gourmet restaurant kitchen wearing high-end tailored breathable chef coat with gold embroidery details, commercial culinary photography, sharp focus 8k.',
-  industrial: 'Industrial safety workwear photoshoot, worker wearing heavy-duty reflective high-visibility uniform in clean architectural logistics site, professional studio lighting 8k.',
-  bordado: 'Macro extreme close-up of intricate metallic gold computer embroidery thread on navy blue luxury fabric, razor-sharp needlework texture, 8k commercial textile detail.'
-};
+
+// Traductor especializado de terminología textil de Costa Rica a Inglés Fotográfico
+// Evita que "filipina" se interprete como nacionalidad filipina o "gabacha" se pierda.
+function translateTextilePromptToEnglish(spanishText, category = 'ejecutivo') {
+  let text = (spanishText || '').trim();
+
+  const rules = [
+    // Prendas específicas de Costa Rica
+    { rx: /\bfilipinas?\s+m[eé]dicas?\b/gi, en: 'tailored medical clinical scrub tunic top' },
+    { rx: /\bfilipinas?\s+(?:de\s+)?chefs?\b/gi, en: 'double-breasted professional chef jacket coat with buttons' },
+    { rx: /\bfilipinas?\s+ejecutivas?\b/gi, en: 'luxury double-breasted executive chef coat jacket' },
+    { rx: /\bfilipinas?\b/gi, en: 'double-breasted professional chef coat jacket' },
+    { rx: /\bgabachas?\s+m[eé]dicas?\b/gi, en: 'professional tailored white medical doctor lab coat' },
+    { rx: /\bgabachas?\b/gi, en: 'tailored professional medical lab coat smock' },
+    { rx: /\bscrubs?\s+m[eé]dicos?\b/gi, en: 'tailored clinical medical scrubs uniform (V-neck scrub top and pants)' },
+    { rx: /\bscrubs?\b/gi, en: 'tailored clinical medical scrubs uniform set' },
+    { rx: /\btrajes?\s+m[eé]dicos?\b/gi, en: 'clinical medical scrubs uniform set' },
+    { rx: /\bconjuntos?\s+cl[ií]nicos?\b/gi, en: 'clinical medical scrubs uniform set' },
+    { rx: /\bpantal[oó]n(?:es)?\s+cargo\b/gi, en: 'heavy-duty tactical industrial cargo work pants with side utility pockets' },
+    { rx: /\bpantal[oó]n(?:es)?\s+de\s+faena\b/gi, en: 'heavy-duty industrial workwear trousers' },
+    { rx: /\bchalecos?\s+reflectivos?\b/gi, en: 'high-visibility industrial safety work vest with 3M reflective stripes' },
+    { rx: /\bchalecos?\s+t[aá]cticos?\b/gi, en: 'multi-pocket industrial utility tactical work vest' },
+    { rx: /\bcamisas?\s+oxford\b/gi, en: 'tailored corporate Oxford button-down dress shirt' },
+    { rx: /\bcamisas?\s+ejecutivas?\b/gi, en: 'tailored slim-fit corporate executive button-down dress shirt' },
+    { rx: /\bblusas?\s+ejecutivas?\b/gi, en: 'tailored women corporate executive dress blouse' },
+    { rx: /\bblusas?\s+sastre\b/gi, en: 'tailored women formal corporate dress blouse' },
+    { rx: /\bcamisetas?\s+polo\b/gi, en: 'corporate embroidered piqué knit polo shirt with collar' },
+    { rx: /\bpolos?\s+piqu[eé]\b/gi, en: 'corporate piqué knit polo shirt with collar' },
+    { rx: /\bdelantal(?:es)?\b/gi, en: 'professional culinary chef canvas apron' },
+    { rx: /\btrajes?\s+sastre\b/gi, en: 'bespoke tailored executive business suit and blazer' },
+    // Personas / Modelos
+    { rx: /\bdoctora\b/gi, en: 'female Latin American doctor' },
+    { rx: /\bdoctor\b|\bm[eé]dico\b/gi, en: 'male Latin American doctor' },
+    { rx: /\benfermera\b/gi, en: 'female Latin American nurse' },
+    { rx: /\bchef\b|\bcocinero\b/gi, en: 'professional Latin American master chef' },
+    { rx: /\bejecutiva\b|\bdama\b|\bmujer\b/gi, en: 'professional Latin American corporate businesswoman' },
+    { rx: /\bejecutivo\b|\bcaballero\b|\bhombre\b/gi, en: 'professional Latin American corporate businessman' },
+    { rx: /\boperario\b|\btrabajador\b|\bingeniero\b/gi, en: 'professional industrial engineer worker' },
+    // Colores y detalles
+    { rx: /\bazul\s+marino\b/gi, en: 'deep navy blue' },
+    { rx: /\bazul\s+celeste\b|\bceleste\b/gi, en: 'light sky blue' },
+    { rx: /\bazul\b/gi, en: 'royal blue' },
+    { rx: /\bblanco\b|\bblanca\b/gi, en: 'crisp pure white' },
+    { rx: /\bnegro\b|\bnegra\b/gi, en: 'jet black' },
+    { rx: /\bgris\b/gi, en: 'charcoal grey' },
+    { rx: /\bverde\s+militar\b/gi, en: 'olive drab military green' },
+    { rx: /\bverde\s+quir[uú]rgico\b|\bverde\b/gi, en: 'clinical teal surgical green' },
+    { rx: /\bbeige\b|\barena\b/gi, en: 'warm sand beige' },
+    { rx: /\brojo\b|\broja\b|\bvino\b/gi, en: 'burgundy crimson red' },
+    { rx: /\bamarillo\b|\bamarilla\b/gi, en: 'high-visibility golden yellow' },
+    { rx: /\bribetes?\s+dorados?\b/gi, en: 'metallic gold piping trim accents' },
+    { rx: /\bbordado\s+computarizado\b|\bbordado\b/gi, en: 'subtle high-definition embroidered corporate emblem on chest' },
+    { rx: /\bcinta\s+reflectiva\b/gi, en: '3M silver-yellow reflective safety tape stripes' },
+    { rx: /\bantifluido\b/gi, en: 'smooth water-repellent technical microfiber fabric' },
+    { rx: /\bdril\s+pesado\b/gi, en: 'heavy-duty cotton twill drill fabric' },
+    { rx: /\boficina\s+moderna\b/gi, en: 'modern bright corporate glass office background' },
+    { rx: /\bcocina\b|\brestaurante\b/gi, en: 'upscale stainless steel gourmet restaurant kitchen background' },
+    { rx: /\bcl[ií]nica\b|\bhospital\b/gi, en: 'clean modern bright medical clinic interior background' },
+    { rx: /\bplanta\b|\bbodega\b/gi, en: 'clean modern industrial logistics warehouse background' },
+    { rx: /\ble\s+fabrique\b/gi, en: 'bespoke tailored luxury' }
+  ];
+
+  for (const r of rules) {
+    text = text.replace(r.rx, r.en);
+  }
+
+  const categoryContext = {
+    ejecutivo: 'corporate executive business attire, tailored slim-fit shirt',
+    medico: 'clinical medical healthcare scrubs uniform, modern hospital setting',
+    gastronomico: 'culinary chef coat uniform, gourmet kitchen setting',
+    industrial: 'industrial safety workwear uniform, cargo pants and reflective vest'
+  }[category] || 'professional corporate uniform apparel';
+
+  return `Commercial high-end fashion catalog photography of ${text} (${categoryContext}), worn by a professional Latin American model, crisp realistic textile fabric texture, studio lighting, 8k photorealistic, clean composition`;
+}
 
 function applyAIPreset(type) {
   const promptInput = document.getElementById('aiCustomPrompt');
@@ -582,109 +697,160 @@ function applyAIPreset(type) {
   const titleInput = document.getElementById('bannerTitleInput');
   const regularInput = document.getElementById('bannerRegularPrice');
   const promoInput = document.getElementById('bannerPromoPrice');
+  const categorySelect = document.getElementById('bannerCategorySelect');
 
   if (type === 'ejecutivo') {
-    if (promptInput) promptInput.value = 'Camisa ejecutiva azul Oxford Slim Fit Le Fabrique';
-    if (badgeInput) badgeInput.value = 'OFERTA CORPORATIVA -25%';
+    if (promptInput) promptInput.value = 'Ejecutivo y ejecutiva vistiendo camisa Oxford azul marino Slim Fit en oficina moderna';
+    if (badgeInput) badgeInput.value = 'OFERTA CORPORATIVA -20%';
     if (titleInput) titleInput.value = 'Paquete 10 Camisas Oxford Slim Fit';
-    if (regularInput) regularInput.value = '150000';
-    if (promoInput) promoInput.value = '119000';
+    if (regularInput) regularInput.value = '156000';
+    if (promoInput) promoInput.value = '125000';
+    if (categorySelect) categorySelect.value = 'ejecutivo';
+    selectRealCatalogPhoto('fotos/corporativo/camisa-slimfit-7.jpg');
   } else if (type === 'medico') {
-    if (promptInput) promptInput.value = 'Doctora vistiendo scrub médico antifluido azul marino';
+    if (promptInput) promptInput.value = 'Doctora vistiendo conjunto scrub médico clínico antifluido con ribetes en clínica moderna';
     if (badgeInput) badgeInput.value = 'ANTIFLUIDO CERTIFICADO';
-    if (titleInput) titleInput.value = 'Conjunto Scrub Clínico Confort';
-    if (regularInput) regularInput.value = '22000';
-    if (promoInput) promoInput.value = '16900';
+    if (titleInput) titleInput.value = 'Conjunto Scrub Clínico Antifluido';
+    if (regularInput) regularInput.value = '21000';
+    if (promoInput) promoInput.value = '15900';
+    if (categorySelect) categorySelect.value = 'medico';
+    selectRealCatalogPhoto('fotos/medico/traje-medico-1.jpg');
   } else if (type === 'gastronomico') {
-    if (promptInput) promptInput.value = 'Chef profesional con filipina ejecutiva blanca y ribetes dorados';
+    if (promptInput) promptInput.value = 'Chef profesional con filipina de chef ejecutiva blanca cruzada y ribetes negros en cocina de restaurante';
     if (badgeInput) badgeInput.value = 'ALTA GASTRONOMÍA';
     if (titleInput) titleInput.value = 'Filipina Chef Ejecutiva Transpirable';
-    if (regularInput) regularInput.value = '19500';
+    if (regularInput) regularInput.value = '19000';
     if (promoInput) promoInput.value = '14500';
+    if (categorySelect) categorySelect.value = 'gastronomico';
+    selectRealCatalogPhoto('fotos/gastronomico/filipina-3.jpg');
   } else if (type === 'industrial') {
-    if (promptInput) promptInput.value = 'Uniformes industriales de alta visibilidad con cinta reflectiva 3M';
+    if (promptInput) promptInput.value = 'Operario con pantalón cargo en dril pesado y chaleco reflectivo de alta visibilidad 3M';
     if (badgeInput) badgeInput.value = 'SEGURIDAD INDUSTRIAL';
-    if (titleInput) titleInput.value = 'Camisa Industrial con Reflectivo 3M';
-    if (regularInput) regularInput.value = '16000';
-    if (promoInput) promoInput.value = '12500';
+    if (titleInput) titleInput.value = 'Pantalón Cargo Dril Pesado & Chaleco';
+    if (regularInput) regularInput.value = '18500';
+    if (promoInput) promoInput.value = '14900';
+    if (categorySelect) categorySelect.value = 'industrial';
+    selectRealCatalogPhoto('fotos/industrial/cargo-2.jpg');
   }
 
-  showStudioToast(`Plantilla "${type.toUpperCase()}" aplicada ✨`);
-  updateCanvasBanner();
+  showStudioToast(`Plantilla "${type.toUpperCase()}" cargada con foto real (o pulsa "Crear Foto con IA") ✨`);
 }
 
 function enhancePromptWithAI() {
   const promptInput = document.getElementById('aiCustomPrompt');
+  const category = document.getElementById('bannerCategorySelect')?.value || 'ejecutivo';
   if (!promptInput) return;
+
   const current = promptInput.value.trim();
   if (!current) {
-    promptInput.value = 'Camisa ejecutiva de alta gama Le Fabrique Slim Fit en oficina moderna';
-  } else {
-    promptInput.value = `${current}, fotografía comercial de catálogo publicitario textil, luz natural de estudio, corte elegante y alta definición de costuras`;
+    promptInput.value = 'Ejecutivo vistiendo camisa Oxford azul marino Slim Fit con bordado corporativo en oficina moderna con iluminación de estudio';
+  } else if (!current.includes('iluminación de estudio')) {
+    const detailsByCat = {
+      ejecutivo: 'con corte sastre Slim Fit, tela Oxford peinada, en oficina corporativa moderna con iluminación de estudio fotográfico',
+      medico: 'con corte anatómico clínico, tela microfibra antifluido, en clínica médica moderna iluminada',
+      gastronomico: 'con doble botonadura ejecutiva, tela gabardina transpirable, en cocina gourmet profesional',
+      industrial: 'con costuras triples reforzadas en dril pesado y cinta reflectiva de alta visibilidad'
+    };
+    promptInput.value = `${current}, ${detailsByCat[category] || detailsByCat.ejecutivo}`;
   }
-  showStudioToast('Prompt optimizado con parámetros fotográficos publicitarios ✨');
+  showStudioToast('Descripción enriquecida con detalles textiles profesionales ✨');
 }
 
 async function generateAIImageForPromo() {
   const promptInput = document.getElementById('aiCustomPrompt');
-  const userPrompt = (promptInput ? promptInput.value : '').trim() || 'Uniformes corporativos elegantes Le Fabrique Costa Rica';
+  const category = document.getElementById('bannerCategorySelect')?.value || 'ejecutivo';
+  const userPrompt = (promptInput ? promptInput.value : '').trim() || 'Camisa ejecutiva azul marino Oxford Slim Fit';
   
   const statusEl = document.getElementById('aiGenerationStatus');
   const btn = document.getElementById('btnGenerateAI');
 
+  // Traducir términos textiles de Costa Rica a inglés técnico preciso
+  const translatedEnglishPrompt = translateTextilePromptToEnglish(userPrompt, category);
+
   if (statusEl) {
     statusEl.classList.remove('hidden');
     statusEl.innerHTML = `
-      <div class="flex items-center gap-3 p-3 bg-blue-950/80 rounded-xl border border-amber-500/40 text-amber-300 text-xs animate-pulse">
-        <svg class="w-5 h-5 animate-spin text-amber-400" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
-        <span><strong>Creando fotografía con IA:</strong> Modelando uniformes, iluminación de estudio y acabados textiles...</span>
+      <div class="flex flex-col gap-1.5 p-3 bg-blue-950/90 rounded-xl border border-amber-500/40 text-amber-300 text-xs animate-pulse">
+        <div class="flex items-center gap-2.5">
+          <svg class="w-5 h-5 animate-spin text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
+          <span><strong>Generando fotografía a medida con IA:</strong> Interpretando prenda, color y textura textil...</span>
+        </div>
       </div>
     `;
   }
   if (btn) btn.disabled = true;
 
   try {
-    // Generación de prompt enriquecido
-    const enrichedPrompt = encodeURIComponent(
-      `commercial high-end catalog photoshoot of ${userPrompt}, elegant fashion studio lighting, realistic textile cotton polyester fabric texture, 8k resolution, crisp clean background`
-    );
-    const randomSeed = Math.floor(Math.random() * 1000000);
-    const aiUrl = `https://image.pollinations.ai/prompt/${enrichedPrompt}?width=1080&height=1080&nologo=true&seed=${randomSeed}&model=flux`;
+    let blob = null;
 
-    // Cargar la imagen generada en un Image object para el canvas
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.onload = () => {
-      currentBannerImage = img;
-      updateCanvasBanner();
-      if (statusEl) {
-        statusEl.innerHTML = `
-          <div class="flex items-center gap-2 p-2.5 bg-emerald-950/60 rounded-xl border border-emerald-500/40 text-emerald-300 text-xs">
-            <span>✅ ¡Fotografía generada exitosamente por IA y montada en tu banner!</span>
-          </div>
-        `;
-        setTimeout(() => statusEl.classList.add('hidden'), 5000);
+    // 1. Intentar primero con el motor nativo Cloudflare Workers AI (/api/generate-image)
+    try {
+      const apiResp = await fetch('/api/generate-image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          prompt: userPrompt,
+          category: category,
+          translatedHint: translatedEnglishPrompt
+        })
+      });
+      if (apiResp.ok && (apiResp.headers.get('Content-Type') || '').includes('image')) {
+        blob = await apiResp.blob();
       }
-      if (btn) btn.disabled = false;
-      showStudioToast('¡Arte generado con éxito! Puedes personalizar textos y precios.');
-    };
-    img.onerror = () => {
-      throw new Error('Error al cargar la imagen generada');
-    };
-    img.src = aiUrl;
+    } catch (workerErr) {
+      console.warn('Usando motor IA directo de respaldo:', workerErr);
+    }
+
+    // 2. Respaldo directo con el prompt traducido (evita errores con palabras como "filipina" o "gabacha")
+    if (!blob || blob.size < 2000) {
+      const randomSeed = Math.floor(Math.random() * 1000000);
+      const fallbackUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(translatedEnglishPrompt)}?width=1080&height=1080&nologo=true&enhance=false&seed=${randomSeed}&model=flux`;
+      const directResp = await fetch(fallbackUrl);
+      if (!directResp.ok) throw new Error('Respuesta no válida del servidor de imágenes');
+      blob = await directResp.blob();
+    }
+
+    // Convertir Blob a DataURL para dibujar en Canvas sin problemas de CORS
+    const dataUrl = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+
+    await new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        currentBannerImage = img;
+        updateCanvasBanner();
+        resolve();
+      };
+      img.onerror = reject;
+      img.src = dataUrl;
+    });
+
+    if (statusEl) {
+      statusEl.innerHTML = `
+        <div class="flex items-center gap-2 p-2.5 bg-emerald-950/80 rounded-xl border border-emerald-500/40 text-emerald-300 text-xs">
+          <span>✅ <strong>¡Fotografía creada con éxito por IA!</strong> Prenda montada en tu banner promocional.</span>
+        </div>
+      `;
+      setTimeout(() => statusEl.classList.add('hidden'), 6000);
+    }
+    if (btn) btn.disabled = false;
+    showStudioToast('¡Fotografía generada por IA según tu descripción! 🎨');
 
   } catch (error) {
     console.error('Error generando imagen IA:', error);
     if (statusEl) {
       statusEl.innerHTML = `
-        <div class="p-2.5 bg-rose-950/60 rounded-xl border border-rose-500/40 text-rose-300 text-xs">
-          ⚠️ Ocurrió una interrupción al conectar con el motor de IA. Usando imagen base de respaldo.
+        <div class="p-2.5 bg-amber-950/80 rounded-xl border border-amber-500/40 text-amber-200 text-xs">
+          ⚠️ El servidor de IA tardó más de lo esperado. Se cargó la fotografía real de la categoría seleccionada.
         </div>
       `;
     }
     if (btn) btn.disabled = false;
-    // Respaldo
-    loadFallbackBannerImage();
+    loadFallbackBannerImage(category);
   }
 }
 
@@ -705,21 +871,27 @@ function handleUserImageUpload(event) {
   reader.readAsDataURL(file);
 }
 
-function loadFallbackBannerImage() {
+function loadFallbackBannerImage(category = 'ejecutivo') {
+  const map = {
+    ejecutivo: 'fotos/corporativo/camisa-slimfit-7.jpg',
+    medico: 'fotos/medico/traje-medico-1.jpg',
+    gastronomico: 'fotos/gastronomico/filipina-3.jpg',
+    industrial: 'fotos/industrial/cargo-2.jpg'
+  };
   const img = new Image();
   img.crossOrigin = 'anonymous';
   img.onload = () => {
     currentBannerImage = img;
     updateCanvasBanner();
   };
-  img.src = 'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=1080&q=80';
+  img.src = map[category] || 'fotos/corporativo/camisa-slimfit-7.jpg';
 }
 
 // =========================================================================
 // 8. COMPOSITOR DE BANNERS EN TIEMPO REAL (CANVAS HTML5)
 // =========================================================================
 function initBannerCanvas() {
-  loadFallbackBannerImage();
+  loadFallbackBannerImage('ejecutivo');
 }
 
 function updateCanvasBanner() {
@@ -742,20 +914,17 @@ function updateCanvasBanner() {
     const centerShiftY = (h - img.height * ratio) / 2;
     ctx.drawImage(img, 0, 0, img.width, img.height, centerShiftX, centerShiftY, img.width * ratio, img.height * ratio);
   } else {
-    // Fondo fallback
     ctx.fillStyle = '#0f223f';
     ctx.fillRect(0, 0, w, h);
   }
 
   // 3. Degradado cinematográfico para máxima legibilidad
-  // Degradado superior (para el logo)
   const gradTop = ctx.createLinearGradient(0, 0, 0, h * 0.35);
   gradTop.addColorStop(0, 'rgba(10, 22, 41, 0.92)');
   gradTop.addColorStop(1, 'rgba(10, 22, 41, 0)');
   ctx.fillStyle = gradTop;
   ctx.fillRect(0, 0, w, h * 0.35);
 
-  // Degradado inferior (para precios y textos)
   const gradBottom = ctx.createLinearGradient(0, h * 0.45, 0, h);
   gradBottom.addColorStop(0, 'rgba(10, 22, 41, 0)');
   gradBottom.addColorStop(0.5, 'rgba(10, 22, 41, 0.88)');
@@ -774,7 +943,6 @@ function updateCanvasBanner() {
   ctx.strokeRect(24, 24, w - 48, h - 48);
 
   // 6. ENCABEZADO CON LOGO DE LE FABRIQUE
-  // Dibujar Torre Eiffel dorada vectorial estilizada
   drawBrandEiffelTower(ctx, 80, 50, 0.6);
 
   ctx.fillStyle = '#ffffff';
@@ -794,7 +962,6 @@ function updateCanvasBanner() {
   const badgeX = w - badgeWidth - 40;
   const badgeY = 55;
 
-  // Fondo del badge con gradiente dorado
   const gradBadge = ctx.createLinearGradient(badgeX, badgeY, badgeX + badgeWidth, badgeY);
   gradBadge.addColorStop(0, '#c59b27');
   gradBadge.addColorStop(1, '#dfb749');
@@ -820,12 +987,10 @@ function updateCanvasBanner() {
   const promoFmt = new Intl.NumberFormat('es-CR').format(promoPrice);
   const regFmt = new Intl.NumberFormat('es-CR').format(regularPrice);
 
-  // Precio regular tachado
   ctx.fillStyle = '#94a3b8';
   ctx.font = '600 28px "Inter", sans-serif';
   ctx.fillText(`Precio Regular: ₡${regFmt}`, 55, h - 170);
   
-  // Línea de tachado
   const regWidth = ctx.measureText(`Precio Regular: ₡${regFmt}`).width;
   ctx.strokeStyle = '#ef4444';
   ctx.lineWidth = 4;
@@ -834,12 +999,10 @@ function updateCanvasBanner() {
   ctx.lineTo(55 + regWidth, h - 178);
   ctx.stroke();
 
-  // Precio de oferta gigante
   ctx.fillStyle = '#dfb749';
   ctx.font = '900 64px "Outfit", sans-serif';
   ctx.fillText(`₡${promoFmt}`, 55, h - 100);
 
-  // Etiqueta "IVA y Bordado Incluido"
   const extraBadge = document.getElementById('bannerExtraBadge')?.value || 'Bordado Computarizado Incluido';
   ctx.fillStyle = '#10b981';
   ctx.font = '800 22px "Inter", sans-serif';
@@ -863,11 +1026,10 @@ function updateCanvasBanner() {
 
   ctx.textAlign = 'right';
   ctx.fillStyle = '#fde68a';
-  const validUntil = document.getElementById('bannerValidUntil')?.value || '2026-11-30';
+  const validUntil = document.getElementById('bannerValidUntil')?.value || '2026-12-31';
   ctx.fillText(`📍 Taller en Heredia • Válido hasta: ${validUntil}`, w - 55, h - 26);
 }
 
-// Auxiliares de Canvas
 function drawBrandEiffelTower(ctx, x, y, scale = 0.5) {
   ctx.save();
   ctx.translate(x, y);
@@ -945,9 +1107,8 @@ function saveCanvasAsPromotion() {
   const extraBadge = (document.getElementById('bannerExtraBadge')?.value || 'Bordado Incluido').trim();
   const promoPrice = parseInt(document.getElementById('bannerPromoPrice')?.value || '15000', 10);
   const regularPrice = parseInt(document.getElementById('bannerRegularPrice')?.value || '20000', 10);
-  const validUntil = document.getElementById('bannerValidUntil')?.value || '2026-11-30';
+  const validUntil = document.getElementById('bannerValidUntil')?.value || '2026-12-31';
 
-  // Exportar imagen del canvas en Base64/PNG
   const dataUrl = canvas.toDataURL('image/jpeg', 0.88);
 
   const newPromo = {
@@ -972,7 +1133,6 @@ function saveCanvasAsPromotion() {
   switchStudioTab('catalogo');
 }
 
-// Descargar arte gráfico en PNG
 function downloadCanvasImage(format = 'feed') {
   const canvas = document.getElementById('promoStudioCanvas');
   if (!canvas) return;
@@ -989,7 +1149,6 @@ function downloadCanvasImage(format = 'feed') {
   showStudioToast('Arte descargado en alta resolución (1080x1080 px) ⬇️');
 }
 
-// Copiar texto para redes
 function copySocialCopyText() {
   const title = document.getElementById('bannerTitleInput')?.value || 'Uniformes Empresariales';
   const promoPrice = new Intl.NumberFormat('es-CR').format(document.getElementById('bannerPromoPrice')?.value || '15900');
@@ -1091,12 +1250,10 @@ async function testMetaConnection() {
   }
 }
 
-// Acción de publicación integral sin descargas
 async function publishDirectToMetaSocial() {
   const creds = JSON.parse(localStorage.getItem(LE_FABRIQUE_META_KEY) || '{}');
   const canvas = document.getElementById('promoStudioCanvas');
 
-  // Si no ha configurado credenciales aún, brindamos la alternativa directa con 1 clic a Meta Business Suite
   if (!creds.metaAccessToken || !creds.facebookPageId) {
     openMetaFallbackModal();
     return;
@@ -1121,10 +1278,8 @@ async function publishDirectToMetaSocial() {
       `📲 Escríbenos por WhatsApp: https://wa.me/50664898613\n` +
       `#LeFabrique #UniformesCostaRica`;
 
-    // 1. Obtener imagen en Blob
     const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.92));
 
-    // 2. Publicar en Facebook Page
     const fbFormData = new FormData();
     fbFormData.append('source', blob, 'le-fabrique-promo.jpg');
     fbFormData.append('caption', caption);
@@ -1140,7 +1295,6 @@ async function publishDirectToMetaSocial() {
       throw new Error(`Facebook API: ${fbResult.error.message}`);
     }
 
-    // 3. Resultado y enlace a Pauta en Meta Ads
     showMetaSuccessModal(fbResult.id, creds.facebookPageId);
 
   } catch (err) {
@@ -1205,14 +1359,14 @@ function renderAdminPromoList() {
     return;
   }
 
-  container.innerHTML = promotionsState.map((promo, idx) => {
+  container.innerHTML = promotionsState.map((promo) => {
     const promoFmt = new Intl.NumberFormat('es-CR').format(promo.promoPrice);
     const regFmt = new Intl.NumberFormat('es-CR').format(promo.regularPrice);
 
     return `
       <tr class="border-b border-slate-800 hover:bg-slate-800/50 transition">
         <td class="py-3 px-4">
-          <img src="${escapeHtml(promo.imageUrl)}" class="w-14 h-14 rounded-lg object-cover border border-slate-700" onerror="this.src='https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=200&q=80'" />
+          <img src="${escapeHtml(promo.imageUrl)}" class="w-14 h-14 rounded-lg object-cover border border-slate-700" onerror="this.src='fotos/corporativo/camisa-slimfit-7.jpg'" />
         </td>
         <td class="py-3 px-4 font-semibold text-white">
           <div class="text-sm font-bold">${escapeHtml(promo.title)}</div>
