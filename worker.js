@@ -1,26 +1,66 @@
 /**
  * Cloudflare Worker para Le Fabrique Costa Rica
  * - Sirve los archivos estáticos (index.html, fotos/*, promociones-studio.js)
- * - Endpoint /api/generate-image: Traduce términos textiles de Costa Rica (filipina, gabacha, scrub, cargo, oxford, polo)
- *   y genera fotografía publicitaria fotorrealista con Cloudflare Workers AI (Flux-1-Schnell).
+ * - Endpoint /api/generate-image: Traduce términos textiles de Costa Rica (filipina, gabacha, scrub, cargo, oxford, polo),
+ *   colores y escenarios al inglés técnico y genera fotografía publicitaria fotorrealista con Cloudflare Workers AI (Flux-1-Schnell).
  */
 
 const CR_TEXTILE_GLOSSARY = [
-  { pattern: /\bfilipinas?\s+m[eé]dicas?\b/gi, replacement: "tailored medical clinical tunic scrub top" },
-  { pattern: /\bfilipinas?\b/gi, replacement: "double-breasted professional chef jacket coat" },
-  { pattern: /\bgabachas?\b/gi, replacement: "professional tailored medical doctor lab coat" },
-  { pattern: /\bscrubs?\b/gi, replacement: "clinical medical scrubs uniform set (V-neck scrub top and pants)" },
+  // Prendas específicas de Costa Rica
+  { pattern: /\bfilipinas?\s+m[eé]dicas?\b/gi, replacement: "tailored medical clinical scrub tunic top" },
+  { pattern: /\bfilipinas?\s+(?:de\s+)?chefs?\b/gi, replacement: "double-breasted long-sleeve professional chef jacket coat" },
+  { pattern: /\bfilipinas?\s+ejecutivas?\b/gi, replacement: "luxury double-breasted long-sleeve executive chef coat jacket" },
+  { pattern: /\bfilipinas?\b/gi, replacement: "double-breasted long-sleeve professional chef coat jacket" },
+  { pattern: /\bgabachas?\s+m[eé]dicas?\b/gi, replacement: "professional tailored white medical doctor lab coat" },
+  { pattern: /\bgabachas?\b/gi, replacement: "professional tailored medical doctor lab coat smock" },
+  { pattern: /\bscrubs?\s+m[eé]dicos?\b/gi, replacement: "tailored clinical medical scrubs uniform set (V-neck scrub top and pants)" },
+  { pattern: /\bscrubs?\b/gi, replacement: "tailored clinical medical scrubs uniform set (V-neck top and pants)" },
   { pattern: /\btrajes?\s+m[eé]dicos?\b/gi, replacement: "clinical medical scrubs uniform set" },
+  { pattern: /\bconjuntos?\s+cl[ií]nicos?\b/gi, replacement: "clinical medical scrubs uniform set" },
   { pattern: /\bpantal[oó]n(?:es)?\s+cargo\b/gi, replacement: "heavy-duty industrial cargo work trousers with side utility pockets" },
-  { pattern: /\bchalecos?\s+reflectivos?\b/gi, replacement: "high-visibility industrial safety work vest with reflective bands" },
+  { pattern: /\bpantal[oó]n(?:es)?\s+de\s+faena\b/gi, replacement: "heavy-duty industrial workwear trousers" },
+  { pattern: /\bchalecos?\s+reflectivos?\b/gi, replacement: "high-visibility industrial safety work vest with 3M reflective bands" },
   { pattern: /\bchalecos?\s+t[aá]cticos?\b/gi, replacement: "multi-pocket industrial utility tactical work vest" },
   { pattern: /\bcamisas?\s+oxford\b/gi, replacement: "tailored corporate Oxford button-down dress shirt" },
   { pattern: /\bcamisas?\s+ejecutivas?\b/gi, replacement: "tailored slim-fit corporate executive button-down dress shirt" },
   { pattern: /\bblusas?\s+ejecutivas?\b/gi, replacement: "tailored women corporate executive dress blouse" },
+  { pattern: /\bblusas?\s+sastre\b/gi, replacement: "tailored women formal corporate dress blouse" },
   { pattern: /\bcamisetas?\s+polo\b/gi, replacement: "corporate embroidered piqué polo shirt with collar" },
   { pattern: /\bpolos?\s+piqu[eé]\b/gi, replacement: "corporate piqué knit polo shirt with collar" },
   { pattern: /\bdelantal(?:es)?\b/gi, replacement: "professional culinary chef canvas apron" },
-  { pattern: /\bbordados?\b/gi, replacement: "high-definition computer embroidered logo" }
+  { pattern: /\btrajes?\s+sastre\b/gi, replacement: "bespoke tailored executive business suit and blazer" },
+  // Modelos
+  { pattern: /\bdoctora\b/gi, replacement: "female Latin American doctor" },
+  { pattern: /\bdoctor\b|\bm[eé]dico\b/gi, replacement: "male Latin American doctor" },
+  { pattern: /\benfermera\b/gi, replacement: "female Latin American nurse" },
+  { pattern: /\bchef\s+profesional\b|\bchef\b|\bcocinero\b/gi, replacement: "professional Latin American master chef" },
+  { pattern: /\bejecutiva\b|\bdama\b|\bmujer\b/gi, replacement: "professional Latin American corporate businesswoman" },
+  { pattern: /\bejecutivo\b|\bcaballero\b|\bhombre\b/gi, replacement: "professional Latin American corporate businessman" },
+  { pattern: /\boperario\b|\btrabajador\b|\bingeniero\b/gi, replacement: "professional Latin American industrial engineer worker" },
+  // Colores y acabados
+  { pattern: /\bazul\s+marino\b/gi, replacement: "deep navy blue" },
+  { pattern: /\bazul\s+celeste\b|\bceleste\b/gi, replacement: "light sky blue" },
+  { pattern: /\bazul\b/gi, replacement: "royal blue" },
+  { pattern: /\bblanco\b|\bblanca\b/gi, replacement: "crisp pure white" },
+  { pattern: /\bnegro\b|\bnegra\b/gi, replacement: "jet black" },
+  { pattern: /\bgris\b/gi, replacement: "charcoal grey" },
+  { pattern: /\bverde\s+militar\b/gi, replacement: "olive drab military green" },
+  { pattern: /\bverde\s+quir[uú]rgico\b|\bverde\b/gi, replacement: "clinical surgical teal green" },
+  { pattern: /\bbeige\b|\barena\b/gi, replacement: "warm sand beige" },
+  { pattern: /\brojo\b|\broja\b|\bvino\b/gi, replacement: "burgundy crimson red" },
+  { pattern: /\bamarillo\b|\bamarilla\b/gi, replacement: "high-visibility golden yellow" },
+  { pattern: /\bribetes?\s+dorados?\b/gi, replacement: "metallic gold piping trim on collar and cuffs" },
+  { pattern: /\bribetes?\s+negros?\b/gi, replacement: "black piping trim on collar and cuffs" },
+  { pattern: /\bbordado\s+computarizado\b|\bbordado\b/gi, replacement: "subtle high-definition embroidered corporate emblem on chest" },
+  { pattern: /\bcinta\s+reflectiva\b/gi, replacement: "3M silver-yellow reflective safety stripes" },
+  { pattern: /\bantifluido\b/gi, replacement: "smooth water-repellent technical microfiber fabric" },
+  { pattern: /\bdril\s+pesado\b/gi, replacement: "heavy-duty cotton twill drill fabric" },
+  { pattern: /\boficina\s+moderna\b/gi, replacement: "modern bright corporate glass office background" },
+  { pattern: /\bcocina\s+de\s+restaurante\b|\bcocina\b|\brestaurante\b/gi, replacement: "upscale stainless steel gourmet restaurant kitchen background" },
+  { pattern: /\bcl[ií]nica\s+moderna\b|\bcl[ií]nica\b|\bhospital\b/gi, replacement: "clean modern bright medical clinic interior background" },
+  { pattern: /\bvistiendo\b|\bcon\b/gi, replacement: "wearing" },
+  { pattern: /\ben\b/gi, replacement: "in" },
+  { pattern: /\by\b/gi, replacement: "and" }
 ];
 
 function applyTextileGlossary(text) {
@@ -35,7 +75,6 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    // CORS Preflight
     if (request.method === "OPTIONS") {
       return new Response(null, {
         headers: {
@@ -46,7 +85,6 @@ export default {
       });
     }
 
-    // Endpoint de Generación Fotográfica con IA
     if (url.pathname === "/api/generate-image") {
       try {
         let userPrompt = url.searchParams.get("prompt") || "";
@@ -59,11 +97,8 @@ export default {
         }
 
         userPrompt = (userPrompt || "Uniforme corporativo ejecutivo").trim();
-        const preProcessed = applyTextileGlossary(userPrompt);
+        let englishPrompt = applyTextileGlossary(userPrompt);
 
-        let englishPrompt = preProcessed;
-
-        // 1. Traducir y enriquecer el prompt con Llama 3.1 en Workers AI para máxima precisión
         if (env.AI) {
           try {
             const llmRes = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
@@ -71,39 +106,35 @@ export default {
                 {
                   role: "system",
                   content:
-                    "You are an expert commercial fashion photography prompt engineer for a corporate uniform manufacturer in Costa Rica. " +
-                    "Translate the user's garment request into a detailed English image generation prompt (max 75 words). " +
-                    "IMPORTANT RULES:\n" +
-                    "- 'filipina' ALWAYS means a chef coat/jacket (or medical tunic), NEVER a person from the Philippines.\n" +
-                    "- 'gabacha' ALWAYS means a doctor/laboratory coat.\n" +
-                    "- Keep the exact garment type, colors, gender, and environment requested by the user.\n" +
-                    "- Style: Professional commercial catalog studio photoshoot, Latin American professional model, crisp fabric texture, realistic tailoring, 8k photorealistic lighting.\n" +
-                    "- Output ONLY the English prompt, nothing else."
+                    "You are an expert commercial fashion photography prompt engineer for a corporate uniform manufacturer. " +
+                    "Convert the user's description into a single vivid English image generation prompt (max 65 words). " +
+                    "CRITICAL: 'filipina' means a chef coat/jacket, NEVER a person from the Philippines. 'gabacha' means a medical lab coat. " +
+                    "Preserve the exact garment type, colors, piping/trim details, and setting requested. Output ONLY the English prompt."
                 },
                 {
                   role: "user",
-                  content: `User request: "${userPrompt}" (Technical glossary hint: "${preProcessed}", Category: "${category}")`
+                  content: `Convert to English fashion photography prompt: "${englishPrompt}" (Category: ${category})`
                 }
               ],
-              max_tokens: 160,
-              temperature: 0.3
+              max_tokens: 140,
+              temperature: 0.2
             });
 
-            if (llmRes && llmRes.response) {
+            if (llmRes && llmRes.response && llmRes.response.trim().length > 15) {
               englishPrompt = llmRes.response.trim().replace(/^["']|["']$/g, "");
             }
           } catch (llmErr) {
-            console.error("LLM translation fallback:", llmErr);
+            // Continuar con el glosario técnico directo
           }
 
-          // 2. Generar imagen fotorrealista con Flux-1-Schnell en Cloudflare Workers AI
+          const finalFluxPrompt = `${englishPrompt}, commercial high-end corporate uniform catalog photoshoot, professional Latin American model, realistic tailored textile fabric texture, sharp studio lighting, 8k photorealistic`;
+
           const fluxRes = await env.AI.run("@cf/black-forest-labs/flux-1-schnell", {
-            prompt: `${englishPrompt}, professional commercial uniform catalog photography, Latin American model, sharp textile stitching detail, high-end studio lighting, 8k photorealistic`,
+            prompt: finalFluxPrompt,
             steps: 8
           });
 
           if (fluxRes && fluxRes.image) {
-            // flux-1-schnell devuelve base64 en fluxRes.image
             const binaryStr = atob(fluxRes.image);
             const bytes = new Uint8Array(binaryStr.length);
             for (let i = 0; i < binaryStr.length; i++) {
@@ -120,9 +151,8 @@ export default {
           }
         }
 
-        // Fallback si env.AI no está disponible
         const fallbackUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(
-          englishPrompt + ", professional commercial uniform catalog photography, Latin American model, 8k photorealistic"
+          englishPrompt + ", commercial uniform catalog photography, Latin American model, 8k photorealistic"
         )}?width=1080&height=1080&nologo=true&enhance=false&model=flux&seed=${Math.floor(Math.random() * 1000000)}`;
 
         const imgResp = await fetch(fallbackUrl);
@@ -144,7 +174,6 @@ export default {
       }
     }
 
-    // Servir archivos estáticos
     if (env.ASSETS) {
       return env.ASSETS.fetch(request);
     }
