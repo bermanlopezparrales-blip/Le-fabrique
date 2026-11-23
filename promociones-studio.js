@@ -32,11 +32,11 @@ const DEFAULT_PROMOTIONS = [
   },
   {
     id: 'promo-2',
-    title: 'Conjunto Clínico Scrub Antifluido Clororresistente',
+    title: 'Conjunto Clínico Scrub Antifluido Clororresistente (Precio x Unidad)',
     category: 'medico',
-    discountBadge: 'OFERTA ESPECIAL',
-    promoPrice: 15900,
-    regularPrice: 21000,
+    discountBadge: '-15% DESCUENTO',
+    promoPrice: 19550,
+    regularPrice: 23000,
     badgeText: '✨ Tela Antifluido Certificada',
     validUntil: '2026-12-20',
     description: 'Comodidad total para jornadas exigentes. Tela antifluidos repelente de líquidos con bolsillos multifuncionales.',
@@ -46,10 +46,10 @@ const DEFAULT_PROMOTIONS = [
   },
   {
     id: 'promo-3',
-    title: 'Filipina Chef Ejecutiva Transpirable de Alta Cocina',
+    title: 'Filipina Chef Ejecutiva Transpirable de Alta Cocina (Precio x Unidad)',
     category: 'gastronomico',
-    discountBadge: 'PRECIO DE TEMPORADA',
-    promoPrice: 14500,
+    discountBadge: '-15% DESCUENTO',
+    promoPrice: 16150,
     regularPrice: 19000,
     badgeText: '🔥 Edición Limitada',
     validUntil: '2026-12-15',
@@ -67,9 +67,10 @@ let tickerInterval = null;
 let currentBannerImage = null; // Image object para el canvas
 let editingPromoId = null; // ID de la oferta en edición
 let quickEditingPromoId = null; // ID de la oferta en el modal de modificación rápida
+let isSavingToCloud = false;
 
 // =========================================================================
-// 2. INICIALIZACIÓN & SINCRONIZACIÓN EN LA NUBE (CLOUDFLARE KV)
+// 2. INICIALIZACIÓN & SINCRONIZACIÓN AUTOMÁTICA EN TIEMPO REAL
 // =========================================================================
 document.addEventListener('DOMContentLoaded', () => {
   initPromotionsDatabase();
@@ -78,32 +79,43 @@ document.addEventListener('DOMContentLoaded', () => {
   setupAdminListeners();
   initBannerCanvas();
   populateRealPhotosSelector();
+
+  // Sincronización automática cuando el usuario vuelve a la pestaña o cada 15 segundos
+  window.addEventListener('focus', () => {
+    if (!isSavingToCloud) fetchLatestPromotionsFromCloud();
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && !isSavingToCloud) {
+      fetchLatestPromotionsFromCloud();
+    }
+  });
+  setInterval(() => {
+    const studioModal = document.getElementById('adminStudioModal');
+    const studioOpen = studioModal && !studioModal.classList.contains('hidden');
+    if (!studioOpen && !isSavingToCloud) {
+      fetchLatestPromotionsFromCloud();
+    }
+  }, 15000);
 });
 
-// Cargar base de datos y sincronizar desde el servidor Cloudflare KV (/api/promotions)
+// Cargar promociones priorizando SIEMPRE los datos en vivo inyectados por el servidor Cloudflare
 async function initPromotionsDatabase() {
-  try {
-    const stored = localStorage.getItem(LE_FABRIQUE_STORAGE_KEY);
-    if (!stored) {
-      promotionsState = [...DEFAULT_PROMOTIONS];
+  // 1. Si el servidor Cloudflare inyectó las promociones en vivo en el HTML, usarlas de inmediato (0ms, sin caché vieja)
+  if (typeof window !== 'undefined' && Array.isArray(window.__LIVE_SERVER_PROMOTIONS__) && window.__LIVE_SERVER_PROMOTIONS__.length > 0) {
+    promotionsState = window.__LIVE_SERVER_PROMOTIONS__;
+    try {
       localStorage.setItem(LE_FABRIQUE_STORAGE_KEY, JSON.stringify(promotionsState));
-    } else {
-      promotionsState = JSON.parse(stored);
-      // Si tenía el precio viejo por defecto (125000), actualizarlo al nuevo valor
-      const p1 = promotionsState.find(p => p.id === 'promo-1');
-      if (p1 && p1.promoPrice === 125000 && p1.regularPrice === 156000) {
-        p1.title = DEFAULT_PROMOTIONS[0].title;
-        p1.discountBadge = DEFAULT_PROMOTIONS[0].discountBadge;
-        p1.promoPrice = DEFAULT_PROMOTIONS[0].promoPrice;
-        p1.regularPrice = DEFAULT_PROMOTIONS[0].regularPrice;
-      }
+    } catch (e) {}
+  } else {
+    // Respaldo local inicial mientras responde /api/promotions
+    try {
+      const stored = localStorage.getItem(LE_FABRIQUE_STORAGE_KEY);
+      promotionsState = stored ? JSON.parse(stored) : [...DEFAULT_PROMOTIONS];
+    } catch (err) {
+      promotionsState = [...DEFAULT_PROMOTIONS];
     }
-  } catch (err) {
-    console.error('Error cargando promociones locales:', err);
-    promotionsState = [...DEFAULT_PROMOTIONS];
   }
 
-  // Inicializar credenciales de seguridad si no existen
   if (!localStorage.getItem(LE_FABRIQUE_SECURITY_KEY)) {
     localStorage.setItem(LE_FABRIQUE_SECURITY_KEY, JSON.stringify({
       masterPin: '2026',
@@ -111,19 +123,32 @@ async function initPromotionsDatabase() {
     }));
   }
 
-  // Consultar el servidor en la nube (/api/promotions) para que celulares y computadoras vean exactamente lo mismo
+  // 2. Confirmar con el endpoint /api/promotions sin caché
+  await fetchLatestPromotionsFromCloud();
+}
+
+async function fetchLatestPromotionsFromCloud() {
+  if (isSavingToCloud) return;
   try {
     const resp = await fetch('/api/promotions?t=' + Date.now(), {
-      headers: { 'Cache-Control': 'no-cache' }
+      cache: 'no-store',
+      headers: { 'Cache-Control': 'no-cache, no-store, must-revalidate' }
     });
     if (resp.ok) {
       const data = await resp.json();
       if (data && data.success && Array.isArray(data.promotions) && data.promotions.length > 0) {
-        promotionsState = data.promotions;
-        localStorage.setItem(LE_FABRIQUE_STORAGE_KEY, JSON.stringify(promotionsState));
-        renderPromoTicker();
-        renderPublicPromos();
-        renderAdminPromoList();
+        const currentJson = JSON.stringify(promotionsState);
+        const cloudJson = JSON.stringify(data.promotions);
+        if (currentJson !== cloudJson) {
+          promotionsState = data.promotions;
+          window.__LIVE_SERVER_PROMOTIONS__ = data.promotions;
+          try {
+            localStorage.setItem(LE_FABRIQUE_STORAGE_KEY, JSON.stringify(promotionsState));
+          } catch (e) {}
+          renderPromoTicker();
+          renderPublicPromos();
+          renderAdminPromoList();
+        }
       }
     }
   } catch (cloudErr) {
@@ -132,23 +157,49 @@ async function initPromotionsDatabase() {
 }
 
 async function savePromotionsDatabase() {
-  localStorage.setItem(LE_FABRIQUE_STORAGE_KEY, JSON.stringify(promotionsState));
+  isSavingToCloud = true;
+  window.__LIVE_SERVER_PROMOTIONS__ = promotionsState;
+  try {
+    localStorage.setItem(LE_FABRIQUE_STORAGE_KEY, JSON.stringify(promotionsState));
+  } catch (e) {}
+
   renderPromoTicker();
   renderPublicPromos();
   renderAdminPromoList();
 
+  const syncBadge = document.getElementById('cloudSyncStatusBadge');
+  if (syncBadge) {
+    syncBadge.innerHTML = '☁️ Guardando en servidor...';
+    syncBadge.className = 'text-[11px] font-bold px-2.5 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/40 animate-pulse';
+  }
+
   // Guardar inmediatamente en la base de datos en la nube de Cloudflare (PROMOS_KV)
   try {
-    const resp = await fetch('/api/promotions', {
+    const resp = await fetch('/api/promotions?t=' + Date.now(), {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      cache: 'no-store',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cache-Control': 'no-cache, no-store'
+      },
       body: JSON.stringify({ promotions: promotionsState })
     });
     if (resp.ok) {
-      console.log('Promociones sincronizadas en el servidor Cloudflare KV.');
+      if (syncBadge) {
+        syncBadge.innerHTML = '✅ Sincronizado en uniformeslefabrique.com';
+        syncBadge.className = 'text-[11px] font-bold px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/40';
+      }
+    } else {
+      throw new Error('HTTP ' + resp.status);
     }
   } catch (err) {
     console.warn('No se pudo sincronizar con la nube en este momento:', err);
+    if (syncBadge) {
+      syncBadge.innerHTML = '⚠️ Guardado local (reintentar nube)';
+      syncBadge.className = 'text-[11px] font-bold px-2.5 py-1 rounded-lg bg-rose-500/20 text-rose-300 border border-rose-500/40';
+    }
+  } finally {
+    isSavingToCloud = false;
   }
 }
 

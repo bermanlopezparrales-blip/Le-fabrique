@@ -1,9 +1,8 @@
 /**
  * Cloudflare Worker para Le Fabrique Costa Rica
- * - Base de datos en la nube (Cloudflare KV: env.PROMOS_KV) en /api/promotions para sincronizar
- *   precios, descuentos, estados y nuevas ofertas en todos los celulares y computadoras en tiempo real.
- * - Endpoint /api/generate-image: Traduce términos textiles de Costa Rica y genera fotografía
- *   publicitaria con Cloudflare Workers AI (Flux-1-Schnell).
+ * - Sincronización en tiempo real de promociones (Inyección Server-Side en index.html + Cloudflare KV + Memoria Edge)
+ *   para que cualquier cambio hecho en el Estudio se vea al instante en todos los celulares y computadoras sin caché vieja.
+ * - Endpoint /api/generate-image con Cloudflare Workers AI (Flux-1-Schnell).
  */
 
 const INITIAL_CLOUD_PROMOTIONS = [
@@ -23,11 +22,11 @@ const INITIAL_CLOUD_PROMOTIONS = [
   },
   {
     id: "promo-2",
-    title: "Conjunto Clínico Scrub Antifluido Clororresistente",
+    title: "Conjunto Clínico Scrub Antifluido Clororresistente (Precio x Unidad)",
     category: "medico",
-    discountBadge: "OFERTA ESPECIAL",
-    promoPrice: 15900,
-    regularPrice: 21000,
+    discountBadge: "-15% DESCUENTO",
+    promoPrice: 19550,
+    regularPrice: 23000,
     badgeText: "✨ Tela Antifluido Certificada",
     validUntil: "2026-12-20",
     description: "Comodidad total para jornadas exigentes. Tela antifluidos repelente de líquidos con bolsillos multifuncionales.",
@@ -37,10 +36,10 @@ const INITIAL_CLOUD_PROMOTIONS = [
   },
   {
     id: "promo-3",
-    title: "Filipina Chef Ejecutiva Transpirable de Alta Cocina",
+    title: "Filipina Chef Ejecutiva Transpirable de Alta Cocina (Precio x Unidad)",
     category: "gastronomico",
-    discountBadge: "PRECIO DE TEMPORADA",
-    promoPrice: 14500,
+    discountBadge: "-15% DESCUENTO",
+    promoPrice: 16150,
     regularPrice: 19000,
     badgeText: "🔥 Edición Limitada",
     validUntil: "2026-12-15",
@@ -50,6 +49,36 @@ const INITIAL_CLOUD_PROMOTIONS = [
     createdAt: "2026-11-23"
   }
 ];
+
+// Caché en memoria de borde para lectura instantánea (0ms) tras guardar, respaldada en Cloudflare KV
+let latestPromotionsMemoryCache = null;
+
+async function getCloudPromotions(env) {
+  if (latestPromotionsMemoryCache && Array.isArray(latestPromotionsMemoryCache) && latestPromotionsMemoryCache.length > 0) {
+    return latestPromotionsMemoryCache;
+  }
+  if (env.PROMOS_KV) {
+    try {
+      const stored = await env.PROMOS_KV.get("promotions_v2", { type: "json", cacheTtl: 30 });
+      if (stored && Array.isArray(stored) && stored.length > 0) {
+        latestPromotionsMemoryCache = stored;
+        return stored;
+      }
+      await env.PROMOS_KV.put("promotions_v2", JSON.stringify(INITIAL_CLOUD_PROMOTIONS));
+    } catch (e) {
+      console.error("KV Read error:", e);
+    }
+  }
+  latestPromotionsMemoryCache = INITIAL_CLOUD_PROMOTIONS;
+  return INITIAL_CLOUD_PROMOTIONS;
+}
+
+async function saveCloudPromotions(env, promotions) {
+  latestPromotionsMemoryCache = promotions;
+  if (env.PROMOS_KV) {
+    await env.PROMOS_KV.put("promotions_v2", JSON.stringify(promotions));
+  }
+}
 
 const CR_TEXTILE_GLOSSARY = [
   { pattern: /\bfilipinas?\s+m[eé]dicas?\b/gi, replacement: "tailored medical clinical scrub tunic top" },
@@ -121,7 +150,7 @@ export default {
     const corsHeaders = {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type"
+      "Access-Control-Allow-Headers": "Content-Type, Cache-Control"
     };
 
     if (request.method === "OPTIONS") {
@@ -134,21 +163,14 @@ export default {
     if (url.pathname === "/api/promotions") {
       try {
         if (request.method === "GET") {
-          let stored = null;
-          if (env.PROMOS_KV) {
-            stored = await env.PROMOS_KV.get("promotions_v2", "json");
-            if (!stored) {
-              stored = INITIAL_CLOUD_PROMOTIONS;
-              await env.PROMOS_KV.put("promotions_v2", JSON.stringify(stored));
-            }
-          } else {
-            stored = INITIAL_CLOUD_PROMOTIONS;
-          }
-          return new Response(JSON.stringify({ success: true, promotions: stored }), {
+          const promos = await getCloudPromotions(env);
+          return new Response(JSON.stringify({ success: true, promotions: promos, timestamp: Date.now() }), {
             headers: {
               ...corsHeaders,
               "Content-Type": "application/json",
-              "Cache-Control": "no-store, no-cache, must-revalidate"
+              "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
+              "Pragma": "no-cache",
+              "Expires": "0"
             }
           });
         }
@@ -161,14 +183,12 @@ export default {
               headers: { ...corsHeaders, "Content-Type": "application/json" }
             });
           }
-          if (env.PROMOS_KV) {
-            await env.PROMOS_KV.put("promotions_v2", JSON.stringify(body.promotions));
-          }
-          return new Response(JSON.stringify({ success: true, count: body.promotions.length }), {
+          await saveCloudPromotions(env, body.promotions);
+          return new Response(JSON.stringify({ success: true, count: body.promotions.length, timestamp: Date.now() }), {
             headers: {
               ...corsHeaders,
               "Content-Type": "application/json",
-              "Cache-Control": "no-store"
+              "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0"
             }
           });
         }
@@ -265,6 +285,40 @@ export default {
           headers: { ...corsHeaders, "Content-Type": "application/json" }
         });
       }
+    }
+
+    // =====================================================================
+    // 3. INYECCIÓN SERVER-SIDE DE PROMOCIONES EN INDEX.HTML (CERO CACHÉ VIEJA)
+    // =====================================================================
+    if (url.pathname === "/" || url.pathname === "/index.html") {
+      if (env.ASSETS) {
+        const assetResp = await env.ASSETS.fetch(request);
+        let html = await assetResp.text();
+        const livePromos = await getCloudPromotions(env);
+        const injectionScript = `<script>window.__LIVE_SERVER_PROMOTIONS__ = ${JSON.stringify(livePromos)};</script>\n</head>`;
+        html = html.replace("</head>", injectionScript);
+
+        return new Response(html, {
+          status: 200,
+          headers: {
+            "Content-Type": "text/html; charset=utf-8",
+            "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
+            "Pragma": "no-cache",
+            "Expires": "0"
+          }
+        });
+      }
+    }
+
+    if (url.pathname === "/promociones-studio.js" && env.ASSETS) {
+      const jsResp = await env.ASSETS.fetch(request);
+      return new Response(jsResp.body, {
+        status: 200,
+        headers: {
+          "Content-Type": "application/javascript; charset=utf-8",
+          "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0"
+        }
+      });
     }
 
     if (env.ASSETS) {
